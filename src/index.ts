@@ -3,7 +3,6 @@ import puppeteer from "puppeteer";
 import { generatePath, imageToBase64, resizeImage } from "./utils";
 import { CustomElement, Product } from "./types";
 import { instance } from "./axios";
-import { clear } from "console";
 
 const BASE_URL = "https://www.dropaaqui.com.br/";
 
