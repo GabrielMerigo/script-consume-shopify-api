@@ -1,6 +1,3 @@
-import fs from "fs";
-import fetch from "node-fetch";
-
 export const generatePath = (title: string, id: string) => {
   const path = `${title.toLocaleLowerCase()} ${id.toLocaleLowerCase()}`;
 
@@ -8,17 +5,15 @@ export const generatePath = (title: string, id: string) => {
 };
 
 export function resizeImage(url: string) {
-  return url.replace(/\/fit-in\/\d+x\d+/, "/fit-in/600x600");
+  return url.replace(/\/fit-in\/\d+x\d+/, "/fit-in/1000x1000");
 }
 
-export async function imageToBase64(imageUrl: string) {
-  try {
-    const response = await fetch(imageUrl);
-    const imageBuffer = await response.buffer();
-    const base64String = imageBuffer.toString("base64");
-    return base64String;
-  } catch (error) {
-    console.error("Erro ao carregar a imagem:", error);
-    return null;
-  }
+export function createVariants(sizes: string[], price: number, sku: string) {
+  const variants = sizes.map((size) => ({
+    option1: size,
+    price: price,
+    sku: sku,
+  }));
+
+  return variants;
 }

@@ -1,6 +1,6 @@
 import puppeteer from "puppeteer";
 
-import { generatePath, imageToBase64, resizeImage } from "./utils";
+import { createVariants, generatePath, resizeImage } from "./utils";
 import { CustomElement, Product } from "./types";
 import { instance } from "./axios";
 
@@ -34,6 +34,7 @@ const BASE_URL = "https://www.dropaaqui.com.br/";
     ".product_options_list",
     (element: CustomElement) => element.textContent
   );
+  const arrayOfSize = sizes.split(" ").filter((item) => Boolean(item));
 
   const productInfo: Product[] = await page.evaluate(() => params.items);
 
@@ -41,10 +42,17 @@ const BASE_URL = "https://www.dropaaqui.com.br/";
     src: imageUrl,
   }));
 
+  console.log(productInfo);
+
   const product = {
     title: productInfo[0].item_name,
     images: imagesFormatted,
     vendor: productInfo[0].item_category,
+    variants: createVariants(
+      arrayOfSize,
+      productInfo[0].price,
+      productInfo[0].item_id
+    ),
   };
 
   instance.post("/admin/api/2023-07/products.json", { product });
