@@ -1,4 +1,18 @@
-export const generatePath = (title: string, id: string) => {
+export const countCharacter = (str: string, character: string) => {
+  if (character === "") return 0;
+
+  return str.split(character).length - 1;
+};
+
+export const generatePath = (title: string, idFromUrl: string) => {
+  let id = idFromUrl.toLocaleLowerCase();
+
+  console.log("this is id ->", id);
+
+  if (countCharacter(id, "c") === 2) {
+    id = id.replace(/^c-/, "");
+  }
+
   const path = `${title.toLocaleLowerCase()} ${id.toLocaleLowerCase()}`;
 
   return path.replaceAll(" ", "-");
