@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "author": "",
   "license": "ISC",
   "scripts": {
     "dev": "tsx watch src/index.ts"

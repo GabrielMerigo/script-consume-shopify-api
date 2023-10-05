@@ -1,28 +1,29 @@
-export const countCharacter = (str: string, character: string) => {
-  if (character === "") return 0;
+const removeEmoji = (text: string) => {
+  const emojiRegex = /[\u2B1B\u2B50]/g;
 
-  return str.split(character).length - 1;
+  return text.replace(emojiRegex, "");
 };
 
-export const generatePath = (title: string, idFromUrl: string) => {
-  let id = idFromUrl.toLocaleLowerCase();
+export const generatePath = (title: string, id: string) => {
+  console.log(title);
+  console.log(id);
 
-  console.log("this is id ->", id);
+  let idUrl = id.replace(/^C-(?!.*C-)|^C/, "");
 
-  if (countCharacter(id, "c") === 2) {
-    id = id.replace(/^c-/, "");
-  }
+  const path = `${title.toLocaleLowerCase()} ${idUrl.toLocaleLowerCase()}`;
 
-  const path = `${title.toLocaleLowerCase()} ${id.toLocaleLowerCase()}`;
+  const res = removeEmoji(path.replaceAll(" ", "-"));
 
-  return path.replaceAll(" ", "-");
+  console.log("resultado", res);
+
+  return res;
 };
 
-export function resizeImage(url: string) {
+export const resizeImage = (url: string) => {
   return url.replace(/\/fit-in\/\d+x\d+/, "/fit-in/1000x1000");
-}
+};
 
-export function createVariants(sizes: string[], price: number, sku: string) {
+export const createVariants = (sizes: string[], price: number, sku: string) => {
   const variants = sizes.map((size) => ({
     option1: size,
     price: price,
@@ -30,4 +31,4 @@ export function createVariants(sizes: string[], price: number, sku: string) {
   }));
 
   return variants;
-}
+};
