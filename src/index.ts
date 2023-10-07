@@ -3,7 +3,7 @@ import puppeteer from "puppeteer";
 import { createVariants, resizeImage } from "./utils";
 import { CustomElement, Product } from "./types";
 import {ANCOR_TAG_PRODUCT_IMAGE, PRODUCT_COLLECTION_SELECTOR_ID, PRODUCT_IMAGE_TAG, PRODUCT_SIZE, BASE_URL, PAGE_PARAMS} from "./constants"
-// import { instance } from "./services/axios";
+import { instance } from "./services/axios";
 
 const createProducts = async () => {
   const browser = await puppeteer.launch({
@@ -45,7 +45,7 @@ const createProducts = async () => {
     const productInfo: Product[] = await page.evaluate(() => params.items);
     const thereIsSize = await page.$(PRODUCT_SIZE);
 
-    let sizes: string[] = [];
+    let sizes: string = [];
 
     if (thereIsSize) {
       sizes = await page.$eval(
@@ -63,16 +63,24 @@ const createProducts = async () => {
       images: imagesFormatted,
       vendor: productInfo[0].item_category,
       inventory_quantity: sizes?.length ? 1 : 0,
-      variants: createVariants({
-        sizes,
-        price: productInfo[0].price,
-        sku: productInfo[0].item_id,
-      }),
+      collection: "Camiseta",
+      variants: sizes.length
+        ? createVariants({
+            sizes,
+            price: productInfo[0].price,
+            sku: productInfo[0].item_id,
+          })
+        : [],
     };
+
+    products.push(product);
 
     console.log(`Produto ${product.title} criado com sucesso!`);
 
+    instance.post("/admin/api/2023-07/products.json", { product });
+
     await page.close();
+    break;
   }
 
   console.log(products);
