@@ -1,8 +1,8 @@
 import puppeteer from "puppeteer";
 
-import { createVariants, resizeImage } from "./utils";
+import { createVariants, resizeImage } from "./utils/string";
 import { CustomElement, Product } from "./types";
-// import { instance } from "./axios";
+// import { instance } from "./services/axios";
 
 const BASE_URL = "https://www.dropaaqui.com.br/";
 
