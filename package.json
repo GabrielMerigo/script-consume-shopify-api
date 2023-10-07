@@ -7,7 +7,11 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "lint": "eslint src/**/*.ts --fix",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "prettier:fix": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "prettier:check": "npx prettier --check ."
+  },
+  "husky": {
+    "pre-commit": "prettier --write . && git add -A ."
   },
   "dependencies": {
     "@shopify/shopify-api": "^7.6.0",
@@ -25,6 +29,9 @@
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "install": "^0.13.0",
+    "npm": "^10.2.0",
     "prettier": "^3.0.3",
     "tsx": "^3.12.10",
     "typescript": "^5.2.2"
