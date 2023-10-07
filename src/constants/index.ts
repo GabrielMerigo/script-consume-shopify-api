@@ -1,8 +1,3 @@
-export {
-    ANCOR_TAG_PRODUCT_IMAGE,
-    PRODUCT_COLLECTION_SELECTOR_ID,
-    PRODUCT_IMAGE_TAG,
-    PRODUCT_SIZE
-} from "./selector"
-
-export {BASE_URL, PAGE_PARAMS} from './url'
+export * from "./selector";
+export * from "./url";
+export * from "./collections";
