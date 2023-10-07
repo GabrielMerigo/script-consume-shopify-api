@@ -1,4 +1,4 @@
-import { Variant } from "../types";
+import { Variant } from '../types';
 
 export const resizeImage = (url: string) => {
   return url.replace(/\/fit-in\/\d+x\d+/, '/fit-in/1000x1000');
