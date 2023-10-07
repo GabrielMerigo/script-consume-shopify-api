@@ -15,7 +15,7 @@ export interface CustomElement extends ElementHandle {
 }
 
 export interface Variant {
-  sizes: string[];
+  sizes: string;
   price: number;
   sku: string;
 }
