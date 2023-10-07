@@ -13,3 +13,9 @@ export interface CustomElement extends ElementHandle {
   getAttribute(name: string): string;
   textContent: string;
 }
+
+export interface Variant {
+  sizes: string[];
+  price: number;
+  sku: string;
+}
