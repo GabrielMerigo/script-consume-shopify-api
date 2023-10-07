@@ -71,10 +71,10 @@ const createProducts = async () => {
       collection: 'Camiseta',
       variants: sizes.length
         ? createVariants({
-          sizes,
-          price: productInfo[0].price,
-          sku: productInfo[0].item_id
-        })
+            sizes,
+            price: productInfo[0].price,
+            sku: productInfo[0].item_id
+          })
         : []
     };
 
