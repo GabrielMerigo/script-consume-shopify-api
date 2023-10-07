@@ -8,10 +8,8 @@
     "dev": "tsx watch src/index.ts",
     "lint": "eslint src/**/*.ts --fix",
     "prettier:fix": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "prettier:check": "npx prettier --check ."
-  },
-  "husky": {
-    "pre-commit": "prettier --write . && git add -A ."
+    "prettier:check": "npx prettier --check .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@shopify/shopify-api": "^7.6.0",
