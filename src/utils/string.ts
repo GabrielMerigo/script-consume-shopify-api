@@ -1,4 +1,4 @@
-import { Variant } from "./types";
+import { Variant } from "../types";
 
 const removeEmoji = (text: string) => {
   const emojiRegex = /[\u2B1B\u2B50]/g;
@@ -13,7 +13,7 @@ export const resizeImage = (url: string) => {
 export const createVariants = ({ price, sizes, sku }: Variant) => {
   const arrayOfSize = sizes.split(" ").filter((item: string) => Boolean(item));
 
-  const variants = arrayOfSize.map((size: string, index: number) => ({
+  const variants: Variant = arrayOfSize.map((size: string, index: number) => ({
     [`option${index + 1}`]: size,
     price: price,
     sku: sku,
