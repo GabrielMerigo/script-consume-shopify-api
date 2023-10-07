@@ -1,4 +1,4 @@
-import { ElementHandle } from "puppeteer";
+import { ElementHandle } from 'puppeteer';
 
 export interface Product {
   item_id: string;

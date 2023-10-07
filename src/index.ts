@@ -1,24 +1,24 @@
-import puppeteer from "puppeteer";
+import puppeteer from 'puppeteer';
 
-import { createVariants, resizeImage } from "./utils";
-import { CustomElement, Product } from "./types";
+import { createVariants, resizeImage } from './utils';
+import { CustomElement, Product } from './types';
 // import { instance } from "./axios";
 
-const BASE_URL = "https://www.dropaaqui.com.br/";
+const BASE_URL = 'https://www.dropaaqui.com.br/';
 
 const createProducts = async () => {
   const browser = await puppeteer.launch({
-    headless: "new",
+    headless: 'new'
   });
   const page = await browser.newPage();
   await page.goto(`${BASE_URL}/camisetas?limit=100&page=1`);
-  await page.waitForSelector("#shelf-list-product");
+  await page.waitForSelector('#shelf-list-product');
 
   let products: any = [];
 
   const productsLinks = await page.evaluate(() => {
     const anchorElements = document.querySelectorAll(
-      "#shelf-list-product .image a"
+      '#shelf-list-product .image a'
     );
     const values: any = [];
 
@@ -34,29 +34,29 @@ const createProducts = async () => {
     await page.goto(link);
 
     const images = await page.$$eval(
-      "li.image-additional img",
+      'li.image-additional img',
       (elements: CustomElement[]) => {
         return elements.map((element) => {
-          return element.getAttribute("src");
+          return element.getAttribute('src');
         });
       }
     );
 
     const imagesResized = images.map((image: string) => resizeImage(image));
     const productInfo: Product[] = await page.evaluate(() => params.items);
-    const thereIsSize = await page.$(".product_options_list .sizes");
+    const thereIsSize = await page.$('.product_options_list .sizes');
 
     let sizes: string[] = [];
 
     if (thereIsSize) {
       sizes = await page.$eval(
-        ".product_options_list .sizes",
+        '.product_options_list .sizes',
         (element: CustomElement) => element.textContent
       );
     }
 
     const imagesFormatted = imagesResized.map((imageUrl: string) => ({
-      src: imageUrl,
+      src: imageUrl
     }));
 
     const product = {
@@ -67,8 +67,8 @@ const createProducts = async () => {
       variants: createVariants({
         sizes,
         price: productInfo[0].price,
-        sku: productInfo[0].item_id,
-      }),
+        sku: productInfo[0].item_id
+      })
     };
 
     console.log(`Produto ${product.title} criado com sucesso!`);

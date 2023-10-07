@@ -5,7 +5,9 @@
   "main": "index.js",
   "license": "ISC",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "lint": "eslint src/**/*.ts --fix",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "dependencies": {
     "@shopify/shopify-api": "^7.6.0",
