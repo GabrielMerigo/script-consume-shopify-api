@@ -2,6 +2,7 @@ import puppeteer from "puppeteer";
 
 import { createVariants, resizeImage } from "./utils";
 import { CustomElement, Product } from "./types";
+import {ANCOR_TAG_PRODUCT_IMAGE, PRODUCT_COLLECTION_SELECTOR_ID, PRODUCT_IMAGE_TAG, PRODUCT_SIZE} from "./constants"
 // import { instance } from "./services/axios";
 
 const BASE_URL = "https://www.dropaaqui.com.br/";
@@ -12,13 +13,13 @@ const createProducts = async () => {
   });
   const page = await browser.newPage();
   await page.goto(`${BASE_URL}/camisetas?limit=100&page=1`);
-  await page.waitForSelector("#shelf-list-product");
+  await page.waitForSelector(PRODUCT_COLLECTION_SELECTOR_ID);
 
   let products: any = [];
 
   const productsLinks = await page.evaluate(() => {
     const anchorElements = document.querySelectorAll(
-      "#shelf-list-product .image a"
+      ANCOR_TAG_PRODUCT_IMAGE
     );
     const values: any = [];
 
@@ -34,7 +35,7 @@ const createProducts = async () => {
     await page.goto(link);
 
     const images = await page.$$eval(
-      "li.image-additional img",
+      PRODUCT_IMAGE_TAG,
       (elements: CustomElement[]) => {
         return elements.map((element) => {
           return element.getAttribute("src");
@@ -44,13 +45,13 @@ const createProducts = async () => {
 
     const imagesResized = images.map((image: string) => resizeImage(image));
     const productInfo: Product[] = await page.evaluate(() => params.items);
-    const thereIsSize = await page.$(".product_options_list .sizes");
+    const thereIsSize = await page.$(PRODUCT_SIZE);
 
     let sizes: string[] = [];
 
     if (thereIsSize) {
       sizes = await page.$eval(
-        ".product_options_list .sizes",
+        PRODUCT_SIZE,
         (element: CustomElement) => element.textContent
       );
     }
