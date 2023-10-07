@@ -2,17 +2,15 @@ import puppeteer from "puppeteer";
 
 import { createVariants, resizeImage } from "./utils";
 import { CustomElement, Product } from "./types";
-import {ANCOR_TAG_PRODUCT_IMAGE, PRODUCT_COLLECTION_SELECTOR_ID, PRODUCT_IMAGE_TAG, PRODUCT_SIZE} from "./constants"
+import {ANCOR_TAG_PRODUCT_IMAGE, PRODUCT_COLLECTION_SELECTOR_ID, PRODUCT_IMAGE_TAG, PRODUCT_SIZE, BASE_URL, PAGE_PARAMS} from "./constants"
 // import { instance } from "./services/axios";
-
-const BASE_URL = "https://www.dropaaqui.com.br/";
 
 const createProducts = async () => {
   const browser = await puppeteer.launch({
     headless: "new",
   });
   const page = await browser.newPage();
-  await page.goto(`${BASE_URL}/camisetas?limit=100&page=1`);
+  await page.goto(`${BASE_URL}/camisetas?${PAGE_PARAMS}`);
   await page.waitForSelector(PRODUCT_COLLECTION_SELECTOR_ID);
 
   let products: any = [];

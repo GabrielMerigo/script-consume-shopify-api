@@ -4,3 +4,5 @@ export {
     PRODUCT_IMAGE_TAG,
     PRODUCT_SIZE
 } from "./selector"
+
+export {BASE_URL, PAGE_PARAMS} from './url'
