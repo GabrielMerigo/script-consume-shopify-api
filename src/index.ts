@@ -1,6 +1,6 @@
 import puppeteer from "puppeteer";
 
-import { createVariants, resizeImage } from "./utils/string";
+import { createVariants, resizeImage } from "./utils";
 import { CustomElement, Product } from "./types";
 // import { instance } from "./services/axios";
 

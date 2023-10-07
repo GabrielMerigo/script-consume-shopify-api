@@ -1,11 +1,5 @@
 import { Variant } from "../types";
 
-const removeEmoji = (text: string) => {
-  const emojiRegex = /[\u2B1B\u2B50]/g;
-
-  return text.replace(emojiRegex, "");
-};
-
 export const resizeImage = (url: string) => {
   return url.replace(/\/fit-in\/\d+x\d+/, "/fit-in/1000x1000");
 };
