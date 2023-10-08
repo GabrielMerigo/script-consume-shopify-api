@@ -1,16 +1,16 @@
 import puppeteer from 'puppeteer';
 
 import { createVariants, resizeImage } from './utils';
-import { Product } from './types';
+import { ProductCreationResponse, ProductInfoFromHTML } from './types';
+import { instance } from './services/axios';
 import {
-  ANCOR_TAG_PRODUCT_IMAGE,
   PRODUCT_COLLECTION_SELECTOR_ID,
   PRODUCT_IMAGE_TAG,
   PRODUCT_SIZE,
   BASE_URL,
-  PAGE_PARAMS
+  PAGE_PARAMS,
+  collections
 } from './constants';
-import { instance } from './services/axios';
 
 const createProducts = async () => {
   const browser = await puppeteer.launch({
@@ -23,7 +23,9 @@ const createProducts = async () => {
   const products = [];
 
   const productsLinks = await page.evaluate(() => {
-    const anchorElements = document.querySelectorAll(ANCOR_TAG_PRODUCT_IMAGE);
+    const anchorElements = document.querySelectorAll(
+      '#shelf-list-product .image a'
+    );
     const values: string[] = [];
 
     anchorElements.forEach((anchor) => {
@@ -33,6 +35,7 @@ const createProducts = async () => {
     return values;
   });
 
+  let index = 0;
   for (const link of productsLinks) {
     const page = await browser.newPage();
     await page.goto(link);
@@ -43,8 +46,10 @@ const createProducts = async () => {
       });
     });
 
-    const imagesResized = images.map((image) => resizeImage(image as string));
-    const productInfo: Product[] = await page.evaluate(() => params.items);
+    const imagesResized = images.map((image: string) => resizeImage(image));
+    const productInfo: ProductInfoFromHTML[] = await page.evaluate(
+      () => params.items
+    );
     const thereIsSize = await page.$(PRODUCT_SIZE);
 
     let sizes: string | null = '';
@@ -62,24 +67,44 @@ const createProducts = async () => {
       images: imagesFormatted,
       vendor: productInfo[0].item_category,
       inventory_quantity: sizes?.length ? 1 : 0,
-      collection: 'Camiseta',
-      variants:
-        sizes && sizes.length
-          ? createVariants({
-              sizes,
-              price: productInfo[0].price,
-              sku: productInfo[0].item_id
-            })
-          : []
+      variants: sizes.length
+        ? createVariants({
+            sizes,
+            price: productInfo[0].price,
+            sku: productInfo[0].item_id
+          })
+        : []
     };
 
     products.push(product);
 
     console.log(`Produto ${product.title} criado com sucesso!`);
 
-    instance.post('/admin/api/2023-07/products.json', { product });
+    // const { data } = await instance.get(
+    //   "admin/api/2023-10/custom_collections.json"
+    // );
+
+    const {
+      data: { product: productCreated }
+    } = await instance.post<ProductCreationResponse>(
+      '/admin/api/2023-07/products.json',
+      { product }
+    );
+
+    instance.put('/admin/api/2023-10/custom_collections/457099477296.json', {
+      custom_collection: {
+        id: collections.camisetas.id,
+        collects: [
+          {
+            product_id: productCreated.id,
+            position: index
+          }
+        ]
+      }
+    });
 
     await page.close();
+    index++;
     break;
   }
 
