@@ -12,6 +12,10 @@ import {
   collections
 } from './constants';
 
+const params: {
+  items: ProductInfoFromHTML[];
+} = { items: [] };
+
 const createProducts = async () => {
   const browser = await puppeteer.launch({
     headless: 'new'
@@ -46,7 +50,7 @@ const createProducts = async () => {
       });
     });
 
-    const imagesResized = images.map((image: string) => resizeImage(image));
+    const imagesResized = images.map((image) => resizeImage(image || ''));
     const productInfo: ProductInfoFromHTML[] = await page.evaluate(
       () => params.items
     );
@@ -67,13 +71,14 @@ const createProducts = async () => {
       images: imagesFormatted,
       vendor: productInfo[0].item_category,
       inventory_quantity: sizes?.length ? 1 : 0,
-      variants: sizes.length
-        ? createVariants({
-            sizes,
-            price: productInfo[0].price,
-            sku: productInfo[0].item_id
-          })
-        : []
+      variants:
+        sizes && sizes.length
+          ? createVariants({
+              sizes,
+              price: productInfo[0].price,
+              sku: productInfo[0].item_id
+            })
+          : []
     };
 
     products.push(product);
