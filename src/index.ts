@@ -20,13 +20,13 @@ const createProducts = async () => {
   await page.goto(`${BASE_URL}/camisetas?${PAGE_PARAMS}`);
   await page.waitForSelector(PRODUCT_COLLECTION_SELECTOR_ID);
 
-  const products: any = [];
+  const products = [];
 
   const productsLinks = await page.evaluate(() => {
     const anchorElements = document.querySelectorAll(ANCOR_TAG_PRODUCT_IMAGE);
-    const values: any = [];
+    const values: string[] = [];
 
-    anchorElements.forEach((anchor: any) => {
+    anchorElements.forEach((anchor: { href: string }) => {
       values.push(anchor.href);
     });
 
@@ -50,7 +50,7 @@ const createProducts = async () => {
     const productInfo: Product[] = await page.evaluate(() => params.items);
     const thereIsSize = await page.$(PRODUCT_SIZE);
 
-    let sizes: string = [];
+    let sizes: string = '';
 
     if (thereIsSize) {
       sizes = await page.$eval(
