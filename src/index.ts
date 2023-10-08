@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 
 import { createVariants, resizeImage } from './utils';
-import { CustomElement, Product } from './types';
+import { Product } from './types';
 import {
   ANCOR_TAG_PRODUCT_IMAGE,
   PRODUCT_COLLECTION_SELECTOR_ID,
@@ -26,8 +26,8 @@ const createProducts = async () => {
     const anchorElements = document.querySelectorAll(ANCOR_TAG_PRODUCT_IMAGE);
     const values: string[] = [];
 
-    anchorElements.forEach((anchor: { href: string }) => {
-      values.push(anchor.href);
+    anchorElements.forEach((anchor) => {
+      if (anchor instanceof HTMLAnchorElement) values.push(anchor.href);
     });
 
     return values;
@@ -37,26 +37,20 @@ const createProducts = async () => {
     const page = await browser.newPage();
     await page.goto(link);
 
-    const images = await page.$$eval(
-      PRODUCT_IMAGE_TAG,
-      (elements: CustomElement[]) => {
-        return elements.map((element) => {
-          return element.getAttribute('src');
-        });
-      }
-    );
+    const images = await page.$$eval(PRODUCT_IMAGE_TAG, (elements) => {
+      return elements.map((element) => {
+        return element.getAttribute('src');
+      });
+    });
 
-    const imagesResized = images.map((image: string) => resizeImage(image));
+    const imagesResized = images.map((image) => resizeImage(image as string));
     const productInfo: Product[] = await page.evaluate(() => params.items);
     const thereIsSize = await page.$(PRODUCT_SIZE);
 
-    let sizes: string = '';
+    let sizes: string | null = '';
 
     if (thereIsSize) {
-      sizes = await page.$eval(
-        PRODUCT_SIZE,
-        (element: CustomElement) => element.textContent
-      );
+      sizes = await page.$eval(PRODUCT_SIZE, (element) => element.textContent);
     }
 
     const imagesFormatted = imagesResized.map((imageUrl: string) => ({
@@ -69,13 +63,14 @@ const createProducts = async () => {
       vendor: productInfo[0].item_category,
       inventory_quantity: sizes?.length ? 1 : 0,
       collection: 'Camiseta',
-      variants: sizes.length
-        ? createVariants({
-            sizes,
-            price: productInfo[0].price,
-            sku: productInfo[0].item_id
-          })
-        : []
+      variants:
+        sizes && sizes.length
+          ? createVariants({
+              sizes,
+              price: productInfo[0].price,
+              sku: productInfo[0].item_id
+            })
+          : []
     };
 
     products.push(product);
