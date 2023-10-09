@@ -1,7 +1,11 @@
 import puppeteer from 'puppeteer';
 
 import { createVariants, resizeImage } from './utils';
-import { ProductCreationResponse, ProductInfoFromHTML } from './types';
+import {
+  ProductCreationResponse,
+  ProductInfoFromHTML,
+  ShopifyProduct
+} from './types/product';
 import { instance } from './services/axios';
 import {
   PRODUCT_COLLECTION_SELECTOR_ID,
@@ -24,7 +28,7 @@ const createProducts = async () => {
   await page.goto(`${BASE_URL}/camisetas?${PAGE_PARAMS}`);
   await page.waitForSelector(PRODUCT_COLLECTION_SELECTOR_ID);
 
-  const products = [];
+  const products: ShopifyProduct[] = [];
 
   const productsLinks = await page.evaluate(() => {
     const anchorElements = document.querySelectorAll(
@@ -66,7 +70,7 @@ const createProducts = async () => {
       src: imageUrl
     }));
 
-    const product = {
+    const product: ShopifyProduct = {
       title: productInfo[0].item_name,
       images: imagesFormatted,
       vendor: productInfo[0].item_category,
