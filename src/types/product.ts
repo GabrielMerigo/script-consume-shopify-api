@@ -20,7 +20,7 @@ interface ShopifyProduct {
   }[];
   vendor: string;
   inventory_quantity: number;
-  variants: ShoppifyVariant[];
+  variants: ShopifyVariant[];
 }
 
 interface Variant {
@@ -29,12 +29,12 @@ interface Variant {
   sku: string;
 }
 
-type ShoppifyVariant = Record<string, string | number>;
+type ShopifyVariant = Record<string, string | number>;
 
 export {
   ProductCreationResponse,
   ProductInfoFromHTML,
   ShopifyProduct,
   Variant,
-  ShoppifyVariant
+  ShopifyVariant
 };
