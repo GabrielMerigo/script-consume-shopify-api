@@ -14,14 +14,17 @@ interface GetProductImageTypeParams {
 }
 
 interface GetProductImageTypeResponse {
-  images: {
+  productImages: {
     src: string;
   }[];
 }
+
+interface GetProductInfo extends GetProductImageTypeParams {}
 
 export {
   CustomElement,
   GetProductsInformationBasedOnUrlType,
   GetProductImageTypeParams,
-  GetProductImageTypeResponse
+  GetProductImageTypeResponse,
+  GetProductInfo
 };
