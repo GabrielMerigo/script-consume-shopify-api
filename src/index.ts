@@ -1,19 +1,16 @@
 import {
-  createVariants,
   getProductsInformationBasedOnUrl,
-  getProductImage
+  getProductImage,
+  getProductInfo
 } from './utils';
-import { ProductInfoFromHTML, ShopifyProduct } from './types';
-import { PRODUCT_SIZE, BASE_URL, PAGE_PARAMS } from './constants';
+import { ShopifyProduct } from './types';
+import { BASE_URL, PAGE_PARAMS } from './constants';
 import {
   createShopifyProduct,
   putProductIntoCollection
 } from './requests/shopify';
 import { collections } from './data';
-
-const params: {
-  items: ProductInfoFromHTML[];
-} = { items: [] };
+import { createProductObject } from './utils/createProductObject';
 
 const createProducts = async (): Promise<void> => {
   const products: ShopifyProduct[] = [];
@@ -27,48 +24,33 @@ const createProducts = async (): Promise<void> => {
     const page = await browser.newPage();
     await page.goto(link);
 
-    const { images } = await getProductImage({
+    const { productImages } = await getProductImage({
       currentProductPage: page
     });
 
-    const productInfo: ProductInfoFromHTML[] = await page.evaluate(
-      () => params.items
-    );
-    const thereIsSize = await page.$(PRODUCT_SIZE);
+    const productInfo = await getProductInfo({
+      currentProductPage: page
+    });
 
-    let sizes: string | null = '';
+    const productToInsertIntoShopify = await createProductObject({
+      page,
+      productImages,
+      productInfo
+    })
 
-    if (thereIsSize) {
-      sizes = await page.$eval(PRODUCT_SIZE, (element) => element.textContent);
-    }
+    products.push(productToInsertIntoShopify);
 
-    const product: ShopifyProduct = {
-      title: productInfo[0].item_name,
-      images,
-      vendor: productInfo[0].item_category,
-      inventory_quantity: sizes?.length ? 1 : 0,
-      variants:
-        sizes && sizes.length
-          ? createVariants({
-              sizes,
-              price: productInfo[0].price,
-              sku: productInfo[0].item_id
-            })
-          : []
-    };
-
-    products.push(product);
-
-    console.log(`Product ${product.title} was got from page`);
+    console.log(`Product ${productToInsertIntoShopify.title} was got from page`);
     console.log(`Starting Shopify process`);
 
-    const createProductId = await createShopifyProduct(product);
+    const createProductId = await createShopifyProduct(productToInsertIntoShopify);
     await putProductIntoCollection(
       createProductId,
       collections.camisetas.id,
       index
     );
-    console.log(`Endding Shopify process`);
+
+    console.log(`Ending Shopify process`);
 
     await page.close();
     index++;
