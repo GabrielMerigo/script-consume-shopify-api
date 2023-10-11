@@ -1,20 +1,19 @@
 import puppeteer from 'puppeteer';
 
 import { createVariants, resizeImage } from './utils';
-import {
-  ProductCreationResponse,
-  ProductInfoFromHTML,
-  ShopifyProduct
-} from './types/product';
-import { instance } from './services/axios';
+import { ProductInfoFromHTML, ShopifyProduct } from './types/product';
 import {
   PRODUCT_COLLECTION_SELECTOR_ID,
   PRODUCT_IMAGE_TAG,
   PRODUCT_SIZE,
   BASE_URL,
-  PAGE_PARAMS,
-  collections
+  PAGE_PARAMS
 } from './constants';
+import {
+  createShopifyProduct,
+  putProductIntoCollection
+} from './requests/shopify';
+import { collections } from './data';
 
 const params: {
   items: ProductInfoFromHTML[];
@@ -87,37 +86,21 @@ const createProducts = async () => {
 
     products.push(product);
 
-    console.log(`Produto ${product.title} criado com sucesso!`);
+    console.log(`Product ${product.title} was got from page`);
+    console.log(`Starting Shopify process`);
 
-    // const { data } = await instance.get(
-    //   "admin/api/2023-10/custom_collections.json"
-    // );
-
-    const {
-      data: { product: productCreated }
-    } = await instance.post<ProductCreationResponse>(
-      '/admin/api/2023-07/products.json',
-      { product }
+    const createProductId = await createShopifyProduct(product);
+    await putProductIntoCollection(
+      createProductId,
+      collections.camisetas.id,
+      index
     );
-
-    instance.put('/admin/api/2023-10/custom_collections/457099477296.json', {
-      custom_collection: {
-        id: collections.camisetas.id,
-        collects: [
-          {
-            product_id: productCreated.id,
-            position: index
-          }
-        ]
-      }
-    });
+    console.log(`Endding Shopify process`);
 
     await page.close();
     index++;
     break;
   }
-
-  console.log(products);
 
   await browser.close();
 };
