@@ -1,8 +1,4 @@
-import { ShopifyVariant, Variant } from '../types';
-
-export const resizeImage = (url: string) => {
-  return url.replace(/\/fit-in\/\d+x\d+/, '/fit-in/1000x1000');
-};
+import { ShopifyVariant, Variant } from "../types";
 
 export const createVariants = ({ price, sizes, sku }: Variant) => {
   const arrayOfSize = sizes.split(' ').filter((item: string) => Boolean(item));
