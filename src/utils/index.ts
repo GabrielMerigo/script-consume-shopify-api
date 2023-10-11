@@ -1,1 +1,2 @@
-export { createVariants, resizeImage } from './string';
+export { resizeImage } from './resizeImage';
+export { createVariants } from './createVariants';

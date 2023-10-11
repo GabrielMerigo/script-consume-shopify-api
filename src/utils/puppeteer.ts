@@ -1,6 +1,6 @@
-import puppeteer, { Page } from "puppeteer";
-import { PRODUCT_COLLECTION_SELECTOR_ID } from "../constants";
-import { GetProductsInformationBasedOnUrlType } from "../types";
+import puppeteer, { Page } from 'puppeteer';
+import { PRODUCT_COLLECTION_SELECTOR_ID } from '../constants';
+import { GetProductsInformationBasedOnUrlType } from '../types';
 
 const getProductsLink = async (page: Page) => {
   const productsLinks = await page.evaluate(() => {
@@ -17,7 +17,7 @@ const getProductsLink = async (page: Page) => {
   });
 
   return productsLinks;
-}
+};
 
 export const getProductsInformationBasedOnUrl = async ({
   url
@@ -35,5 +35,5 @@ export const getProductsInformationBasedOnUrl = async ({
   return {
     productsLinks,
     browser
-  }
-}
+  };
+};

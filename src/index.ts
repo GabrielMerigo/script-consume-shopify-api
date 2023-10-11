@@ -1,4 +1,3 @@
-
 import { createVariants, resizeImage } from './utils';
 import { ProductInfoFromHTML, ShopifyProduct } from './types/product';
 import {
@@ -18,7 +17,7 @@ const params: {
   items: ProductInfoFromHTML[];
 } = { items: [] };
 
-const createProducts = async () => {
+const createProducts = async (): Promise<void> => {
   const products: ShopifyProduct[] = [];
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
