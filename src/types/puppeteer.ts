@@ -6,7 +6,7 @@ interface CustomElement extends ElementHandle {
 }
 
 interface GetProductsInformationBasedOnUrlType {
-  url: string
+  url: string;
 }
 
 export { CustomElement, GetProductsInformationBasedOnUrlType };

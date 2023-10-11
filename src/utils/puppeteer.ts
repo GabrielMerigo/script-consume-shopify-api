@@ -1,8 +1,8 @@
-import puppeteer, { Page } from 'puppeteer';
+import puppeteer, { Browser, Page } from 'puppeteer';
 import { PRODUCT_COLLECTION_SELECTOR_ID } from '../constants';
 import { GetProductsInformationBasedOnUrlType } from '../types';
 
-const getProductsLink = async (page: Page) => {
+const getProductsLink = async (page: Page): Promise<string[]> => {
   const productsLinks = await page.evaluate(() => {
     const anchorElements = document.querySelectorAll(
       '#shelf-list-product .image a'
@@ -21,7 +21,10 @@ const getProductsLink = async (page: Page) => {
 
 export const getProductsInformationBasedOnUrl = async ({
   url
-}: GetProductsInformationBasedOnUrlType) => {
+}: GetProductsInformationBasedOnUrlType): Promise<{
+  productsLinks: string[];
+  browser: Browser;
+}> => {
   const browser = await puppeteer.launch({
     headless: 'new'
   });
