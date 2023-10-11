@@ -1,17 +1,15 @@
-import { createVariants, resizeImage } from './utils';
-import { ProductInfoFromHTML, ShopifyProduct } from './types/product';
 import {
-  PRODUCT_IMAGE_TAG,
-  PRODUCT_SIZE,
-  BASE_URL,
-  PAGE_PARAMS
-} from './constants';
+  createVariants,
+  getProductsInformationBasedOnUrl,
+  getProductImage
+} from './utils';
+import { ProductInfoFromHTML, ShopifyProduct } from './types';
+import { PRODUCT_SIZE, BASE_URL, PAGE_PARAMS } from './constants';
 import {
   createShopifyProduct,
   putProductIntoCollection
 } from './requests/shopify';
 import { collections } from './data';
-import { getProductsInformationBasedOnUrl } from './utils/puppeteer';
 
 const params: {
   items: ProductInfoFromHTML[];
@@ -29,13 +27,10 @@ const createProducts = async (): Promise<void> => {
     const page = await browser.newPage();
     await page.goto(link);
 
-    const images = await page.$$eval(PRODUCT_IMAGE_TAG, (elements) => {
-      return elements.map((element) => {
-        return element.getAttribute('src');
-      });
+    const { images } = await getProductImage({
+      currentProductPage: page
     });
 
-    const imagesResized = images.map((image) => resizeImage(image || ''));
     const productInfo: ProductInfoFromHTML[] = await page.evaluate(
       () => params.items
     );
@@ -47,13 +42,9 @@ const createProducts = async (): Promise<void> => {
       sizes = await page.$eval(PRODUCT_SIZE, (element) => element.textContent);
     }
 
-    const imagesFormatted = imagesResized.map((imageUrl: string) => ({
-      src: imageUrl
-    }));
-
     const product: ShopifyProduct = {
       title: productInfo[0].item_name,
-      images: imagesFormatted,
+      images,
       vendor: productInfo[0].item_category,
       inventory_quantity: sizes?.length ? 1 : 0,
       variants:

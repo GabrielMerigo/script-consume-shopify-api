@@ -1,2 +1,2 @@
 export * from './product';
-export * from './peppeteer';
+export * from './puppeteer';

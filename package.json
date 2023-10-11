@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "lint:check": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
     "prettier:fix": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "prettier:check": "npx prettier --check .",
     "husky:prepare": "husky install",
