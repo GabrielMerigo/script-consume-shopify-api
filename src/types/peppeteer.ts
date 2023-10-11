@@ -5,4 +5,8 @@ interface CustomElement extends ElementHandle {
   textContent: string;
 }
 
-export { CustomElement };
+interface GetProductsInformationBasedOnUrlType {
+  url: string
+}
+
+export { CustomElement, GetProductsInformationBasedOnUrlType };

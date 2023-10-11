@@ -1,9 +1,7 @@
-import puppeteer from 'puppeteer';
 
 import { createVariants, resizeImage } from './utils';
 import { ProductInfoFromHTML, ShopifyProduct } from './types/product';
 import {
-  PRODUCT_COLLECTION_SELECTOR_ID,
   PRODUCT_IMAGE_TAG,
   PRODUCT_SIZE,
   BASE_URL,
@@ -14,32 +12,17 @@ import {
   putProductIntoCollection
 } from './requests/shopify';
 import { collections } from './data';
+import { getProductsInformationBasedOnUrl } from './utils/puppeteer';
 
 const params: {
   items: ProductInfoFromHTML[];
 } = { items: [] };
 
 const createProducts = async () => {
-  const browser = await puppeteer.launch({
-    headless: 'new'
-  });
-  const page = await browser.newPage();
-  await page.goto(`${BASE_URL}/camisetas?${PAGE_PARAMS}`);
-  await page.waitForSelector(PRODUCT_COLLECTION_SELECTOR_ID);
-
   const products: ShopifyProduct[] = [];
 
-  const productsLinks = await page.evaluate(() => {
-    const anchorElements = document.querySelectorAll(
-      '#shelf-list-product .image a'
-    );
-    const values: string[] = [];
-
-    anchorElements.forEach((anchor) => {
-      if (anchor instanceof HTMLAnchorElement) values.push(anchor.href);
-    });
-
-    return values;
+  const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
+    url: `${BASE_URL}/camisetas?${PAGE_PARAMS}`
   });
 
   let index = 0;
