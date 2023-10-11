@@ -1,46 +1,25 @@
-import puppeteer from 'puppeteer';
-
-import { createVariants, resizeImage } from './utils';
 import {
-  ProductCreationResponse,
-  ProductInfoFromHTML,
-  ShopifyProduct
-} from './types/product';
-import { instance } from './services/axios';
+  createVariants,
+  getProductsInformationBasedOnUrl,
+  getProductImage
+} from './utils';
+import { ProductInfoFromHTML, ShopifyProduct } from './types';
+import { PRODUCT_SIZE, BASE_URL, PAGE_PARAMS } from './constants';
 import {
-  PRODUCT_COLLECTION_SELECTOR_ID,
-  PRODUCT_IMAGE_TAG,
-  PRODUCT_SIZE,
-  BASE_URL,
-  PAGE_PARAMS,
-  collections
-} from './constants';
+  createShopifyProduct,
+  putProductIntoCollection
+} from './requests/shopify';
+import { collections } from './data';
 
 const params: {
   items: ProductInfoFromHTML[];
 } = { items: [] };
 
-const createProducts = async () => {
-  const browser = await puppeteer.launch({
-    headless: 'new'
-  });
-  const page = await browser.newPage();
-  await page.goto(`${BASE_URL}/camisetas?${PAGE_PARAMS}`);
-  await page.waitForSelector(PRODUCT_COLLECTION_SELECTOR_ID);
-
+const createProducts = async (): Promise<void> => {
   const products: ShopifyProduct[] = [];
 
-  const productsLinks = await page.evaluate(() => {
-    const anchorElements = document.querySelectorAll(
-      '#shelf-list-product .image a'
-    );
-    const values: string[] = [];
-
-    anchorElements.forEach((anchor) => {
-      if (anchor instanceof HTMLAnchorElement) values.push(anchor.href);
-    });
-
-    return values;
+  const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
+    url: `${BASE_URL}/camisetas?${PAGE_PARAMS}`
   });
 
   let index = 0;
@@ -48,13 +27,10 @@ const createProducts = async () => {
     const page = await browser.newPage();
     await page.goto(link);
 
-    const images = await page.$$eval(PRODUCT_IMAGE_TAG, (elements) => {
-      return elements.map((element) => {
-        return element.getAttribute('src');
-      });
+    const { images } = await getProductImage({
+      currentProductPage: page
     });
 
-    const imagesResized = images.map((image) => resizeImage(image || ''));
     const productInfo: ProductInfoFromHTML[] = await page.evaluate(
       () => params.items
     );
@@ -66,13 +42,9 @@ const createProducts = async () => {
       sizes = await page.$eval(PRODUCT_SIZE, (element) => element.textContent);
     }
 
-    const imagesFormatted = imagesResized.map((imageUrl: string) => ({
-      src: imageUrl
-    }));
-
     const product: ShopifyProduct = {
       title: productInfo[0].item_name,
-      images: imagesFormatted,
+      images,
       vendor: productInfo[0].item_category,
       inventory_quantity: sizes?.length ? 1 : 0,
       variants:
@@ -87,37 +59,21 @@ const createProducts = async () => {
 
     products.push(product);
 
-    console.log(`Produto ${product.title} criado com sucesso!`);
+    console.log(`Product ${product.title} was got from page`);
+    console.log(`Starting Shopify process`);
 
-    // const { data } = await instance.get(
-    //   "admin/api/2023-10/custom_collections.json"
-    // );
-
-    const {
-      data: { product: productCreated }
-    } = await instance.post<ProductCreationResponse>(
-      '/admin/api/2023-07/products.json',
-      { product }
+    const createProductId = await createShopifyProduct(product);
+    await putProductIntoCollection(
+      createProductId,
+      collections.camisetas.id,
+      index
     );
-
-    instance.put('/admin/api/2023-10/custom_collections/457099477296.json', {
-      custom_collection: {
-        id: collections.camisetas.id,
-        collects: [
-          {
-            product_id: productCreated.id,
-            position: index
-          }
-        ]
-      }
-    });
+    console.log(`Endding Shopify process`);
 
     await page.close();
     index++;
     break;
   }
-
-  console.log(products);
 
   await browser.close();
 };
