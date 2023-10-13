@@ -1,18 +1,22 @@
 import {
   getProductsInformationBasedOnUrl,
   getProductImage,
-  getProductInfo
+  getProductInfo,
+  shouldCreateNewShopifyProduct
 } from './utils';
 import { ShopifyProduct } from './types';
 import { BASE_URL, PAGE_PARAMS } from './constants';
 import {
   createShopifyProduct,
+  getShopifyProducts,
   putProductIntoCollection
 } from './requests/shopify';
 import { collections } from './data';
 import { createProductObject } from './utils/createProductObject';
 
 const createProducts = async (): Promise<void> => {
+  const shopifyProducts = await getShopifyProducts();
+
   const products: ShopifyProduct[] = [];
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
@@ -24,11 +28,11 @@ const createProducts = async (): Promise<void> => {
     const page = await browser.newPage();
     await page.goto(link);
 
-    const { productImages } = await getProductImage({
+    const productInfo = await getProductInfo({
       currentProductPage: page
     });
 
-    const productInfo = await getProductInfo({
+    const { productImages } = await getProductImage({
       currentProductPage: page
     });
 
@@ -45,14 +49,19 @@ const createProducts = async (): Promise<void> => {
     );
     console.log(`Starting Shopify process`);
 
-    const createProductId = await createShopifyProduct(
-      productToInsertIntoShopify
-    );
-    await putProductIntoCollection(
-      createProductId,
-      collections.camisetas.id,
-      index
-    );
+    if (shouldCreateNewShopifyProduct(productInfo, shopifyProducts)) {
+      const createProductId = await createShopifyProduct(
+        productToInsertIntoShopify
+      );
+      await putProductIntoCollection(
+        createProductId,
+        collections.camisetas.id,
+        index
+      );
+    } else {
+      console.log('Add update logic');
+      console.log('Only update if the sizes changed');
+    }
 
     console.log(`Ending Shopify process`);
 
