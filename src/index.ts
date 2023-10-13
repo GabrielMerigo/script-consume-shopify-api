@@ -36,14 +36,18 @@ const createProducts = async (): Promise<void> => {
       page,
       productImages,
       productInfo
-    })
+    });
 
     products.push(productToInsertIntoShopify);
 
-    console.log(`Product ${productToInsertIntoShopify.title} was got from page`);
+    console.log(
+      `Product ${productToInsertIntoShopify.title} was got from page`
+    );
     console.log(`Starting Shopify process`);
 
-    const createProductId = await createShopifyProduct(productToInsertIntoShopify);
+    const createProductId = await createShopifyProduct(
+      productToInsertIntoShopify
+    );
     await putProductIntoCollection(
       createProductId,
       collections.camisetas.id,

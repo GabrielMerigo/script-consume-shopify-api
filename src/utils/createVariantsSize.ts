@@ -5,14 +5,14 @@ export const createVariantsSize = async ({
   page,
   price,
   sku
-}: CreateVariantSizeParams) => {
+}: CreateVariantSizeParams): Promise<ShopifyVariant[]> => {
   const thereIsSize = await page.$(PRODUCT_SIZE);
   let sizes;
 
   if (thereIsSize) {
     sizes = await page.$eval(PRODUCT_SIZE, (element) => element.textContent);
-  }else{
-    return []
+  } else {
+    return [];
   }
 
   const arrayOfSize = sizes!.split(' ').filter((item: string) => Boolean(item));

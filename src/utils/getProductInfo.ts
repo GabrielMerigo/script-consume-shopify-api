@@ -1,13 +1,13 @@
-import { GetProductInfo, ProductInfoFromHTML } from "../types";
+import { GetProductInfo, ProductInfoFromHTML } from '../types';
 
 const params: {
   items: ProductInfoFromHTML[];
 } = { items: [] };
 
-export const getProductInfo = async ({ currentProductPage }: GetProductInfo) => {
-  const productInfo = await currentProductPage.evaluate(
-    () => params.items
-  );
+export const getProductInfo = async ({
+  currentProductPage
+}: GetProductInfo): Promise<ProductInfoFromHTML> => {
+  const productInfo = await currentProductPage.evaluate(() => params.items);
 
-  return productInfo[0]
-}
+  return productInfo[0];
+};

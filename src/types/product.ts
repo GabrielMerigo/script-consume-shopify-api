@@ -1,4 +1,4 @@
-import { Page } from "puppeteer";
+import { Page } from 'puppeteer';
 
 interface ProductInfoFromHTML {
   item_id: string;
@@ -34,8 +34,8 @@ interface CreateVariantSizeParams {
 
 export interface CreateProductObjectParams {
   productInfo: ProductInfoFromHTML;
-  productImages: ProductImage[]
-  page: Page
+  productImages: ProductImage[];
+  page: Page;
 }
 
 type ShopifyVariant = Record<string, string | number>;
