@@ -20,7 +20,7 @@ const createProducts = async (): Promise<void> => {
   const products: ShopifyProduct[] = [];
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
-    url: `${BASE_URL}/camisetas?${PAGE_PARAMS}`
+    url: `${BASE_URL}/${collections.polos.handle}?${PAGE_PARAMS}`
   });
 
   let index = 0;
@@ -55,8 +55,9 @@ const createProducts = async (): Promise<void> => {
     );
 
     if (existedProduct) {
-      console.log('Add update logic');
-      console.log('Only update if the sizes changed');
+      console.log(productInfo, 'productInfo');
+      console.log(existedProduct, 'existedProduct');
+      console.log(productToInsertIntoShopify, 'productToInsertIntoShopify');
     } else {
       const createProductId = await createShopifyProduct(
         productToInsertIntoShopify
