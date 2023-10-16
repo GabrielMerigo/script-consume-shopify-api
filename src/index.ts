@@ -27,15 +27,9 @@ const createProducts = async (): Promise<void> => {
     const page = await browser.newPage();
     await page.goto(link);
 
-    const productInfo = await getProductInfo({
-      currentProductPage: page
-    });
-
+    const productInfo = await getProductInfo(page);
     const productSizes = await getProductSizes(page);
-
-    const { productImages } = await getProductImage({
-      currentProductPage: page
-    });
+    const productImages = await getProductImage(page);
 
     const productToInsertIntoShopify = await createProductObject({
       productSizes,
@@ -52,7 +46,7 @@ const createProducts = async (): Promise<void> => {
     );
 
     if (existedProduct) {
-      await updateProductSizes(existedProduct);
+      await updateProductSizes(existedProduct, productSizes);
     } else {
       const createProductId = await createShopifyProduct(
         productToInsertIntoShopify
