@@ -2,7 +2,8 @@ import {
   getProductsInformationBasedOnUrl,
   getProductImage,
   getProductInfo,
-  productAlreadyInShopify
+  productAlreadyInShopify,
+  getProductSizes
 } from './utils';
 import { ShopifyProduct } from './types';
 import { BASE_URL, PAGE_PARAMS } from './constants';
@@ -20,7 +21,7 @@ const createProducts = async (): Promise<void> => {
   const products: ShopifyProduct[] = [];
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
-    url: `${BASE_URL}/${collections.polos.handle}?${PAGE_PARAMS}`
+    url: `${BASE_URL}/calcas/calca-jeans?${PAGE_PARAMS}`
   });
 
   let index = 0;
@@ -32,12 +33,14 @@ const createProducts = async (): Promise<void> => {
       currentProductPage: page
     });
 
+    const productSizes = await getProductSizes(page);
+
     const { productImages } = await getProductImage({
       currentProductPage: page
     });
 
     const productToInsertIntoShopify = await createProductObject({
-      page,
+      productSizes,
       productImages,
       productInfo
     });
@@ -55,7 +58,6 @@ const createProducts = async (): Promise<void> => {
     );
 
     if (existedProduct) {
-      console.log(productInfo, 'productInfo');
       console.log(existedProduct, 'existedProduct');
       console.log(productToInsertIntoShopify, 'productToInsertIntoShopify');
     } else {

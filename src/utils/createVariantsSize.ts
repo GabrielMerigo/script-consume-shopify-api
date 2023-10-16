@@ -1,13 +1,16 @@
-import { CreateVariantSizeParams, ShopifyVariant } from '../types';
-import { getProductSizes } from './getProductSizes';
+import { ShopifyVariant } from '../types';
+
+interface CreateVariantSizeParams {
+  price: number;
+  sku: string;
+  sizes: string[];
+}
 
 export const createVariantsSize = async ({
-  page,
+  sizes,
   price,
   sku
 }: CreateVariantSizeParams): Promise<ShopifyVariant[]> => {
-  const sizes = await getProductSizes(page);
-
   if (!sizes.length) return [];
 
   const variants: ShopifyVariant[] = sizes.map(
