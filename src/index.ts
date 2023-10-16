@@ -2,7 +2,7 @@ import {
   getProductsInformationBasedOnUrl,
   getProductImage,
   getProductInfo,
-  shouldCreateNewShopifyProduct
+  productAlreadyInShopify
 } from './utils';
 import { ShopifyProduct } from './types';
 import { BASE_URL, PAGE_PARAMS } from './constants';
@@ -49,7 +49,15 @@ const createProducts = async (): Promise<void> => {
     );
     console.log(`Starting Shopify process`);
 
-    if (shouldCreateNewShopifyProduct(productInfo, shopifyProducts)) {
+    const existedProduct = productAlreadyInShopify(
+      productInfo,
+      shopifyProducts
+    );
+
+    if (existedProduct) {
+      console.log('Add update logic');
+      console.log('Only update if the sizes changed');
+    } else {
       const createProductId = await createShopifyProduct(
         productToInsertIntoShopify
       );
@@ -58,9 +66,6 @@ const createProducts = async (): Promise<void> => {
         collections.camisetas.id,
         index
       );
-    } else {
-      console.log('Add update logic');
-      console.log('Only update if the sizes changed');
     }
 
     console.log(`Ending Shopify process`);

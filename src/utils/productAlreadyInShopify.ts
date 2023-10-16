@@ -1,12 +1,12 @@
 import { ProductInfoFromHTML, ShopifyProduct } from '../types';
 
-export const shouldCreateNewShopifyProduct = (
+export const productAlreadyInShopify = (
   product: ProductInfoFromHTML,
   shopifyProducts: ShopifyProduct[]
-): boolean => {
+): ShopifyProduct | undefined => {
   const foundedProduct = shopifyProducts.find(
     (i) => i.title == product.item_name
   );
 
-  return !foundedProduct;
+  return foundedProduct;
 };
