@@ -3,25 +3,23 @@ import {
   getProductImage,
   getProductInfo,
   productAlreadyInShopify,
-  getProductSizes
+  getProductSizes,
+  createProductObject
 } from './utils';
-import { ShopifyProduct } from './types';
 import { BASE_URL, PAGE_PARAMS } from './constants';
 import {
   createShopifyProduct,
   getShopifyProducts,
-  putProductIntoCollection
+  putProductIntoCollection,
+  updateProductSizes
 } from './requests/shopify';
 import { collections } from './data';
-import { createProductObject } from './utils/createProductObject';
 
 const createProducts = async (): Promise<void> => {
   const shopifyProducts = await getShopifyProducts();
 
-  const products: ShopifyProduct[] = [];
-
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
-    url: `${BASE_URL}/calcas/calca-jeans?${PAGE_PARAMS}`
+    url: `${BASE_URL}/polos?${PAGE_PARAMS}`
   });
 
   let index = 0;
@@ -45,11 +43,7 @@ const createProducts = async (): Promise<void> => {
       productInfo
     });
 
-    products.push(productToInsertIntoShopify);
-
-    console.log(
-      `Product ${productToInsertIntoShopify.title} was got from page`
-    );
+    console.log(`Product ${productInfo.item_name} was got from page`);
     console.log(`Starting Shopify process`);
 
     const existedProduct = productAlreadyInShopify(
@@ -58,8 +52,7 @@ const createProducts = async (): Promise<void> => {
     );
 
     if (existedProduct) {
-      console.log(existedProduct, 'existedProduct');
-      console.log(productToInsertIntoShopify, 'productToInsertIntoShopify');
+      await updateProductSizes(existedProduct);
     } else {
       const createProductId = await createShopifyProduct(
         productToInsertIntoShopify

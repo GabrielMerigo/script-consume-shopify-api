@@ -1,4 +1,8 @@
-import { ProductImage, ProductInfoFromHTML, ShopifyProduct } from '../types';
+import {
+  ProductImage,
+  ProductInfoFromHTML,
+  ProductToInsertIntoShopify
+} from '../types';
 import { createVariantsSize } from './createVariantsSize';
 
 interface CreateProductObjectParams {
@@ -11,7 +15,7 @@ export const createProductObject = async ({
   productInfo,
   productImages,
   productSizes
-}: CreateProductObjectParams): Promise<ShopifyProduct> => ({
+}: CreateProductObjectParams): Promise<ProductToInsertIntoShopify> => ({
   title: productInfo.item_name,
   images: productImages,
   vendor: productInfo.item_category,

@@ -18,6 +18,15 @@ interface ProductImage {
 }
 
 interface ShopifyProduct {
+  id: string;
+  title: string;
+  images: ProductImage[];
+  vendor: string;
+  inventory_quantity: number;
+  variants: ShopifyVariant[];
+}
+
+interface ProductToInsertIntoShopify {
   title: string;
   images: ProductImage[];
   vendor: string;
@@ -32,5 +41,6 @@ export {
   ProductInfoFromHTML,
   ProductImage,
   ShopifyProduct,
-  ShopifyVariant
+  ShopifyVariant,
+  ProductToInsertIntoShopify
 };
