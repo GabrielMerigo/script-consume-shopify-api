@@ -23,6 +23,6 @@ export const getProductImage = async ({
   }));
 
   return {
-    images: imagesFormatted
+    productImages: imagesFormatted
   };
 };

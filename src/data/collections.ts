@@ -1,4 +1,6 @@
-export const collections = {
+import { Collections } from '../types';
+
+export const collections: Collections = {
   blusoes: {
     id: 460110201136,
     handle: 'blusoes',
