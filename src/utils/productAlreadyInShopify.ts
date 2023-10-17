@@ -1,12 +1,12 @@
 import { ProductInfoFromHTML, ShopifyProduct } from '../types';
 
 export const productAlreadyInShopify = (
-  product: ProductInfoFromHTML,
+  productInfoFromHTML: ProductInfoFromHTML,
   shopifyProducts: ShopifyProduct[]
-): ShopifyProduct | undefined => {
+): ShopifyProduct | null => {
   const foundedProduct = shopifyProducts.find(
-    (i) => i.title == product.item_name
+    (i) => i.title == productInfoFromHTML.item_name
   );
 
-  return foundedProduct;
+  return foundedProduct || null;
 };
