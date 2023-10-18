@@ -13,11 +13,11 @@ export const updateProductSizes = async (
     {
       product: {
         id: product.id,
-        variants: createVariantsSize({
+        variants: createVariantsSize(
           sizes,
-          price: product.variants[0].price,
-          sku: product.variants[0].sku
-        })
+          product.variants[0].sku,
+          product.variants[0].price
+        )
       }
     }
   );

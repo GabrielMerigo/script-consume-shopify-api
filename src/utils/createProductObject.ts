@@ -20,9 +20,9 @@ export const createProductObject = async ({
   images: productImages,
   vendor: productInfo.item_category,
   inventory_quantity: 1,
-  variants: await createVariantsSize({
-    sizes: productSizes,
-    price: productInfo.price,
-    sku: productInfo.item_id
-  })
+  variants: await createVariantsSize(
+    productSizes,
+    productInfo.item_id,
+    productInfo.price
+  )
 });

@@ -1,16 +1,10 @@
 import { ShopifyVariant } from '../types';
 
-interface CreateVariantSizeParams {
-  price: string | number;
-  sku: string | number;
-  sizes: string[];
-}
-
-export const createVariantsSize = async ({
-  sizes,
-  price,
-  sku
-}: CreateVariantSizeParams): Promise<ShopifyVariant[]> => {
+export const createVariantsSize = async (
+  sizes: string[],
+  price: string | number,
+  sku: string | number
+): Promise<ShopifyVariant[]> => {
   if (!sizes.length) return [];
 
   const variants: ShopifyVariant[] = sizes.map(
