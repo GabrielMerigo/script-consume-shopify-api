@@ -6,21 +6,14 @@ export const getProductSizesFromPage = async (
 ): Promise<string[]> => {
   const thereIsSize = await page.$(PRODUCT_SIZE);
 
-  if (thereIsSize) {
-    const sizes = await page.$eval(
-      PRODUCT_SIZE,
-      (element) => element.textContent
-    );
+  if (!thereIsSize) return [];
 
-    if (sizes) {
-      const arrayOfSize = sizes!
-        .split(' ')
-        .filter((item: string) => Boolean(item));
+  const sizes = await page.$eval(
+    PRODUCT_SIZE,
+    (element) => element.textContent
+  );
 
-      return arrayOfSize;
-    }
+  if (!sizes) return [];
 
-    return [];
-  }
-  return [];
+  return sizes.split(' ').filter((item: string) => Boolean(item));
 };
