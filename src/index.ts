@@ -31,11 +31,11 @@ const createProducts = async (): Promise<void> => {
     const productSizes = await getProductSizesFromPage(page);
     const productImages = await getProductImageFromPage(page);
 
-    const productToInsertIntoShopify = await createProductObject({
-      productSizes,
+    const productToInsertIntoShopify = await createProductObject(
+      productInfo,
       productImages,
-      productInfo
-    });
+      productSizes
+    );
 
     console.log(`Product ${productInfo.item_name} was got from page`);
     console.log(`Starting Shopify process`);
