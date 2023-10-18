@@ -1,22 +1,25 @@
 import {
   getProductsInformationBasedOnUrl,
-  getProductImage,
-  getProductInfo
+  getProductImageFromPage,
+  getProductInfoFromPage,
+  productAlreadyExistsInShopify,
+  getProductSizesFromPage,
+  createProductObject
 } from './utils';
-import { ShopifyProduct } from './types';
 import { BASE_URL, PAGE_PARAMS } from './constants';
 import {
   createShopifyProduct,
-  putProductIntoCollection
+  getShopifyProducts,
+  putProductIntoCollection,
+  updateProductSizes
 } from './requests/shopify';
 import { collections } from './data';
-import { createProductObject } from './utils/createProductObject';
 
 const createProducts = async (): Promise<void> => {
-  const products: ShopifyProduct[] = [];
+  const shopifyProducts = await getShopifyProducts();
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
-    url: `${BASE_URL}/camisetas?${PAGE_PARAMS}`
+    url: `${BASE_URL}/polos?${PAGE_PARAMS}`
   });
 
   let index = 0;
@@ -24,35 +27,36 @@ const createProducts = async (): Promise<void> => {
     const page = await browser.newPage();
     await page.goto(link);
 
-    const { productImages } = await getProductImage({
-      currentProductPage: page
-    });
+    const productInfo = await getProductInfoFromPage(page);
+    const productSizes = await getProductSizesFromPage(page);
+    const productImages = await getProductImageFromPage(page);
 
-    const productInfo = await getProductInfo({
-      currentProductPage: page
-    });
-
-    const productToInsertIntoShopify = await createProductObject({
-      page,
+    const productToInsertIntoShopify = await createProductObject(
+      productInfo,
       productImages,
-      productInfo
-    });
-
-    products.push(productToInsertIntoShopify);
-
-    console.log(
-      `Product ${productToInsertIntoShopify.title} was got from page`
+      productSizes
     );
+
+    console.log(`Product ${productInfo.item_name} was got from page`);
     console.log(`Starting Shopify process`);
 
-    const createProductId = await createShopifyProduct(
-      productToInsertIntoShopify
+    const productExists = productAlreadyExistsInShopify(
+      productInfo,
+      shopifyProducts
     );
-    await putProductIntoCollection(
-      createProductId,
-      collections.camisetas.id,
-      index
-    );
+
+    if (productExists) {
+      await updateProductSizes(productExists, productSizes);
+    } else {
+      const createProductId = await createShopifyProduct(
+        productToInsertIntoShopify
+      );
+      await putProductIntoCollection(
+        createProductId,
+        collections.camisetas.id,
+        index
+      );
+    }
 
     console.log(`Ending Shopify process`);
 
