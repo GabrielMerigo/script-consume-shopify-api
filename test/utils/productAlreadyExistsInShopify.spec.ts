@@ -52,7 +52,7 @@ const notFoundProductFromHTML: ProductInfoFromHTML = {
   item_category3: '1'
 };
 
-describe('productAlreadyExistsInShopify test', () => {
+describe('productAlreadyExistsInShopify', () => {
   it('should return a Shopify product if productInfoFromHTML title is the same as one of our Shopify products', () => {
     const foundedProduct = productAlreadyExistsInShopify(
       foundProductFromHTML,
