@@ -5,7 +5,7 @@ const FOUND_PRODUCT_TITLE = 'founded_product';
 
 const notFoundProduct: ShopifyProduct = {
   id: '1',
-  title: 'not_founded_product',
+  title: 'not_found_product',
   images: [
     {
       src: ''
