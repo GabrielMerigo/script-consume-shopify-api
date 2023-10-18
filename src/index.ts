@@ -1,9 +1,9 @@
 import {
   getProductsInformationBasedOnUrl,
-  getProductImage,
-  getProductInfo,
+  getProductImageFromPage,
+  getProductInfoFromPage,
   productAlreadyInShopify,
-  getProductSizes,
+  getProductSizesFromPage,
   createProductObject
 } from './utils';
 import { BASE_URL, PAGE_PARAMS } from './constants';
@@ -27,9 +27,9 @@ const createProducts = async (): Promise<void> => {
     const page = await browser.newPage();
     await page.goto(link);
 
-    const productInfo = await getProductInfo(page);
-    const productSizes = await getProductSizes(page);
-    const productImages = await getProductImage(page);
+    const productInfo = await getProductInfoFromPage(page);
+    const productSizes = await getProductSizesFromPage(page);
+    const productImages = await getProductImageFromPage(page);
 
     const productToInsertIntoShopify = await createProductObject({
       productSizes,

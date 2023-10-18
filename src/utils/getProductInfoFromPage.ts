@@ -5,7 +5,7 @@ const params: {
   items: ProductInfoFromHTML[];
 } = { items: [] };
 
-export const getProductInfo = async (
+export const getProductInfoFromPage = async (
   currentProductPage: Page
 ): Promise<ProductInfoFromHTML> => {
   const productInfo = await currentProductPage.evaluate(() => params.items);
