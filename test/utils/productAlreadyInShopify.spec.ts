@@ -1,9 +1,9 @@
 import { ProductInfoFromHTML, ShopifyProduct } from '../../src/types';
 import { productAlreadyInShopify } from '../../src/utils';
 
-const FOUNDED_PRODUCT_TITLE = 'founded_product';
+const FOUND_PRODUCT_TITLE = 'founded_product';
 
-const notFoundedProduct: ShopifyProduct = {
+const notFoundProduct: ShopifyProduct = {
   id: '1',
   title: 'not_founded_product',
   images: [
@@ -15,9 +15,9 @@ const notFoundedProduct: ShopifyProduct = {
   variants: [],
   vendor: 'vendor'
 };
-const mockedFounded: ShopifyProduct = {
+const foundProduct: ShopifyProduct = {
   id: '1',
-  title: FOUNDED_PRODUCT_TITLE,
+  title: FOUND_PRODUCT_TITLE,
   images: [
     {
       src: ''
@@ -28,14 +28,14 @@ const mockedFounded: ShopifyProduct = {
   vendor: 'vendor'
 };
 
-const mockedShopifyProducts: ShopifyProduct[] = [
-  notFoundedProduct,
-  notFoundedProduct,
-  mockedFounded
+const shopifyProducts: ShopifyProduct[] = [
+  notFoundProduct,
+  notFoundProduct,
+  foundProduct
 ];
 
-const mockedFoundedProductFromHTML: ProductInfoFromHTML = {
-  item_name: FOUNDED_PRODUCT_TITLE,
+const foundProductFromHTML: ProductInfoFromHTML = {
+  item_name: FOUND_PRODUCT_TITLE,
   item_id: '1',
   price: 12,
   item_category: '1',
@@ -43,7 +43,7 @@ const mockedFoundedProductFromHTML: ProductInfoFromHTML = {
   item_category3: '1'
 };
 
-const mockedNotFoundedProductFromHTML: ProductInfoFromHTML = {
+const notFoundProductFromHTML: ProductInfoFromHTML = {
   item_name: 'random_title',
   item_id: '1',
   price: 12,
@@ -55,19 +55,19 @@ const mockedNotFoundedProductFromHTML: ProductInfoFromHTML = {
 describe('productAlreadyInShopify test', () => {
   it('Should return a Shopify Product if productInfoFromHTML title is the same as one of our Shopify products', () => {
     const foundedProduct = productAlreadyInShopify(
-      mockedFoundedProductFromHTML,
-      mockedShopifyProducts
+      foundProductFromHTML,
+      shopifyProducts
     );
 
-    expect(foundedProduct).toBe(mockedFounded);
+    expect(foundedProduct).toBe(foundProduct);
   });
 
   it("Should return null if product isn't found", () => {
-    const notFoundedProduct = productAlreadyInShopify(
-      mockedNotFoundedProductFromHTML,
-      mockedShopifyProducts
+    const notFoundProduct = productAlreadyInShopify(
+      notFoundProductFromHTML,
+      shopifyProducts
     );
 
-    expect(notFoundedProduct).toBeNull();
+    expect(notFoundProduct).toBeNull();
   });
 });

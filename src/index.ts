@@ -40,13 +40,10 @@ const createProducts = async (): Promise<void> => {
     console.log(`Product ${productInfo.item_name} was got from page`);
     console.log(`Starting Shopify process`);
 
-    const existedProduct = productAlreadyInShopify(
-      productInfo,
-      shopifyProducts
-    );
+    const productExists = productAlreadyInShopify(productInfo, shopifyProducts);
 
-    if (existedProduct) {
-      await updateProductSizes(existedProduct, productSizes);
+    if (productExists) {
+      await updateProductSizes(productExists, productSizes);
     } else {
       const createProductId = await createShopifyProduct(
         productToInsertIntoShopify
