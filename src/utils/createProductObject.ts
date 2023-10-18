@@ -5,24 +5,18 @@ import {
 } from '../types';
 import { createVariantsSize } from './createVariantsSize';
 
-interface CreateProductObjectParams {
-  productInfo: ProductInfoFromHTML;
-  productImages: ProductImage[];
-  productSizes: string[];
-}
-
-export const createProductObject = async ({
-  productInfo,
-  productImages,
-  productSizes
-}: CreateProductObjectParams): Promise<ProductToInsertIntoShopify> => ({
-  title: productInfo.item_name,
+export const createProductObject = async (
+  productInfoFromHTML: ProductInfoFromHTML,
+  productImages: ProductImage[],
+  productSizes: string[]
+): Promise<ProductToInsertIntoShopify> => ({
+  title: productInfoFromHTML.item_name,
+  vendor: productInfoFromHTML.item_category,
   images: productImages,
-  vendor: productInfo.item_category,
   inventory_quantity: 1,
   variants: await createVariantsSize(
     productSizes,
-    productInfo.item_id,
-    productInfo.price
+    productInfoFromHTML.item_id,
+    productInfoFromHTML.price
   )
 });
