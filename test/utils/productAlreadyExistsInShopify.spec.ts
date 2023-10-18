@@ -1,5 +1,5 @@
 import { ProductInfoFromHTML, ShopifyProduct } from '../../src/types';
-import { productAlreadyInShopify } from '../../src/utils';
+import { productAlreadyExistsInShopify } from '../../src/utils';
 
 const FOUND_PRODUCT_TITLE = 'founded_product';
 
@@ -52,9 +52,9 @@ const notFoundProductFromHTML: ProductInfoFromHTML = {
   item_category3: '1'
 };
 
-describe('productAlreadyInShopify test', () => {
+describe('productAlreadyExistsInShopify test', () => {
   it('Should return a Shopify Product if productInfoFromHTML title is the same as one of our Shopify products', () => {
-    const foundedProduct = productAlreadyInShopify(
+    const foundedProduct = productAlreadyExistsInShopify(
       foundProductFromHTML,
       shopifyProducts
     );
@@ -63,7 +63,7 @@ describe('productAlreadyInShopify test', () => {
   });
 
   it("Should return null if product isn't found", () => {
-    const notFoundProduct = productAlreadyInShopify(
+    const notFoundProduct = productAlreadyExistsInShopify(
       notFoundProductFromHTML,
       shopifyProducts
     );

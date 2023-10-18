@@ -1,6 +1,6 @@
 import { ProductInfoFromHTML, ShopifyProduct } from '../types';
 
-export const productAlreadyInShopify = (
+export const productAlreadyExistsInShopify = (
   productInfoFromHTML: ProductInfoFromHTML,
   shopifyProducts: ShopifyProduct[]
 ): ShopifyProduct | null => {

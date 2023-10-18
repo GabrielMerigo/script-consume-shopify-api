@@ -4,6 +4,6 @@ export * from './getProductsLink';
 export * from './resizeImage';
 export * from './getProductImageFromPage';
 export * from './getProductInfoFromPage';
-export * from './productAlreadyInShopify';
+export * from './productAlreadyExistsInShopify';
 export * from './getProductSizesFromPage';
 export * from './createProductObject';

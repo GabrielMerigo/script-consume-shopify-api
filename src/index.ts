@@ -2,7 +2,7 @@ import {
   getProductsInformationBasedOnUrl,
   getProductImageFromPage,
   getProductInfoFromPage,
-  productAlreadyInShopify,
+  productAlreadyExistsInShopify,
   getProductSizesFromPage,
   createProductObject
 } from './utils';
@@ -40,7 +40,10 @@ const createProducts = async (): Promise<void> => {
     console.log(`Product ${productInfo.item_name} was got from page`);
     console.log(`Starting Shopify process`);
 
-    const productExists = productAlreadyInShopify(productInfo, shopifyProducts);
+    const productExists = productAlreadyExistsInShopify(
+      productInfo,
+      shopifyProducts
+    );
 
     if (productExists) {
       await updateProductSizes(productExists, productSizes);
