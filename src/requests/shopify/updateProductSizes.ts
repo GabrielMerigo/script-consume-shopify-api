@@ -22,5 +22,5 @@ export const updateProductSizes = async (
     }
   );
 
-  console.log(`Product ${productUpdated} updated with sucess!`);
+  console.log(`Product ${productUpdated} updated with success!`);
 };
