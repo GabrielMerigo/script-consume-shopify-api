@@ -1,8 +1,8 @@
 import { ShopifyVariant } from '../types';
 
 interface CreateVariantSizeParams {
-  price: number;
-  sku: string;
+  price: string | number;
+  sku: string | number;
   sizes: string[];
 }
 
