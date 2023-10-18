@@ -53,7 +53,7 @@ const notFoundProductFromHTML: ProductInfoFromHTML = {
 };
 
 describe('productAlreadyExistsInShopify test', () => {
-  it('Should return a Shopify Product if productInfoFromHTML title is the same as one of our Shopify products', () => {
+  it('should return a Shopify Product if productInfoFromHTML title is the same as one of our Shopify products', () => {
     const foundedProduct = productAlreadyExistsInShopify(
       foundProductFromHTML,
       shopifyProducts
@@ -62,7 +62,7 @@ describe('productAlreadyExistsInShopify test', () => {
     expect(foundedProduct).toBe(foundProduct);
   });
 
-  it("Should return null if product isn't found", () => {
+  it("should return null if product isn't found", () => {
     const notFoundProduct = productAlreadyExistsInShopify(
       notFoundProductFromHTML,
       shopifyProducts
