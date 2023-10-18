@@ -1,5 +1,3 @@
-import { Page } from 'puppeteer';
-
 interface ProductInfoFromHTML {
   item_id: string;
   item_name: string;
@@ -20,22 +18,20 @@ interface ProductImage {
 }
 
 interface ShopifyProduct {
+  id: string;
   title: string;
   images: ProductImage[];
   vendor: string;
   inventory_quantity: number;
   variants: ShopifyVariant[];
 }
-interface CreateVariantSizeParams {
-  price: number;
-  sku: string;
-  page: Page;
-}
 
-export interface CreateProductObjectParams {
-  productInfo: ProductInfoFromHTML;
-  productImages: ProductImage[];
-  page: Page;
+interface ProductToInsertIntoShopify {
+  title: string;
+  images: ProductImage[];
+  vendor: string;
+  inventory_quantity: number;
+  variants: ShopifyVariant[];
 }
 
 type ShopifyVariant = Record<string, string | number>;
@@ -43,7 +39,8 @@ type ShopifyVariant = Record<string, string | number>;
 export {
   ProductCreationResponse,
   ProductInfoFromHTML,
+  ProductImage,
   ShopifyProduct,
-  CreateVariantSizeParams,
-  ShopifyVariant
+  ShopifyVariant,
+  ProductToInsertIntoShopify
 };

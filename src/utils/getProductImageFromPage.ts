@@ -1,13 +1,11 @@
+import { Page } from 'puppeteer';
 import { PRODUCT_IMAGE_TAG } from '../constants';
-import {
-  GetProductImageTypeParams,
-  GetProductImageTypeResponse
-} from '../types';
+import { ProductImage } from '../types';
 import { resizeImage } from './resizeImage';
 
-export const getProductImage = async ({
-  currentProductPage
-}: GetProductImageTypeParams): Promise<GetProductImageTypeResponse> => {
+export const getProductImageFromPage = async (
+  currentProductPage: Page
+): Promise<ProductImage[]> => {
   const images = await currentProductPage.$$eval(
     PRODUCT_IMAGE_TAG,
     (elements) => {
@@ -22,7 +20,5 @@ export const getProductImage = async ({
     src: imageUrl
   }));
 
-  return {
-    productImages: imagesFormatted
-  };
+  return imagesFormatted;
 };

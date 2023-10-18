@@ -1,4 +1,4 @@
-import { ElementHandle, Page } from 'puppeteer';
+import { ElementHandle } from 'puppeteer';
 
 interface CustomElement extends ElementHandle {
   getAttribute(name: string): string;
@@ -9,22 +9,8 @@ interface GetProductsInformationBasedOnUrlType {
   url: string;
 }
 
-interface GetProductImageTypeParams {
-  currentProductPage: Page;
+interface ProductImage {
+  src: string;
 }
 
-interface GetProductImageTypeResponse {
-  productImages: {
-    src: string;
-  }[];
-}
-
-interface GetProductInfo extends GetProductImageTypeParams {}
-
-export {
-  CustomElement,
-  GetProductsInformationBasedOnUrlType,
-  GetProductImageTypeParams,
-  GetProductImageTypeResponse,
-  GetProductInfo
-};
+export { CustomElement, GetProductsInformationBasedOnUrlType, ProductImage };
