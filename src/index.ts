@@ -4,7 +4,9 @@ import {
   getProductInfoFromPage,
   productAlreadyExistsInShopify,
   getProductSizesFromPage,
-  createProductObject
+  createProductObject,
+  compareShopifyProductAndSizesFromPage,
+  orderByProductSize
 } from './utils';
 import { BASE_URL, PAGE_PARAMS } from './constants';
 import {
@@ -14,6 +16,7 @@ import {
   updateProductSizes
 } from './requests/shopify';
 import { collections } from './data';
+import { SizeTypes } from './types';
 
 const createProducts = async (): Promise<void> => {
   const shopifyProducts = await getShopifyProducts();
@@ -31,10 +34,15 @@ const createProducts = async (): Promise<void> => {
     const productSizes = await getProductSizesFromPage(page);
     const productImages = await getProductImageFromPage(page);
 
+    const orderedSizes = orderByProductSize(
+      productSizes,
+      SizeTypes.SHIRT_LETTER
+    );
+
     const productToInsertIntoShopify = await createProductObject(
       productInfo,
       productImages,
-      productSizes
+      orderedSizes
     );
 
     console.log(`Product ${productInfo.item_name} was got from page`);
@@ -46,7 +54,9 @@ const createProducts = async (): Promise<void> => {
     );
 
     if (productExists) {
-      await updateProductSizes(productExists, productSizes);
+      compareShopifyProductAndSizesFromPage(productExists, orderedSizes);
+
+      await updateProductSizes(productExists, orderedSizes);
     } else {
       const createProductId = await createShopifyProduct(
         productToInsertIntoShopify

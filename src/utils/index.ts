@@ -7,3 +7,5 @@ export * from './getProductInfoFromPage';
 export * from './productAlreadyExistsInShopify';
 export * from './getProductSizesFromPage';
 export * from './createProductObject';
+export * from './compareShopifyProductAndSizesFromPage';
+export * from './orderByProductSize';
