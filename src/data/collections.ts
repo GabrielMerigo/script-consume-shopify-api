@@ -1,34 +1,40 @@
-import { Collections } from '../types';
+import { Collections, SizeTypes } from '../types';
 
 export const collections: Collections = {
   blusoes: {
     id: 460110201136,
-    url_handle: '/inverno/blusa-de-frio',
-    title: 'Blusões'
+    urlHandle: '/inverno/blusa-de-frio',
+    title: 'Blusões',
+    sizeType: SizeTypes.SHIRT_LETTER
   },
   'calcas-jeans': {
     id: 457581003056,
-    url_handle: '/calcas/calca-jeans',
-    title: 'Calças Jeans'
+    urlHandle: '/calcas/calca-jeans',
+    title: 'Calças Jeans',
+    sizeType: SizeTypes.PANTS_NUMBER
   },
   'calcas-sarja': {
     id: 458204807472,
-    url_handle: '/calcas/calca-sarja',
-    title: 'Calças Sarja'
+    urlHandle: '/calcas/calca-sarja',
+    title: 'Calças Sarja',
+    sizeType: SizeTypes.PANTS_NUMBER
   },
   'camisas-sociais': {
     id: 457100296496,
-    url_handle: '/camisas',
-    title: 'Camisas Sociais'
+    urlHandle: '/camisas',
+    title: 'Camisas Sociais',
+    sizeType: SizeTypes.SHIRT_LETTER
   },
   camisetas: {
     id: 457099477296,
-    url_handle: '/camisetas/camisetas-importadas',
-    title: 'Camisetas'
+    urlHandle: '/camisetas/camisetas-importadas',
+    title: 'Camisetas',
+    sizeType: SizeTypes.SHIRT_LETTER
   },
   polos: {
     id: 457095774512,
-    url_handle: '/polos',
-    title: 'Polos'
+    urlHandle: '/polos',
+    title: 'Polos',
+    sizeType: SizeTypes.SHIRT_LETTER
   }
 };

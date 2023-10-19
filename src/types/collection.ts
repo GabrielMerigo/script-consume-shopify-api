@@ -1,7 +1,8 @@
 interface Collection {
   id: number;
-  url_handle: string;
+  urlHandle: string;
   title: string;
+  sizeType: SizeTypes;
 }
 
 const collections = [
@@ -15,5 +16,9 @@ const collections = [
 
 type ExpectedCollections = (typeof collections)[number];
 type Collections = Record<ExpectedCollections, Collection>;
+enum SizeTypes {
+  SHIRT_LETTER = 'SHIRT_LETTER',
+  PANTS_NUMBER = 'PANTS_NUMBER'
+}
 
-export { Collection, Collections };
+export { Collection, Collections, SizeTypes };

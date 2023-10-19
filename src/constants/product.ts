@@ -1,4 +1,4 @@
-export const PRODUCT_SIZE_LETTERS = [
+export const PRODUCT_SHIRT_SIZE_LETTERS = [
   'PP',
   'P',
   'M',
@@ -9,4 +9,4 @@ export const PRODUCT_SIZE_LETTERS = [
   'G5',
   'G7'
 ];
-export const PRODUCT_SIZE_NUMBER_PANTS = ['38', '40', '42', '44', '46', '48'];
+export const PRODUCT_PANT_SIZE_NUMBERS = ['38', '40', '42', '44', '46', '48'];

@@ -9,8 +9,4 @@ interface GetProductsInformationBasedOnUrlType {
   url: string;
 }
 
-interface ProductImage {
-  src: string;
-}
-
-export { CustomElement, GetProductsInformationBasedOnUrlType, ProductImage };
+export { CustomElement, GetProductsInformationBasedOnUrlType };
