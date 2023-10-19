@@ -16,7 +16,7 @@ export const createProductObject = async (
   inventory_quantity: 1,
   variants: await createVariantsSize(
     productSizes,
-    productInfoFromHTML.item_id,
-    productInfoFromHTML.price
+    productInfoFromHTML.price,
+    productInfoFromHTML.item_id
   )
 });

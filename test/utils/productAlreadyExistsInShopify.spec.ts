@@ -37,7 +37,7 @@ const shopifyProducts: ShopifyProduct[] = [
 const foundProductFromHTML: ProductInfoFromHTML = {
   item_name: FOUND_PRODUCT_TITLE,
   item_id: '1',
-  price: 12,
+  price: '12',
   item_category: '1',
   item_category2: '1',
   item_category3: '1'
@@ -46,7 +46,7 @@ const foundProductFromHTML: ProductInfoFromHTML = {
 const notFoundProductFromHTML: ProductInfoFromHTML = {
   item_name: 'random_title',
   item_id: '1',
-  price: 12,
+  price: '12',
   item_category: '1',
   item_category2: '1',
   item_category3: '1'

@@ -1,7 +1,7 @@
 interface ProductInfoFromHTML {
   item_id: string;
   item_name: string;
-  price: number;
+  price: string;
   item_category: string;
   item_category2: string;
   item_category3: string;
@@ -34,7 +34,12 @@ interface ProductToInsertIntoShopify {
   variants: ShopifyVariant[];
 }
 
-type ShopifyVariant = Record<string, string | number>;
+type ShopifyVariant = {
+  option1: string;
+  price: string;
+  sku: string;
+  title: string;
+};
 
 export {
   ProductCreationResponse,
