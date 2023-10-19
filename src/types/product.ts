@@ -38,7 +38,6 @@ type ShopifyVariant = {
   option1: string;
   price: string;
   sku: string;
-  title: string;
 };
 
 export {

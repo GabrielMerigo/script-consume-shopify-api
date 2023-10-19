@@ -10,8 +10,7 @@ export const createVariantsSize = async (
   const variants: ShopifyVariant[] = sizes.map((size: string) => ({
     option1: size,
     price: price,
-    sku: sku,
-    title: size
+    sku: sku
   }));
 
   return variants;
