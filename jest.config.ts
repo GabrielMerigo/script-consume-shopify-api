@@ -4,7 +4,8 @@ const config: Config.InitialOptions = {
   preset: 'ts-jest',
   verbose: true,
   transformIgnorePatterns: ['/node_modules/'],
-  testEnvironment: 'node'
+  testEnvironment: 'node',
+  roots: ['<rootDir>/test']
 };
 
 export default config;

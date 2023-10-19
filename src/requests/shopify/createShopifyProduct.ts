@@ -1,8 +1,11 @@
 import { instance } from '../../services/axios';
-import { ProductCreationResponse, ShopifyProduct } from '../../types';
+import {
+  ProductCreationResponse,
+  ProductToInsertIntoShopify
+} from '../../types';
 
 export const createShopifyProduct = async (
-  product: ShopifyProduct
+  product: ProductToInsertIntoShopify
 ): Promise<number> => {
   const {
     data: { product: productCreated }

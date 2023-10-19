@@ -1,29 +1,18 @@
-import { PRODUCT_SIZE } from '../constants';
-import { CreateVariantSizeParams, ShopifyVariant } from '../types';
+import { ShopifyVariant } from '../types';
 
-export const createVariantsSize = async ({
-  page,
-  price,
-  sku
-}: CreateVariantSizeParams): Promise<ShopifyVariant[]> => {
-  const thereIsSize = await page.$(PRODUCT_SIZE);
-  let sizes;
+export const createVariantsSize = async (
+  sizes: string[],
+  price: string,
+  sku: string
+): Promise<ShopifyVariant[]> => {
+  if (!sizes.length) return [];
 
-  if (thereIsSize) {
-    sizes = await page.$eval(PRODUCT_SIZE, (element) => element.textContent);
-  } else {
-    return [];
-  }
-
-  const arrayOfSize = sizes!.split(' ').filter((item: string) => Boolean(item));
-
-  const variants: ShopifyVariant[] = arrayOfSize.map(
-    (size: string, index: number) => ({
-      [`option${index + 1}`]: size,
-      price: price,
-      sku: sku
-    })
-  );
+  const variants: ShopifyVariant[] = sizes.map((size: string) => ({
+    option1: size,
+    price: price,
+    sku: sku,
+    title: size
+  }));
 
   return variants;
 };
