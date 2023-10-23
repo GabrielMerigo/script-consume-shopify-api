@@ -10,3 +10,4 @@ export * from './createProductObject';
 export * from './compareShopifyProductAndSizesFromPage';
 export * from './orderByProductSize';
 export * from './convertShopifyVariantsToSizes';
+export * from './createSoldOutVariant';

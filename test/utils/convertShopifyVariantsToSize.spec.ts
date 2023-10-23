@@ -1,15 +1,15 @@
-import { VariantStub } from '../../src/mocks';
-import { ShopifyProductStub } from '../../src/mocks/shopifyProduct';
+import { MockVariant } from '../../src/mocks';
+import { MockShopifyProduct } from '../../src/mocks/shopifyProduct';
 import { ShopifyVariant } from '../../src/types';
 import { convertShopifyVariantsToSize } from '../../src/utils';
 
 const variants: ShopifyVariant[] = [
-  new VariantStub('P'),
-  new VariantStub('M'),
-  new VariantStub('G')
+  new MockVariant('P'),
+  new MockVariant('M'),
+  new MockVariant('G')
 ];
 
-const shopifyProduct = new ShopifyProductStub();
+const shopifyProduct = new MockShopifyProduct();
 
 describe('convertShopifyVariantsToSize', () => {
   it('should return a string array from Shopify variants', () => {

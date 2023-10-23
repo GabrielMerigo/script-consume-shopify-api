@@ -1,6 +1,6 @@
 import { ProductImage, ShopifyProduct, ShopifyVariant } from '../types';
 
-export class ShopifyProductStub implements ShopifyProduct {
+export class MockShopifyProduct implements ShopifyProduct {
   id = 'PRODUCT_ID';
   inventory_quantity = 1;
   title = 'PRODUCT_TITLE';
