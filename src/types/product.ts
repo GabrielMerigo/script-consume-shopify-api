@@ -42,11 +42,18 @@ type ShopifyVariant = {
   inventory_quantity?: number;
 };
 
+enum UpdateProductCase {
+  SOLD_OUT = 'SOLD_OUT',
+  UPDATE = 'UPDATE',
+  DO_NOT_UPDATE = 'DO_NOT_UPDATE'
+}
+
 export {
   ProductCreationResponse,
   ProductInfoFromHTML,
   ProductImage,
   ShopifyProduct,
   ShopifyVariant,
-  ProductToInsertIntoShopify
+  ProductToInsertIntoShopify,
+  UpdateProductCase
 };
