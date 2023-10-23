@@ -1,32 +1,15 @@
-import { ShopifyProduct, ShopifyVariant } from '../../src/types';
-import { convertShopifyVariantsToSize } from '../../src/utils/convertShopifyVariantsToSizes';
+import { VariantStub } from '../../src/mocks';
+import { ShopifyProductStub } from '../../src/mocks/shopifyProduct';
+import { ShopifyVariant } from '../../src/types';
+import { convertShopifyVariantsToSize } from '../../src/utils';
 
 const variants: ShopifyVariant[] = [
-  {
-    option1: 'P',
-    price: '12.00',
-    sku: 'sku'
-  },
-  {
-    option1: 'M',
-    price: '12.00',
-    sku: 'sku'
-  },
-  {
-    option1: 'G',
-    price: '12.00',
-    sku: 'sku'
-  }
+  new VariantStub('P'),
+  new VariantStub('M'),
+  new VariantStub('G')
 ];
 
-const shopifyProduct: ShopifyProduct = {
-  id: 'id',
-  title: 'title',
-  variants: [],
-  vendor: 'vendor',
-  inventory_quantity: 1,
-  images: []
-};
+const shopifyProduct = new ShopifyProductStub();
 
 describe('convertShopifyVariantsToSize', () => {
   it('should return a string array from Shopify variants', () => {

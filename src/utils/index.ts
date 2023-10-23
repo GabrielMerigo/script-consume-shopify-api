@@ -9,3 +9,4 @@ export * from './getProductSizesFromPage';
 export * from './createProductObject';
 export * from './compareShopifyProductAndSizesFromPage';
 export * from './orderByProductSize';
+export * from './convertShopifyVariantsToSizes';
