@@ -27,7 +27,7 @@ describe('orderByProductSize', () => {
     expect(sortedSizes).toStrictEqual(['38', '40', '42', '44', '46', '48']);
   });
 
-  it('should return a empty array if the sizes is empty', () => {
+  it('should return an empty array if the sizes are empty', () => {
     const sortedSizes = orderByProductSize([], SizeTypes.PANTS_NUMBER);
 
     expect(sortedSizes).toStrictEqual([]);

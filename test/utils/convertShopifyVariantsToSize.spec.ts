@@ -23,7 +23,7 @@ describe('convertShopifyVariantsToSize', () => {
 
     expect(convertedSizesArray).toStrictEqual(['P', 'M', 'G']);
   });
-  it("should return a empty array if Shopify products don't had variants", () => {
+  it("should return an empty array if Shopify products don't have variants", () => {
     const emptyConvertedSizesArray =
       convertShopifyVariantsToSize(shopifyProduct);
 
