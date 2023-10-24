@@ -11,7 +11,8 @@ export const createVariantsSize = (
     option1: size,
     price: price,
     sku: sku,
-    inventory_management: null
+    inventory_management: null,
+    inventory_quantity: null
   }));
 
   return variants;

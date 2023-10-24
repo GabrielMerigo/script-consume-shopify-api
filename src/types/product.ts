@@ -22,7 +22,6 @@ interface ShopifyProduct {
   title: string;
   images: ProductImage[];
   vendor: string;
-  inventory_quantity: number;
   variants: ShopifyVariant[];
 }
 
@@ -38,8 +37,8 @@ type ShopifyVariant = {
   option1: string;
   price: string;
   sku: string;
-  inventory_management?: 'shopify' | null;
-  inventory_quantity?: number;
+  inventory_management: 'shopify' | null;
+  inventory_quantity: 0 | null;
 };
 
 enum UpdateProductStatus {

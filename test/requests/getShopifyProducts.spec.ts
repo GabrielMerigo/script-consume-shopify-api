@@ -2,7 +2,33 @@ import { AxiosResponse } from 'axios';
 
 import { getShopifyProducts } from '../../src/requests/shopify';
 import { instance } from '../../src/services/axios';
-import { mockData } from '../mocks/requests/getShopifyProductsMock';
+import { ProductImage, ShopifyProduct, ShopifyVariant } from '../../src/types';
+import {
+  MockProductImage,
+  MockShopifyProduct,
+  MockVariant
+} from '../../src/mocks/classes';
+
+const mockId = 'mock-id';
+const mockTitle = 'mock-id';
+const mockVendor = 'caesar-imperium';
+const mockImageSrc = '/mock-image-url';
+const mockImages: ProductImage[] = [
+  new MockProductImage(mockImageSrc),
+  new MockProductImage()
+];
+const mockVariants: ShopifyVariant[] = [new MockVariant(), new MockVariant()];
+
+const mockData: ShopifyProduct[] = [
+  new MockShopifyProduct(
+    mockId,
+    mockTitle,
+    mockVendor,
+    mockVariants,
+    mockImages
+  ),
+  new MockShopifyProduct()
+];
 
 describe('getShopifyProducts', () => {
   beforeAll(() => {
@@ -28,15 +54,14 @@ describe('getShopifyProducts', () => {
   it('should return url/image as src', async () => {
     const shopifyProducts = await getShopifyProducts();
 
-    expect(shopifyProducts[0].images[0].src).toEqual('url/image');
+    expect(shopifyProducts[0].images[0].src).toEqual(mockImageSrc);
     expect(shopifyProducts[0].images).toHaveLength(2);
   });
 
   it('should return id, title and vendor correctly', async () => {
     const shopifyProducts = await getShopifyProducts();
 
-    expect(shopifyProducts[0].id).toBe('some-id');
-    expect(shopifyProducts[0].vendor).toEqual('caesar-imperium');
-    expect(shopifyProducts[0].inventory_quantity).toEqual(2);
+    expect(shopifyProducts[0].id).toBe(mockId);
+    expect(shopifyProducts[0].vendor).toEqual(mockVendor);
   });
 });
