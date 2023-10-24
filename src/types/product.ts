@@ -38,7 +38,7 @@ type ShopifyVariant = {
   option1: string;
   price: string;
   sku: string;
-  inventory_management?: string | null;
+  inventory_management?: 'shopify' | null;
   inventory_quantity?: number;
 };
 

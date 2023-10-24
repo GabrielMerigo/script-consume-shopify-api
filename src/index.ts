@@ -39,12 +39,6 @@ const createProducts = async (): Promise<void> => {
       SizeTypes.SHIRT_LETTER
     );
 
-    const productToInsertIntoShopify = await createProductObject(
-      productInfo,
-      productImages,
-      orderedSizes
-    );
-
     console.log(`Product ${productInfo.item_name} was got from page`);
     console.log(`Starting Shopify process`);
 
@@ -59,12 +53,30 @@ const createProducts = async (): Promise<void> => {
         orderedSizes
       );
 
+      console.log(
+        `Product ${productExists.title} (${productExists.id}) updateProductStatus is equal to ${updateProductStatus}`
+      );
+
       await updateProductSizes(
         productExists,
         orderedSizes,
         updateProductStatus
       );
     } else {
+      if (!orderedSizes.length) {
+        console.log(
+          `Product ${productInfo.item_name} wasn't create because is SOLD_OUT`
+        );
+
+        return;
+      }
+
+      const productToInsertIntoShopify = createProductObject(
+        productInfo,
+        productImages,
+        orderedSizes
+      );
+
       const createProductId = await createShopifyProduct(
         productToInsertIntoShopify
       );

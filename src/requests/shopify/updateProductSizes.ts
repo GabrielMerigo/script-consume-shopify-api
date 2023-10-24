@@ -39,5 +39,5 @@ export const updateProductSizes = async (
     }
   );
 
-  console.log(`Product ${productUpdated} updated with success!`);
+  console.log(`Product ${productUpdated.id} updated with success!`);
 };
