@@ -34,7 +34,7 @@ const createProducts = async (): Promise<void> => {
     const productSizes = await getProductSizesFromPage(page);
     const productImages = await getProductImageFromPage(page);
 
-    const orderedSizes = orderByProductSize(
+    const sortedSizes = orderByProductSize(
       productSizes,
       SizeTypes.SHIRT_LETTER
     );
@@ -50,20 +50,16 @@ const createProducts = async (): Promise<void> => {
     if (productExists) {
       const updateProductStatus = compareShopifyProductAndSizesFromPage(
         productExists,
-        orderedSizes
+        sortedSizes
       );
 
       console.log(
         `Product ${productExists.title} (${productExists.id}) updateProductStatus is equal to ${updateProductStatus}`
       );
 
-      await updateProductSizes(
-        productExists,
-        orderedSizes,
-        updateProductStatus
-      );
+      await updateProductSizes(productExists, sortedSizes, updateProductStatus);
     } else {
-      if (!orderedSizes.length) {
+      if (!sortedSizes.length) {
         console.log(
           `Product ${productInfo.item_name} wasn't create because is SOLD_OUT`
         );
@@ -74,7 +70,7 @@ const createProducts = async (): Promise<void> => {
       const productToInsertIntoShopify = createProductObject(
         productInfo,
         productImages,
-        orderedSizes
+        sortedSizes
       );
 
       const createProductId = await createShopifyProduct(
