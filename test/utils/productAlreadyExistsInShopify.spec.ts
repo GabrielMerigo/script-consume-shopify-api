@@ -5,13 +5,13 @@ import {
 import { ProductInfoFromHTML, ShopifyProduct } from '../../src/types';
 import { productAlreadyExistsInShopify } from '../../src/utils';
 
-const mockNotFoundTitle = 'not-found-title';
 const mockFoundTitle = 'found-title';
 
 const mockFoundProductFromHTML: ProductInfoFromHTML =
   new MockProductInfoFromHTML(undefined, mockFoundTitle);
 const mockNotFoundProductFromHTML: ProductInfoFromHTML =
-  new MockProductInfoFromHTML(undefined, mockNotFoundTitle);
+  new MockProductInfoFromHTML();
+
 const mockFoundShopifyProduct = new MockShopifyProduct(
   undefined,
   mockFoundTitle
