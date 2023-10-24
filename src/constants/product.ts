@@ -1,4 +1,4 @@
-export const PRODUCT_SHIRT_SIZE_LETTERS = [
+const PRODUCT_SHIRT_SIZE_LETTERS = [
   'PP',
   'P',
   'M',
@@ -9,4 +9,11 @@ export const PRODUCT_SHIRT_SIZE_LETTERS = [
   'G5',
   'G7'
 ];
-export const PRODUCT_PANTS_SIZE_NUMBERS = ['38', '40', '42', '44', '46', '48'];
+const PRODUCT_PANTS_SIZE_NUMBERS = ['38', '40', '42', '44', '46', '48'];
+const SHOPIFY_INVENTORY_MANAGEMENT = 'shopify';
+
+export {
+  PRODUCT_PANTS_SIZE_NUMBERS,
+  PRODUCT_SHIRT_SIZE_LETTERS,
+  SHOPIFY_INVENTORY_MANAGEMENT
+};

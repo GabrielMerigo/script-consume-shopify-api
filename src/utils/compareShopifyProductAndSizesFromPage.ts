@@ -1,11 +1,19 @@
-import { ShopifyProduct } from '../types';
+import { ShopifyProduct, UpdateProductStatus } from '../types';
+import { convertShopifyVariantsToSize } from './convertShopifyVariantsToSizes';
 
 export const compareShopifyProductAndSizesFromPage = (
   shopifyProduct: ShopifyProduct,
   sizes: string[]
-): boolean => {
-  console.log(shopifyProduct);
-  console.log(sizes);
+): UpdateProductStatus => {
+  const convertedShopifyProductVariants =
+    convertShopifyVariantsToSize(shopifyProduct);
 
-  return false;
+  if (!sizes.length) return UpdateProductStatus.SOLD_OUT;
+
+  const shopifyProductVariantsString = convertedShopifyProductVariants.join('');
+  const sizesString = sizes.join('');
+
+  return shopifyProductVariantsString === sizesString
+    ? UpdateProductStatus.DO_NOT_UPDATE
+    : UpdateProductStatus.UPDATE;
 };

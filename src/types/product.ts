@@ -38,8 +38,15 @@ type ShopifyVariant = {
   option1: string;
   price: string;
   sku: string;
-  title: string;
+  inventory_management?: 'shopify' | null;
+  inventory_quantity?: number;
 };
+
+enum UpdateProductStatus {
+  SOLD_OUT = 'SOLD_OUT',
+  UPDATE = 'UPDATE',
+  DO_NOT_UPDATE = 'DO_NOT_UPDATE'
+}
 
 export {
   ProductCreationResponse,
@@ -47,5 +54,6 @@ export {
   ProductImage,
   ShopifyProduct,
   ShopifyVariant,
-  ProductToInsertIntoShopify
+  ProductToInsertIntoShopify,
+  UpdateProductStatus
 };

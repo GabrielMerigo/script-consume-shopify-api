@@ -1,17 +1,17 @@
 import { ShopifyVariant } from '../types';
 
-export const createVariantsSize = async (
+export const createVariantsSize = (
   sizes: string[],
   price: string,
   sku: string
-): Promise<ShopifyVariant[]> => {
+): ShopifyVariant[] => {
   if (!sizes.length) return [];
 
   const variants: ShopifyVariant[] = sizes.map((size: string) => ({
     option1: size,
     price: price,
     sku: sku,
-    title: size
+    inventory_management: null
   }));
 
   return variants;
