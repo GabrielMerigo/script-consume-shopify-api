@@ -1,5 +1,5 @@
-import { MockShopifyProduct, MockVariant } from '../../src/mocks';
-import { UpdateProductCase } from '../../src/types';
+import { MockShopifyProduct, MockVariant } from '../../src/mocks/classes';
+import { UpdateProductStatus } from '../../src/types';
 import { compareShopifyProductAndSizesFromPage } from '../../src/utils';
 
 const variants = [
@@ -16,16 +16,16 @@ const shopifyProduct = new MockShopifyProduct(
 );
 
 describe('compareShopifyProductAndSizesFromPage', () => {
-  it(`should return ${UpdateProductCase.DO_NOT_UPDATE} if sizes and products are equal`, () => {
+  it(`should return ${UpdateProductStatus.DO_NOT_UPDATE} if sizes and products are equal`, () => {
     const isShopifyProductsVariantsSizeEqualToSizes =
       compareShopifyProductAndSizesFromPage(shopifyProduct, ['P', 'M', 'G']);
 
     expect(isShopifyProductsVariantsSizeEqualToSizes).toBe(
-      UpdateProductCase.DO_NOT_UPDATE
+      UpdateProductStatus.DO_NOT_UPDATE
     );
   });
 
-  it(`should return ${UpdateProductCase.UPDATE} if sizes and products are different`, () => {
+  it(`should return ${UpdateProductStatus.UPDATE} if sizes and products are different`, () => {
     const isShopifyProductsVariantsSizeDifferentFromSizes =
       compareShopifyProductAndSizesFromPage(shopifyProduct, [
         'P',
@@ -35,16 +35,16 @@ describe('compareShopifyProductAndSizesFromPage', () => {
       ]);
 
     expect(isShopifyProductsVariantsSizeDifferentFromSizes).toBe(
-      UpdateProductCase.UPDATE
+      UpdateProductStatus.UPDATE
     );
   });
 
-  it(`should return ${UpdateProductCase.SOLD_OUT} if sizes is empty`, () => {
+  it(`should return ${UpdateProductStatus.SOLD_OUT} if sizes is empty`, () => {
     const isSizesEmpty = compareShopifyProductAndSizesFromPage(
       shopifyProduct,
       []
     );
 
-    expect(isSizesEmpty).toBe(UpdateProductCase.SOLD_OUT);
+    expect(isSizesEmpty).toBe(UpdateProductStatus.SOLD_OUT);
   });
 });

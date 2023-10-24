@@ -1,5 +1,5 @@
 import { SHOPIFY_INVENTORY_MANAGEMENT } from '../../src/constants';
-import { MockVariant } from '../../src/mocks';
+import { MockVariant } from '../../src/mocks/classes';
 import { createSoldOutVariant } from '../../src/utils';
 
 describe('createSoldOutVariant', () => {

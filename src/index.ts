@@ -54,12 +54,16 @@ const createProducts = async (): Promise<void> => {
     );
 
     if (productExists) {
-      const updateProductCase = compareShopifyProductAndSizesFromPage(
+      const updateProductStatus = compareShopifyProductAndSizesFromPage(
         productExists,
         orderedSizes
       );
 
-      await updateProductSizes(productExists, orderedSizes, updateProductCase);
+      await updateProductSizes(
+        productExists,
+        orderedSizes,
+        updateProductStatus
+      );
     } else {
       const createProductId = await createShopifyProduct(
         productToInsertIntoShopify

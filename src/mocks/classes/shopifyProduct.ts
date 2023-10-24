@@ -1,4 +1,4 @@
-import { ProductImage, ShopifyProduct, ShopifyVariant } from '../types';
+import { ProductImage, ShopifyProduct, ShopifyVariant } from '../../types';
 
 export class MockShopifyProduct implements ShopifyProduct {
   id = 'PRODUCT_ID';

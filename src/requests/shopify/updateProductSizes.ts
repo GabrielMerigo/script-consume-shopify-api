@@ -2,19 +2,19 @@ import { instance } from '../../services/axios';
 import {
   ProductCreationResponse,
   ShopifyProduct,
-  UpdateProductCase
+  UpdateProductStatus
 } from '../../types';
 import { createSoldOutVariant, createVariantsSize } from '../../utils';
 
 export const updateProductSizes = async (
   product: ShopifyProduct,
   sizes: string[],
-  updateProductCase: UpdateProductCase
+  updateProductStatus: UpdateProductStatus
 ): Promise<void> => {
-  if (updateProductCase === UpdateProductCase.DO_NOT_UPDATE) return;
+  if (updateProductStatus === UpdateProductStatus.DO_NOT_UPDATE) return;
 
   const variants =
-    updateProductCase === UpdateProductCase.UPDATE
+    updateProductStatus === UpdateProductStatus.UPDATE
       ? createVariantsSize(
           sizes,
           product.variants[0].price,

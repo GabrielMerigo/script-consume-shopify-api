@@ -1,5 +1,5 @@
-import { MockVariant } from '../../src/mocks';
-import { MockShopifyProduct } from '../../src/mocks/shopifyProduct';
+import { MockVariant } from '../../src/mocks/classes';
+import { MockShopifyProduct } from '../../src/mocks/classes';
 import { ShopifyVariant } from '../../src/types';
 import { convertShopifyVariantsToSize } from '../../src/utils';
 
