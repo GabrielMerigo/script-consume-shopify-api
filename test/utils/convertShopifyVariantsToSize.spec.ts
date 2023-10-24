@@ -12,7 +12,7 @@ const variants: ShopifyVariant[] = [
 const shopifyProduct = new MockShopifyProduct();
 
 describe('convertShopifyVariantsToSize', () => {
-  it('should return a string array from Shopify variants', () => {
+  it('should return a array of strings from Shopify variants', () => {
     const shopifyProductWithVariants = {
       ...shopifyProduct,
       variants

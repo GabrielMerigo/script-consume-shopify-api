@@ -39,7 +39,7 @@ describe('compareShopifyProductAndSizesFromPage', () => {
     );
   });
 
-  it(`should return ${UpdateProductStatus.SOLD_OUT} if sizes is empty`, () => {
+  it(`should return ${UpdateProductStatus.SOLD_OUT} if sizes are empty`, () => {
     const isSizesEmpty = compareShopifyProductAndSizesFromPage(
       shopifyProduct,
       []
