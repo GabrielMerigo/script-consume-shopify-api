@@ -61,7 +61,7 @@ const createProducts = async (): Promise<void> => {
     } else {
       if (!sortedSizes.length) {
         console.log(
-          `Product ${productInfo.item_name} wasn't create because is SOLD_OUT`
+          `Product ${productInfo.item_name} wasn't created because is SOLD_OUT`
         );
 
         return;
@@ -73,11 +73,11 @@ const createProducts = async (): Promise<void> => {
         sortedSizes
       );
 
-      const createProductId = await createShopifyProduct(
+      const createdProductId = await createShopifyProduct(
         productToInsertIntoShopify
       );
       await putProductIntoCollection(
-        createProductId,
+        createdProductId,
         collections.camisetas.id,
         index
       );
