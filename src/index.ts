@@ -4,9 +4,9 @@ import {
   createProductObject,
   compareShopifyProductAndSizesFromPage,
   orderByProductSize,
-  getInformationFromPage
+  getInformationFromPage,
+  formatPageUrlWithCollection
 } from './utils';
-import { BASE_URL, PAGE_PARAMS } from './constants';
 import {
   createShopifyProduct,
   getShopifyProducts,
@@ -20,7 +20,7 @@ const createProducts = async (): Promise<void> => {
   const shopifyProducts = await getShopifyProducts();
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
-    url: `${BASE_URL}${collections['calcas-jeans'].urlHandle}${PAGE_PARAMS}`
+    url: formatPageUrlWithCollection(collections.polos.urlHandle)
   });
 
   let index = 0;
