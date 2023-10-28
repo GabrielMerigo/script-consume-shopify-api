@@ -11,7 +11,7 @@ import {
 import { BASE_URL, PAGE_PARAMS } from './constants';
 import {
   createShopifyProduct,
-  getShopifyProducts,
+  getShopifyProductsByCollection,
   putProductIntoCollection,
   updateProductSizes
 } from './requests/shopify';
@@ -19,7 +19,9 @@ import { collections } from './data';
 import { SizeTypes } from './types';
 
 const createProducts = async (): Promise<void> => {
-  const shopifyProducts = await getShopifyProducts();
+  const shopifyProducts = await getShopifyProductsByCollection(
+    collections.polos.id
+  );
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
     url: `${BASE_URL}/polos?${PAGE_PARAMS}`
