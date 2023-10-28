@@ -1,12 +1,10 @@
 import {
   getProductsInformationBasedOnUrl,
-  getProductImageFromPage,
-  getProductInfoFromPage,
   productAlreadyExistsInShopify,
-  getProductSizesFromPage,
   createProductObject,
   compareShopifyProductAndSizesFromPage,
-  orderByProductSize
+  orderByProductSize,
+  getInformationFromPage
 } from './utils';
 import { BASE_URL, PAGE_PARAMS } from './constants';
 import {
@@ -22,7 +20,7 @@ const createProducts = async (): Promise<void> => {
   const shopifyProducts = await getShopifyProducts();
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
-    url: `${BASE_URL}/polos?${PAGE_PARAMS}`
+    url: `${BASE_URL}${collections['calcas-jeans'].urlHandle}${PAGE_PARAMS}`
   });
 
   let index = 0;
@@ -30,16 +28,15 @@ const createProducts = async (): Promise<void> => {
     const page = await browser.newPage();
     await page.goto(link);
 
-    const productInfo = await getProductInfoFromPage(page);
-    const productSizes = await getProductSizesFromPage(page);
-    const productImages = await getProductImageFromPage(page);
+    const { productImages, productInfo, productSizes } =
+      await getInformationFromPage(page);
 
     const sortedSizes = orderByProductSize(
       productSizes,
       SizeTypes.SHIRT_LETTER
     );
 
-    console.log(`Product ${productInfo.item_name} was got from page`);
+    console.log(`Product ${productInfo.item_name} was got from page: ${link}`);
     console.log(`Starting Shopify process`);
 
     const productExists = productAlreadyExistsInShopify(

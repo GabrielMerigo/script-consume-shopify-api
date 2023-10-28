@@ -8,12 +8,9 @@ export const getProductSizesFromPage = async (
 
   if (!thereIsSize) return [];
 
-  const sizes = await page.$eval(
-    PRODUCT_SIZE,
-    (element) => element.textContent
-  );
+  const sizes = await page.$$eval(PRODUCT_SIZE, (elements) => {
+    return elements.map((element) => element.textContent || '');
+  });
 
-  if (!sizes) return [];
-
-  return sizes.split(' ').filter((item: string) => Boolean(item));
+  return sizes.length ? sizes : [];
 };
