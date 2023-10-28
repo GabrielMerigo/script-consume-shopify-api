@@ -14,13 +14,15 @@ import {
   updateProductSizes
 } from './requests/shopify';
 import { collections } from './data';
-import { SizeTypes } from './types';
+import { ExpectedCollections, SizeTypes } from './types';
+
+const COLLECTION: ExpectedCollections = 'polos';
 
 const createProducts = async (): Promise<void> => {
   const shopifyProducts = await getShopifyProducts();
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
-    url: formatPageUrlWithCollection(collections.polos.urlHandle)
+    url: formatPageUrlWithCollection(collections[COLLECTION].urlHandle)
   });
 
   let index = 0;
@@ -67,7 +69,8 @@ const createProducts = async (): Promise<void> => {
       const productToInsertIntoShopify = createProductObject(
         productInfo,
         productImages,
-        sortedSizes
+        sortedSizes,
+        COLLECTION
       );
 
       const createdProductId = await createShopifyProduct(
@@ -75,7 +78,7 @@ const createProducts = async (): Promise<void> => {
       );
       await putProductIntoCollection(
         createdProductId,
-        collections.camisetas.id,
+        collections[COLLECTION].id,
         index
       );
     }

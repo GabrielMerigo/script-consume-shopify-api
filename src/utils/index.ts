@@ -13,3 +13,4 @@ export * from './convertShopifyVariantsToSizes';
 export * from './createSoldOutVariant';
 export * from './getInformationFromPage';
 export * from './formatPageUrlWithCollection';
+export * from './getProductPriceFromCollection';
