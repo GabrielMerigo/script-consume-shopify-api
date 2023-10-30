@@ -14,13 +14,13 @@ import {
   updateProductSizes
 } from './requests/shopify';
 import { collections } from './data';
-import { ExpectedCollections, SizeTypes } from './types';
+import { ExpectedCollections } from './types';
 
 const COLLECTION: ExpectedCollections = 'polos';
 
 const createProducts = async (): Promise<void> => {
   const shopifyProducts = await getShopifyProductsByCollection(
-    collections.polos.id
+    collections[COLLECTION].id
   );
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
@@ -37,7 +37,7 @@ const createProducts = async (): Promise<void> => {
 
     const sortedSizes = orderByProductSize(
       productSizes,
-      SizeTypes.SHIRT_LETTER
+      collections[COLLECTION].sizeType
     );
 
     console.log(`Product ${productInfo.item_name} was got from page: ${link}`);
