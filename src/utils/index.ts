@@ -11,3 +11,4 @@ export * from './compareShopifyProductAndSizesFromPage';
 export * from './orderByProductSize';
 export * from './convertShopifyVariantsToSizes';
 export * from './createSoldOutVariant';
+export * from './getProductDescriptionByCollection';
