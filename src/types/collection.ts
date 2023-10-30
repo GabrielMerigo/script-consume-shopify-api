@@ -3,6 +3,7 @@ interface Collection {
   urlHandle: string;
   title: string;
   sizeType: SizeTypes;
+  productPrice: string;
   productBodyHtml: string;
 }
 
