@@ -4,7 +4,11 @@ import {
   ProductInfoFromHTML,
   ProductToInsertIntoShopify
 } from '../types';
-import { createVariantsSize, getProductPriceFromCollection } from '.';
+import {
+  createVariantsSize,
+  getProductPriceFromCollection,
+  getProductDescriptionByCollection
+} from '.';
 
 export const createProductObject = (
   productInfoFromHTML: ProductInfoFromHTML,
@@ -15,8 +19,10 @@ export const createProductObject = (
   title: productInfoFromHTML.item_name,
   vendor: productInfoFromHTML.item_category,
   images: productImages,
-  // body_html: getProductDescriptionByCollection(),
-  body_html: '',
+  body_html: getProductDescriptionByCollection(
+    collection,
+    productInfoFromHTML.item_name
+  ),
   inventory_quantity: 1,
   variants: createVariantsSize(
     productSizes,
