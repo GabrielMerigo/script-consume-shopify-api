@@ -9,7 +9,7 @@ import {
 } from './utils';
 import {
   createShopifyProduct,
-  getShopifyProducts,
+  getShopifyProductsByCollection,
   putProductIntoCollection,
   updateProductSizes
 } from './requests/shopify';
@@ -19,7 +19,9 @@ import { ExpectedCollections, SizeTypes } from './types';
 const COLLECTION: ExpectedCollections = 'polos';
 
 const createProducts = async (): Promise<void> => {
-  const shopifyProducts = await getShopifyProducts();
+  const shopifyProducts = await getShopifyProductsByCollection(
+    collections.polos.id
+  );
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
     url: formatPageUrlWithCollection(collections[COLLECTION].urlHandle)
