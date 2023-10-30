@@ -1,14 +1,17 @@
 import {
+  ExpectedCollections,
   ProductImage,
   ProductInfoFromHTML,
   ProductToInsertIntoShopify
 } from '../types';
 import { createVariantsSize } from './createVariantsSize';
+import { getProductPriceFromCollection } from './getProductPriceFromCollection';
 
 export const createProductObject = (
   productInfoFromHTML: ProductInfoFromHTML,
   productImages: ProductImage[],
-  productSizes: string[]
+  productSizes: string[],
+  collection: ExpectedCollections
 ): ProductToInsertIntoShopify => ({
   title: productInfoFromHTML.item_name,
   vendor: productInfoFromHTML.item_category,
@@ -16,7 +19,7 @@ export const createProductObject = (
   inventory_quantity: 1,
   variants: createVariantsSize(
     productSizes,
-    productInfoFromHTML.price,
+    getProductPriceFromCollection(collection),
     productInfoFromHTML.item_id
   )
 });

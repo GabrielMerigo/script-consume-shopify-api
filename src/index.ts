@@ -1,14 +1,12 @@
 import {
   getProductsInformationBasedOnUrl,
-  getProductImageFromPage,
-  getProductInfoFromPage,
   productAlreadyExistsInShopify,
-  getProductSizesFromPage,
   createProductObject,
   compareShopifyProductAndSizesFromPage,
-  orderByProductSize
+  orderByProductSize,
+  getInformationFromPage,
+  formatPageUrlWithCollection
 } from './utils';
-import { BASE_URL, PAGE_PARAMS } from './constants';
 import {
   createShopifyProduct,
   getShopifyProductsByCollection,
@@ -16,15 +14,17 @@ import {
   updateProductSizes
 } from './requests/shopify';
 import { collections } from './data';
-import { SizeTypes } from './types';
+import { ExpectedCollections } from './types';
+
+const COLLECTION: ExpectedCollections = 'polos';
 
 const createProducts = async (): Promise<void> => {
   const shopifyProducts = await getShopifyProductsByCollection(
-    collections.polos.id
+    collections[COLLECTION].id
   );
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
-    url: `${BASE_URL}/polos?${PAGE_PARAMS}`
+    url: formatPageUrlWithCollection(collections[COLLECTION].urlHandle)
   });
 
   let index = 0;
@@ -32,16 +32,15 @@ const createProducts = async (): Promise<void> => {
     const page = await browser.newPage();
     await page.goto(link);
 
-    const productInfo = await getProductInfoFromPage(page);
-    const productSizes = await getProductSizesFromPage(page);
-    const productImages = await getProductImageFromPage(page);
+    const { productImages, productInfo, productSizes } =
+      await getInformationFromPage(page);
 
     const sortedSizes = orderByProductSize(
       productSizes,
-      SizeTypes.SHIRT_LETTER
+      collections[COLLECTION].sizeType
     );
 
-    console.log(`Product ${productInfo.item_name} was got from page`);
+    console.log(`Product ${productInfo.item_name} was got from page: ${link}`);
     console.log(`Starting Shopify process`);
 
     const productExists = productAlreadyExistsInShopify(
@@ -72,7 +71,8 @@ const createProducts = async (): Promise<void> => {
       const productToInsertIntoShopify = createProductObject(
         productInfo,
         productImages,
-        sortedSizes
+        sortedSizes,
+        COLLECTION
       );
 
       const createdProductId = await createShopifyProduct(
@@ -80,7 +80,7 @@ const createProducts = async (): Promise<void> => {
       );
       await putProductIntoCollection(
         createdProductId,
-        collections.camisetas.id,
+        collections[COLLECTION].id,
         index
       );
     }
