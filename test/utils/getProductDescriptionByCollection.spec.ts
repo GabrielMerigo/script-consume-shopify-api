@@ -13,7 +13,6 @@ describe('getProductDescriptionByCollection', () => {
         productTitleSelectorRegex,
         mockTitle
       );
-      console.log(expectResult);
 
       const result = getProductDescriptionByCollection(collection, mockTitle);
       expect(result).toStrictEqual(expectResult);
