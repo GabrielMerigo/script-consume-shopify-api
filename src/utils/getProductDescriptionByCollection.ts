@@ -6,9 +6,11 @@ export const getProductDescriptionByCollection = (
   collection: ExpectedCollections,
   productTitle: string
 ): string => {
-  const formattedDescription = collections[
-    collection
-  ].productBodyHtml.replaceAll(PRODUCT_TITLE_SELECTOR, productTitle);
+  const productTitleSelectorRegex = new RegExp(PRODUCT_TITLE_SELECTOR, 'g');
+  const formattedDescription = collections[collection].productBodyHtml.replace(
+    productTitleSelectorRegex,
+    productTitle
+  );
 
   return formattedDescription;
 };
