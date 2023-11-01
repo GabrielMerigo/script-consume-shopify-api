@@ -6,15 +6,15 @@ import {
   orderByProductSize,
   getInformationFromPage,
   formatPageUrlWithCollection
-} from './utils';
+} from '@utils';
 import {
   createShopifyProduct,
   getShopifyProductsByCollection,
   putProductIntoCollection,
   updateProductSizes
-} from './requests/shopify';
-import { collections } from './data';
-import { ExpectedCollections } from './types';
+} from '@requests/shopify';
+import { collections } from '@data';
+import { ExpectedCollections } from '@types';
 
 const COLLECTION: ExpectedCollections = 'polos';
 

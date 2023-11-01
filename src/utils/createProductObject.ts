@@ -3,9 +3,8 @@ import {
   ProductImage,
   ProductInfoFromHTML,
   ProductToInsertIntoShopify
-} from '../types';
-import { createVariantsSize } from './createVariantsSize';
-import { getProductPriceFromCollection } from './getProductPriceFromCollection';
+} from '@types';
+import { getProductPriceFromCollection, createVariantsSize } from '@utils';
 
 export const createProductObject = (
   productInfoFromHTML: ProductInfoFromHTML,

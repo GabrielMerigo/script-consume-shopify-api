@@ -1,7 +1,7 @@
 import puppeteer, { Browser } from 'puppeteer';
-import { PRODUCT_COLLECTION_SELECTOR_ID } from '../constants';
-import { GetProductsInformationBasedOnUrlType } from '../types';
-import { getProductsLink } from './getProductsLink';
+import { PRODUCT_COLLECTION_SELECTOR_ID } from '@constants';
+import { GetProductsInformationBasedOnUrlType } from '@types';
+import { getProductsLink } from '@utils';
 
 export const getProductsInformationBasedOnUrl = async ({
   url

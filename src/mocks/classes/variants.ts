@@ -1,4 +1,4 @@
-import { ShopifyVariant } from '../../types';
+import { ShopifyVariant } from '@types';
 
 export class MockVariant implements ShopifyVariant {
   option1 = 'P';

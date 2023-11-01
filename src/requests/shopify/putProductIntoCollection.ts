@@ -1,4 +1,4 @@
-import { instance } from '../../services/axios';
+import { instance } from '@services/axios';
 
 export const putProductIntoCollection = async (
   productId: number,

@@ -1,7 +1,7 @@
 import { Page } from 'puppeteer';
-import { PRODUCT_IMAGE_TAG } from '../constants';
-import { ProductImage } from '../types';
-import { resizeImage } from './resizeImage';
+import { PRODUCT_IMAGE_TAG } from '@constants';
+import { ProductImage } from '@types';
+import { resizeImage } from '@utils';
 
 export const getProductImageFromPage = async (
   currentProductPage: Page

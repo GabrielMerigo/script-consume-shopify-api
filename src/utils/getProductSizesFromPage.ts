@@ -1,5 +1,5 @@
 import { Page } from 'puppeteer';
-import { PRODUCT_SIZE } from '../constants';
+import { PRODUCT_SIZE } from '@constants';
 
 export const getProductSizesFromPage = async (
   page: Page

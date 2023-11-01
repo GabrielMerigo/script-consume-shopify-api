@@ -1,6 +1,6 @@
-import { GET_PRODUCTS_LIMIT } from '../../constants';
-import { instance } from '../../services/axios';
-import { ShopifyProduct } from '../../types';
+import { GET_PRODUCTS_LIMIT } from '@constants';
+import { instance } from '@services/axios';
+import { ShopifyProduct } from '@types';
 
 export const getShopifyProductsByCollection = async (
   collectionId: number

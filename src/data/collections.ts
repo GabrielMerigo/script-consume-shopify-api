@@ -1,4 +1,4 @@
-import { Collections, SizeTypes } from '../types';
+import { Collections, SizeTypes } from '@types';
 
 export const collections: Collections = {
   blusoes: {
