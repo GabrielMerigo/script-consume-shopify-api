@@ -31,6 +31,7 @@ interface ProductToInsertIntoShopify {
   vendor: string;
   inventory_quantity: number;
   variants: ShopifyVariant[];
+  body_html: string;
 }
 
 type ShopifyVariant = {

@@ -1,4 +1,4 @@
-import { ShopifyVariant } from '../types';
+import { ShopifyVariant } from '@types';
 
 export const createVariantsSize = (
   sizes: string[],

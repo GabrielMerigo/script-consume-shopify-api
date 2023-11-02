@@ -1,7 +1,7 @@
-import { MockVariant } from '../../src/mocks/classes';
-import { MockShopifyProduct } from '../../src/mocks/classes';
-import { ShopifyVariant } from '../../src/types';
-import { convertShopifyVariantsToSize } from '../../src/utils';
+import { MockVariant } from '@mocks/classes';
+import { MockShopifyProduct } from '@mocks/classes';
+import { ShopifyVariant } from '@types';
+import { convertShopifyVariantsToSize } from '@utils';
 
 const variants: ShopifyVariant[] = [
   new MockVariant('P'),

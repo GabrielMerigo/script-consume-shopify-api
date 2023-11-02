@@ -1,4 +1,4 @@
-import { instance } from '../../services/axios';
+import { instance } from '@services/axios';
 
 export const putProductIntoCollection = async (
   productId: number,
@@ -6,7 +6,7 @@ export const putProductIntoCollection = async (
   positionIndex: number
 ): Promise<void> => {
   await instance.put(
-    '/admin/api/2023-10/custom_collections/457099477296.json',
+    `/admin/api/2023-10/custom_collections/${collectionId}.json`,
     {
       custom_collection: {
         id: collectionId,

@@ -1,4 +1,4 @@
-import { ProductInfoFromHTML, ShopifyProduct } from '../types';
+import { ProductInfoFromHTML, ShopifyProduct } from '@types';
 
 export const productAlreadyExistsInShopify = (
   productInfoFromHTML: ProductInfoFromHTML,

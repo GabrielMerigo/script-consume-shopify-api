@@ -1,4 +1,4 @@
-import { resizeImage } from '../../src/utils';
+import { resizeImage } from '@utils';
 
 describe('resizeImage', () => {
   it('should be able to replace /fit-in/600x600 to /fit-in/1000x1000 of a string', () => {

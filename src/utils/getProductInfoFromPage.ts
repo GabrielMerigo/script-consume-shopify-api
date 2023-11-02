@@ -1,5 +1,5 @@
 import { Page } from 'puppeteer';
-import { ProductInfoFromHTML } from '../types';
+import { ProductInfoFromHTML } from '@types';
 
 const params: {
   items: ProductInfoFromHTML[];

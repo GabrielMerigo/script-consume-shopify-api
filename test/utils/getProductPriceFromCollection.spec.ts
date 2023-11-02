@@ -1,6 +1,6 @@
-import { collections } from '../../src/data';
-import { ExpectedCollections } from '../../src/types';
-import { getProductPriceFromCollection } from '../../src/utils';
+import { collections } from '@data';
+import { ExpectedCollections } from '@types';
+import { getProductPriceFromCollection } from '@utils';
 
 describe('getProductPriceFromCollection', () => {
   it('should return price based in a collection', () => {
