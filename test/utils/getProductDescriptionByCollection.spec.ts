@@ -1,7 +1,7 @@
-import { PRODUCT_TITLE_SELECTOR } from '../../src/constants';
-import { collections } from '../../src/data';
-import { collections as collectionsOptions } from '../../src/types';
-import { getProductDescriptionByCollection } from '../../src/utils';
+import { PRODUCT_TITLE_SELECTOR } from '@constants';
+import { collections } from '@data';
+import { collections as collectionsOptions } from '@types';
+import { getProductDescriptionByCollection } from '@utils';
 
 describe('getProductDescriptionByCollection', () => {
   collectionsOptions.forEach((collection) => {

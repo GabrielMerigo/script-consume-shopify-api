@@ -1,6 +1,6 @@
-import { PRODUCT_TITLE_SELECTOR } from '../constants';
-import { collections } from '../data';
-import { ExpectedCollections } from '../types';
+import { PRODUCT_TITLE_SELECTOR } from '@constants';
+import { collections } from '@data';
+import { ExpectedCollections } from '@types';
 
 export const getProductDescriptionByCollection = (
   collection: ExpectedCollections,
