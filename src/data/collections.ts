@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
-import { PRODUCT_TITLE_SELECTOR } from '../constants';
-import { Collections, SizeTypes } from '../types';
+import { PRODUCT_TITLE_SELECTOR } from '@constants';
+import { Collections, SizeTypes } from '@types';
 
 export const collections: Collections = {
   blusoes: {

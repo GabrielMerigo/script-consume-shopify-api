@@ -1,8 +1,8 @@
 import {
   PRODUCT_SHIRT_SIZE_LETTERS,
   PRODUCT_PANTS_SIZE_NUMBERS
-} from '../constants';
-import { SizeTypes } from '../types';
+} from '@constants';
+import { SizeTypes } from '@types';
 
 export const orderByProductSize = (
   sizes: string[],

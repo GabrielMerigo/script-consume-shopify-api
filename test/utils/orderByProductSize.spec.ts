@@ -1,5 +1,5 @@
-import { SizeTypes } from '../../src/types';
-import { orderByProductSize } from '../../src/utils';
+import { SizeTypes } from '@types';
+import { orderByProductSize } from '@utils';
 
 describe('orderByProductSize', () => {
   it(`should order sizes by t-shirt letters if is size type ${SizeTypes.SHIRT_LETTER}`, () => {

@@ -1,10 +1,10 @@
-import { instance } from '../../services/axios';
+import { instance } from '@services/axios';
 import {
   ProductCreationResponse,
   ShopifyProduct,
   UpdateProductStatus
-} from '../../types';
-import { createSoldOutVariant, createVariantsSize } from '../../utils';
+} from '@types';
+import { createSoldOutVariant, createVariantsSize } from '@utils';
 
 export const updateProductSizes = async (
   product: ShopifyProduct,

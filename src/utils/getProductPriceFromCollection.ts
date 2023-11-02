@@ -1,5 +1,5 @@
-import { collections } from '../data';
-import { ExpectedCollections } from '../types';
+import { collections } from '@data';
+import { ExpectedCollections } from '@types';
 
 export const getProductPriceFromCollection = (
   collection: ExpectedCollections

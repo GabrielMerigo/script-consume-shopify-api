@@ -3,12 +3,12 @@ import {
   ProductImage,
   ProductInfoFromHTML,
   ProductToInsertIntoShopify
-} from '../types';
+} from '@types';
 import {
-  createVariantsSize,
   getProductPriceFromCollection,
+  createVariantsSize,
   getProductDescriptionByCollection
-} from '.';
+} from '@utils';
 
 export const createProductObject = (
   productInfoFromHTML: ProductInfoFromHTML,
