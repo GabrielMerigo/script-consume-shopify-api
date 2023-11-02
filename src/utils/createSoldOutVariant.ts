@@ -1,5 +1,5 @@
-import { SHOPIFY_INVENTORY_MANAGEMENT } from '../constants';
-import { ShopifyVariant } from '../types';
+import { SHOPIFY_INVENTORY_MANAGEMENT } from '@constants';
+import { ShopifyVariant } from '@types';
 
 export const createSoldOutVariant = (
   price: string,

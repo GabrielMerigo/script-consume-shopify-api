@@ -1,8 +1,10 @@
 import { Page } from 'puppeteer';
-import { ProductImage, ProductInfoFromHTML } from '../types';
-import { getProductInfoFromPage } from './getProductInfoFromPage';
-import { getProductSizesFromPage } from './getProductSizesFromPage';
-import { getProductImageFromPage } from './getProductImageFromPage';
+import { ProductImage, ProductInfoFromHTML } from '@types';
+import {
+  getProductInfoFromPage,
+  getProductSizesFromPage,
+  getProductImageFromPage
+} from '@utils';
 
 interface GetInformationFromPageReturn {
   productInfo: ProductInfoFromHTML;

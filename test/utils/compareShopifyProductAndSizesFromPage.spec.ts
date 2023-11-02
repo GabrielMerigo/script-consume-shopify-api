@@ -1,6 +1,6 @@
-import { MockShopifyProduct, MockVariant } from '../../src/mocks/classes';
-import { UpdateProductStatus } from '../../src/types';
-import { compareShopifyProductAndSizesFromPage } from '../../src/utils';
+import { MockShopifyProduct, MockVariant } from '@mocks/classes';
+import { UpdateProductStatus } from '@types';
+import { compareShopifyProductAndSizesFromPage } from '@utils';
 
 const variants = [
   new MockVariant('P'),

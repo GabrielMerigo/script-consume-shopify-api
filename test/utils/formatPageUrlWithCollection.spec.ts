@@ -1,5 +1,5 @@
-import { BASE_URL, PAGE_PARAMS } from '../../src/constants';
-import { formatPageUrlWithCollection } from '../../src/utils';
+import { BASE_URL, PAGE_PARAMS } from '@constants';
+import { formatPageUrlWithCollection } from '@utils';
 
 describe('formatPageUrlWithCollection', () => {
   it('should create a url with the collectionUrl', () => {
