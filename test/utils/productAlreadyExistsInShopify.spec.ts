@@ -1,9 +1,6 @@
-import {
-  MockProductInfoFromHTML,
-  MockShopifyProduct
-} from '../../src/mocks/classes';
-import { ProductInfoFromHTML, ShopifyProduct } from '../../src/types';
-import { productAlreadyExistsInShopify } from '../../src/utils';
+import { MockProductInfoFromHTML, MockShopifyProduct } from '@mocks/classes';
+import { ProductInfoFromHTML, ShopifyProduct } from '@types';
+import { productAlreadyExistsInShopify } from '@utils';
 
 const mockFoundTitle = 'found-title';
 
