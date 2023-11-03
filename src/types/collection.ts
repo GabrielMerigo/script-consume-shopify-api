@@ -7,7 +7,7 @@ interface Collection {
   productBodyHtml: string;
 }
 
-const collections = [
+const BaseCollections = [
   'blusoes',
   'calcas-jeans',
   'calcas-sarja',
@@ -16,11 +16,17 @@ const collections = [
   'polos'
 ] as const;
 
-type ExpectedCollections = (typeof collections)[number];
+type ExpectedCollections = (typeof BaseCollections)[number];
 type Collections = Record<ExpectedCollections, Collection>;
 enum SizeTypes {
   SHIRT_LETTER = 'SHIRT_LETTER',
   PANTS_NUMBER = 'PANTS_NUMBER'
 }
 
-export { Collection, Collections, SizeTypes, ExpectedCollections, collections };
+export {
+  Collection,
+  Collections,
+  SizeTypes,
+  ExpectedCollections,
+  BaseCollections
+};
