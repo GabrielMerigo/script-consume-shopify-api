@@ -1,5 +1,5 @@
 import { VENDOR_CODES } from '@constants';
-import { isExpectedVendorCode } from '@types';
+import { isExpectedVendorCode } from '@utils';
 
 describe('isExpectedVendorCode', () => {
   it('should validate if the code is a expected vendor code', () => {
