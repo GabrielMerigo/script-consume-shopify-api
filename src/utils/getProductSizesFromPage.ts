@@ -1,5 +1,5 @@
 import { Page } from 'puppeteer';
-import { PRODUCT_SIZE } from '../constants';
+import { PRODUCT_SIZE } from '@constants';
 
 export const getProductSizesFromPage = async (
   page: Page
@@ -8,12 +8,9 @@ export const getProductSizesFromPage = async (
 
   if (!thereIsSize) return [];
 
-  const sizes = await page.$eval(
-    PRODUCT_SIZE,
-    (element) => element.textContent
-  );
+  const sizes = await page.$$eval(PRODUCT_SIZE, (elements) => {
+    return elements.map((element) => element.textContent?.trim() || '');
+  });
 
-  if (!sizes) return [];
-
-  return sizes.split(' ').filter((item: string) => Boolean(item));
+  return sizes.length ? sizes : [];
 };

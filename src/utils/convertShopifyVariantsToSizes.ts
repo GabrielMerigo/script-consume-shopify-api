@@ -1,4 +1,4 @@
-import { ShopifyProduct } from '../types';
+import { ShopifyProduct } from '@types';
 
 export const convertShopifyVariantsToSize = (
   shopifyProduct: ShopifyProduct

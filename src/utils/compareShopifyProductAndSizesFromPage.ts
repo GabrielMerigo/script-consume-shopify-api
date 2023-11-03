@@ -1,5 +1,5 @@
-import { ShopifyProduct, UpdateProductStatus } from '../types';
-import { convertShopifyVariantsToSize } from './convertShopifyVariantsToSizes';
+import { ShopifyProduct, UpdateProductStatus } from '@types';
+import { convertShopifyVariantsToSize } from '@utils';
 
 export const compareShopifyProductAndSizesFromPage = (
   shopifyProduct: ShopifyProduct,

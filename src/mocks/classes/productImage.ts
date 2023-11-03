@@ -1,4 +1,4 @@
-import { ProductImage } from '../../types';
+import { ProductImage } from '@types';
 
 export class MockProductImage implements ProductImage {
   src: string = '/my-image-url';

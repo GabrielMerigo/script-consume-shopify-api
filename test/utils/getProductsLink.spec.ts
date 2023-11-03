@@ -1,5 +1,5 @@
 import { Page } from 'puppeteer';
-import { getProductsLink } from '../../src/utils';
+import { getProductsLink } from '@utils';
 
 const evaluateFunc = jest.fn();
 

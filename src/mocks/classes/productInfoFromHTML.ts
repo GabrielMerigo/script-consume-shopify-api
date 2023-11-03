@@ -1,4 +1,4 @@
-import { ProductInfoFromHTML } from '../../types';
+import { ProductInfoFromHTML } from '@types';
 
 export class MockProductInfoFromHTML implements ProductInfoFromHTML {
   item_id: string = 'ITEM_ID';

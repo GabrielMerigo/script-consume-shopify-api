@@ -3,6 +3,8 @@ interface Collection {
   urlHandle: string;
   title: string;
   sizeType: SizeTypes;
+  productPrice: string;
+  productBodyHtml: string;
 }
 
 const collections = [
@@ -21,4 +23,4 @@ enum SizeTypes {
   PANTS_NUMBER = 'PANTS_NUMBER'
 }
 
-export { Collection, Collections, SizeTypes };
+export { Collection, Collections, SizeTypes, ExpectedCollections, collections };

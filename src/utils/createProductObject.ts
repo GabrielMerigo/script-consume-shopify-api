@@ -1,24 +1,33 @@
 import {
+  ExpectedCollections,
   ProductImage,
   ProductInfoFromHTML,
   ProductToInsertIntoShopify
-} from '../types';
-import { createVariantsSize } from './createVariantsSize';
+} from '@types';
+import {
+  getProductPriceFromCollection,
+  createVariantsSize,
+  getProductDescriptionByCollection
+} from '@utils';
 
-import { removeEmojiFromProductTitleFormatter } from './removeEmojiFromProductTitleFormatter';
+import { removeEmojiFromText } from "./removeEmojiFromText";
 
 export const createProductObject = (
   productInfoFromHTML: ProductInfoFromHTML,
   productImages: ProductImage[],
-  productSizes: string[]
+  productSizes: string[],
+  collection: ExpectedCollections
 ): ProductToInsertIntoShopify => ({
-  title: removeEmojiFromProductTitleFormatter(productInfoFromHTML.item_name),
+  title: removeEmojiFromText(productInfoFromHTML.item_name),
   vendor: productInfoFromHTML.item_category,
   images: productImages,
+  body_html: getProductDescriptionByCollection(
+    collection, removeEmojiFromText(productInfoFromHTML.item_name)
+  ),
   inventory_quantity: 1,
   variants: createVariantsSize(
     productSizes,
-    productInfoFromHTML.price,
+    getProductPriceFromCollection(collection),
     productInfoFromHTML.item_id
   )
 });

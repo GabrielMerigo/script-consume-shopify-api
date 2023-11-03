@@ -1,13 +1,13 @@
 import { AxiosResponse } from 'axios';
 
-import { getShopifyProducts } from '../../src/requests/shopify';
-import { instance } from '../../src/services/axios';
-import { ProductImage, ShopifyProduct, ShopifyVariant } from '../../src/types';
+import { getShopifyProducts } from '@requests/shopify';
+import { instance } from '@services/axios';
+import { ProductImage, ShopifyProduct, ShopifyVariant } from '@types';
 import {
   MockProductImage,
   MockShopifyProduct,
   MockVariant
-} from '../../src/mocks/classes';
+} from '@mocks/classes';
 
 const mockId = 'mock-id';
 const mockTitle = 'mock-id';

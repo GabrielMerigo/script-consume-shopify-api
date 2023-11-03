@@ -1,6 +1,6 @@
-import { SHOPIFY_INVENTORY_MANAGEMENT } from '../../src/constants';
-import { MockVariant } from '../../src/mocks/classes';
-import { createSoldOutVariant } from '../../src/utils';
+import { SHOPIFY_INVENTORY_MANAGEMENT } from '@constants';
+import { MockVariant } from '@mocks/classes';
+import { createSoldOutVariant } from '@utils';
 
 describe('createSoldOutVariant', () => {
   it('should create a sold out variant with price and sku', () => {
