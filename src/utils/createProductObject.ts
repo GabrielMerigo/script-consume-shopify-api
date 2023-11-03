@@ -7,10 +7,9 @@ import {
 import {
   getProductPriceFromCollection,
   createVariantsSize,
-  getProductDescriptionByCollection
+  getProductDescriptionByCollection,
+  removeEmojiFromText
 } from '@utils';
-
-import { removeEmojiFromText } from "./removeEmojiFromText";
 
 export const createProductObject = (
   productInfoFromHTML: ProductInfoFromHTML,
@@ -22,7 +21,8 @@ export const createProductObject = (
   vendor: productInfoFromHTML.item_category,
   images: productImages,
   body_html: getProductDescriptionByCollection(
-    collection, removeEmojiFromText(productInfoFromHTML.item_name)
+    collection,
+    removeEmojiFromText(productInfoFromHTML.item_name)
   ),
   inventory_quantity: 1,
   variants: createVariantsSize(

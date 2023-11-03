@@ -1,11 +1,11 @@
-import {removeEmojiFromText} from '../../src/utils/removeEmojiFromText'
+import { removeEmojiFromText } from '../../src/utils/removeEmojiFromText';
 
-const mockTestText = 'Polo LCT Caqui ⭐😃🥰'
+const mockTestText = 'Polo LCT Caqui ⭐😃🥰';
 
-describe('removeEmojiFromProductTitleFormatter', () => {
+describe('removeEmojiFromText', () => {
   it('should remove all emojis from the text', () => {
-    const removeEmojiFromTextTest = removeEmojiFromText(mockTestText)
+    const removeEmojiFromTextTest = removeEmojiFromText(mockTestText);
 
-    expect(removeEmojiFromTextTest).toEqual('Polo LCT Caqui')
+    expect(removeEmojiFromTextTest).toEqual('Polo LCT Caqui');
   });
 });
