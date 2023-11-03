@@ -1,11 +1,11 @@
-const vendorCodes = ['LCT', 'PRL', 'CK'] as const;
+import { VENDOR_CODES } from '@constants';
 
-type ExpectedVendorsCode = (typeof vendorCodes)[number];
+type ExpectedVendorCodes = (typeof VENDOR_CODES)[number];
 interface Vendor {
-  code: ExpectedVendorsCode;
+  code: ExpectedVendorCodes;
   name: string;
 }
 
-type Vendors = Record<ExpectedVendorsCode, Vendor>;
+type Vendors = Record<ExpectedVendorCodes, Vendor>;
 
-export { Vendors, Vendor, ExpectedVendorsCode };
+export { Vendors, Vendor, ExpectedVendorCodes };
