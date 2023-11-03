@@ -7,7 +7,8 @@ import {
 import {
   getProductPriceFromCollection,
   createVariantsSize,
-  getProductDescriptionByCollection
+  getProductDescriptionByCollection,
+  getVendorByCode
 } from '@utils';
 
 export const createProductObject = (
@@ -17,7 +18,7 @@ export const createProductObject = (
   collection: ExpectedCollections
 ): ProductToInsertIntoShopify => ({
   title: productInfoFromHTML.item_name,
-  vendor: productInfoFromHTML.item_category,
+  vendor: getVendorByCode(productInfoFromHTML.item_category),
   images: productImages,
   body_html: getProductDescriptionByCollection(
     collection,
