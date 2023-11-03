@@ -12,5 +12,13 @@ export const vendors: Vendors = {
   PRL: {
     code: 'PRL',
     name: 'Rauph Lauren'
+  },
+  HB: {
+    code: 'HB',
+    name: 'Hugo Boss'
+  },
+  TH: {
+    code: 'TH',
+    name: 'Tommy Hilfiger'
   }
 };

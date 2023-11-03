@@ -1,3 +1,5 @@
+import { COLLECTIONS } from '@constants';
+
 interface Collection {
   id: number;
   urlHandle: string;
@@ -7,20 +9,11 @@ interface Collection {
   productBodyHtml: string;
 }
 
-const collections = [
-  'blusoes',
-  'calcas-jeans',
-  'calcas-sarja',
-  'camisas-sociais',
-  'camisetas',
-  'polos'
-] as const;
-
-type ExpectedCollections = (typeof collections)[number];
+type ExpectedCollections = (typeof COLLECTIONS)[number];
 type Collections = Record<ExpectedCollections, Collection>;
 enum SizeTypes {
   SHIRT_LETTER = 'SHIRT_LETTER',
   PANTS_NUMBER = 'PANTS_NUMBER'
 }
 
-export { Collection, Collections, SizeTypes, ExpectedCollections, collections };
+export { Collection, Collections, SizeTypes, ExpectedCollections };
