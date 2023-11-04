@@ -26,10 +26,7 @@ export const createProductObject = (
     title: titleFormatted,
     vendor: getVendorByCode(productInfoFromHTML.item_category),
     images: productImages,
-    body_html: getProductDescriptionByCollection(
-      collection,
-      removeEmojiFromText(productInfoFromHTML.item_name)
-    ),
+    body_html: getProductDescriptionByCollection(collection, titleFormatted),
     inventory_quantity: 1,
     variants: createVariantsSize(
       productSizes,
