@@ -2,7 +2,7 @@ import {
   getProductsInformationBasedOnUrl,
   productAlreadyExistsInShopify,
   compareShopifyProductAndSizesFromPage,
-  getProductFromPage,
+  getFormattedProductInformationFromPage,
   formatPageUrlWithCollection
 } from '@utils';
 import {
@@ -30,7 +30,10 @@ const createProducts = async (): Promise<void> => {
     const page = await browser.newPage();
     await page.goto(link);
 
-    const [product, sortedSizes] = await getProductFromPage(page, COLLECTION);
+    const [product, sortedSizes] = await getFormattedProductInformationFromPage(
+      page,
+      COLLECTION
+    );
 
     console.log(`Product ${product.title} was got from page: ${link}`);
     console.log(`Starting Shopify process`);

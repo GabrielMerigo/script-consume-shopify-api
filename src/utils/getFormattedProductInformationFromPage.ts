@@ -9,7 +9,7 @@ import {
 } from '@utils';
 import { collections } from '@data';
 
-export const getProductFromPage = async (
+export const getFormattedProductInformationFromPage = async (
   page: Page,
   collection: ExpectedCollections
 ): Promise<[ProductToInsertIntoShopify, string[]]> => {

@@ -12,7 +12,7 @@ export * from './orderByProductSize';
 export * from './convertShopifyVariantsToSizes';
 export * from './createSoldOutVariant';
 export * from './removeEmojiFromText';
-export * from './getProductFromPage';
+export * from './getFormattedProductInformationFromPage';
 export * from './formatPageUrlWithCollection';
 export * from './getProductPriceFromCollection';
 export * from './getProductDescriptionByCollection';
