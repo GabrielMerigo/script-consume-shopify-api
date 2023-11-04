@@ -1,3 +1,3 @@
 export const removeEmojiFromText = (title: string): string => {
-  return title.replace(/[^\\w\\s]|_/g, '');
+  return title.replace(/[^a-zA-Z\s]/g, '').trim();
 };
