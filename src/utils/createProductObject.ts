@@ -8,7 +8,8 @@ import {
   getProductPriceFromCollection,
   createVariantsSize,
   getProductDescriptionByCollection,
-  getVendorByCode
+  getVendorByCode,
+  removeEmojiFromText
 } from '@utils';
 
 export const createProductObject = (
@@ -17,12 +18,12 @@ export const createProductObject = (
   productSizes: string[],
   collection: ExpectedCollections
 ): ProductToInsertIntoShopify => ({
-  title: productInfoFromHTML.item_name,
+  title: removeEmojiFromText(productInfoFromHTML.item_name),
   vendor: getVendorByCode(productInfoFromHTML.item_category),
   images: productImages,
   body_html: getProductDescriptionByCollection(
     collection,
-    productInfoFromHTML.item_name
+    removeEmojiFromText(productInfoFromHTML.item_name)
   ),
   inventory_quantity: 1,
   variants: createVariantsSize(
