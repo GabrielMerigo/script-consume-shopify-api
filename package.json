@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "ISC",
   "scripts": {
-    "start": "tsx src/index.ts",
+    "start": "tsx src/scripts/addProductsByAllCollections.ts",
     "dev": "tsx watch src/index.ts",
     "lint:check": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
