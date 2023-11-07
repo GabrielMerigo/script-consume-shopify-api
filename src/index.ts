@@ -27,54 +27,61 @@ export const createProducts = async (
 
   let index = 0;
   for (const link of productsLinks) {
-    const page = await browser.newPage();
-    await page.goto(link);
+    try {
+      const page = await browser.newPage();
+      await page.goto(link);
 
-    const [product, sortedSizes] = await getFormattedProductInformationFromPage(
-      page,
-      collection
-    );
+      const [product, sortedSizes] =
+        await getFormattedProductInformationFromPage(page, collection);
 
-    console.log(`Product ${product.title} was got from page: ${link}`);
-    console.log(`Starting Shopify process`);
+      console.log(`Product ${product.title} was got from page: ${link}`);
+      console.log(`Starting Shopify process`);
 
-    const productExists = productAlreadyExistsInShopify(
-      product,
-      shopifyProducts
-    );
-
-    if (productExists) {
-      const updateProductStatus = compareShopifyProductAndSizesFromPage(
-        productExists,
-        sortedSizes
+      const productExists = productAlreadyExistsInShopify(
+        product,
+        shopifyProducts
       );
 
-      console.log(
-        `Product ${productExists.title} (${productExists.id}) updateProductStatus is equal to ${updateProductStatus}`
-      );
-
-      await updateProductSizes(productExists, sortedSizes, updateProductStatus);
-    } else {
-      if (!sortedSizes.length) {
-        console.log(
-          `Product ${product.title} wasn't created because is SOLD_OUT`
+      if (productExists) {
+        const updateProductStatus = compareShopifyProductAndSizesFromPage(
+          productExists,
+          sortedSizes
         );
 
-        return;
+        console.log(
+          `Product ${productExists.title} (${productExists.id}) updateProductStatus is equal to ${updateProductStatus}`
+        );
+
+        await updateProductSizes(
+          productExists,
+          sortedSizes,
+          updateProductStatus
+        );
+      } else {
+        if (!sortedSizes.length) {
+          console.log(
+            `Product ${product.title} wasn't created because is SOLD_OUT`
+          );
+
+          return;
+        }
+
+        const createdProductId = await createShopifyProduct(product);
+        await putProductIntoCollection(
+          createdProductId,
+          collections[collection].id,
+          index
+        );
       }
 
-      const createdProductId = await createShopifyProduct(product);
-      await putProductIntoCollection(
-        createdProductId,
-        collections[collection].id,
-        index
-      );
+      console.log(`Ending Shopify process`);
+
+      await page.close();
+      index++;
+    } catch (e) {
+      console.log(`Error no link: ${link}`, e);
+      continue;
     }
-
-    console.log(`Ending Shopify process`);
-
-    await page.close();
-    index++;
   }
 
   await browser.close();
