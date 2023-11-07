@@ -14,15 +14,15 @@ import {
 import { collections } from '@data';
 import { ExpectedCollections } from '@types';
 
-const COLLECTION: ExpectedCollections = 'polos';
-
-const createProducts = async (): Promise<void> => {
+export const createProducts = async (
+  collection: ExpectedCollections
+): Promise<void> => {
   const shopifyProducts = await getShopifyProductsByCollection(
-    collections[COLLECTION].id
+    collections[collection].id
   );
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
-    url: formatPageUrlWithCollection(collections[COLLECTION].urlHandle)
+    url: formatPageUrlWithCollection(collections[collection].urlHandle)
   });
 
   let index = 0;
@@ -32,7 +32,7 @@ const createProducts = async (): Promise<void> => {
 
     const [product, sortedSizes] = await getFormattedProductInformationFromPage(
       page,
-      COLLECTION
+      collection
     );
 
     console.log(`Product ${product.title} was got from page: ${link}`);
@@ -66,7 +66,7 @@ const createProducts = async (): Promise<void> => {
       const createdProductId = await createShopifyProduct(product);
       await putProductIntoCollection(
         createdProductId,
-        collections[COLLECTION].id,
+        collections[collection].id,
         index
       );
     }
@@ -80,5 +80,3 @@ const createProducts = async (): Promise<void> => {
 
   await browser.close();
 };
-
-createProducts();
