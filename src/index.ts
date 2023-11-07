@@ -75,7 +75,6 @@ export const createProducts = async (
 
     await page.close();
     index++;
-    break;
   }
 
   await browser.close();
