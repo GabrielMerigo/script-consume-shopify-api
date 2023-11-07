@@ -1,12 +1,10 @@
-import { ProductInfoFromHTML, ShopifyProduct } from '@types';
+import { ProductToInsertIntoShopify, ShopifyProduct } from '@types';
 
 export const productAlreadyExistsInShopify = (
-  productInfoFromHTML: ProductInfoFromHTML,
+  product: ProductToInsertIntoShopify,
   shopifyProducts: ShopifyProduct[]
 ): ShopifyProduct | null => {
-  const foundProduct = shopifyProducts.find(
-    (i) => i.title == productInfoFromHTML.item_name
-  );
+  const foundProduct = shopifyProducts.find((i) => i.title == product.title);
 
   return foundProduct || null;
 };

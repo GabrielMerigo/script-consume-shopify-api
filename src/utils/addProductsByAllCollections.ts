@@ -1,8 +1,8 @@
-import { BaseCollections } from '@types';
+import { COLLECTIONS } from '@constants';
 import { createProducts } from '../index';
 
 export const addProductsByAllCollections = (): void => {
-  BaseCollections.forEach((collection) => {
+  COLLECTIONS.forEach((collection) => {
     createProducts(collection);
   });
 };

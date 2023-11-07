@@ -1,10 +1,8 @@
 import {
   getProductsInformationBasedOnUrl,
   productAlreadyExistsInShopify,
-  createProductObject,
   compareShopifyProductAndSizesFromPage,
-  orderByProductSize,
-  getInformationFromPage,
+  getFormattedProductInformationFromPage,
   formatPageUrlWithCollection
 } from '@utils';
 import {
@@ -32,19 +30,16 @@ export const createProducts = async (
     const page = await browser.newPage();
     await page.goto(link);
 
-    const { productImages, productInfo, productSizes } =
-      await getInformationFromPage(page);
-
-    const sortedSizes = orderByProductSize(
-      productSizes,
-      collections[collection].sizeType
+    const [product, sortedSizes] = await getFormattedProductInformationFromPage(
+      page,
+      collection
     );
 
-    console.log(`Product ${productInfo.item_name} was got from page: ${link}`);
+    console.log(`Product ${product.title} was got from page: ${link}`);
     console.log(`Starting Shopify process`);
 
     const productExists = productAlreadyExistsInShopify(
-      productInfo,
+      product,
       shopifyProducts
     );
 
@@ -62,22 +57,13 @@ export const createProducts = async (
     } else {
       if (!sortedSizes.length) {
         console.log(
-          `Product ${productInfo.item_name} wasn't created because is SOLD_OUT`
+          `Product ${product.title} wasn't created because is SOLD_OUT`
         );
 
         return;
       }
 
-      const productToInsertIntoShopify = createProductObject(
-        productInfo,
-        productImages,
-        sortedSizes,
-        collection
-      );
-
-      const createdProductId = await createShopifyProduct(
-        productToInsertIntoShopify
-      );
+      const createdProductId = await createShopifyProduct(product);
       await putProductIntoCollection(
         createdProductId,
         collections[collection].id,

@@ -8,7 +8,9 @@ import {
   getProductPriceFromCollection,
   createVariantsSize,
   getProductDescriptionByCollection,
-  removeEmojiFromText
+  getVendorByCode,
+  removeEmojiFromText,
+  formatProductTitleVendor
 } from '@utils';
 
 export const createProductObject = (
@@ -16,18 +18,20 @@ export const createProductObject = (
   productImages: ProductImage[],
   productSizes: string[],
   collection: ExpectedCollections
-): ProductToInsertIntoShopify => ({
-  title: removeEmojiFromText(productInfoFromHTML.item_name),
-  vendor: productInfoFromHTML.item_category,
-  images: productImages,
-  body_html: getProductDescriptionByCollection(
-    collection,
-    removeEmojiFromText(productInfoFromHTML.item_name)
-  ),
-  inventory_quantity: 1,
-  variants: createVariantsSize(
-    productSizes,
-    getProductPriceFromCollection(collection),
-    productInfoFromHTML.item_id
-  )
-});
+): ProductToInsertIntoShopify => {
+  const titleWithoutEmoji = removeEmojiFromText(productInfoFromHTML.item_name);
+  const titleFormatted = formatProductTitleVendor(titleWithoutEmoji);
+
+  return {
+    title: titleFormatted,
+    vendor: getVendorByCode(productInfoFromHTML.item_category),
+    images: productImages,
+    body_html: getProductDescriptionByCollection(collection, titleFormatted),
+    inventory_quantity: 1,
+    variants: createVariantsSize(
+      productSizes,
+      getProductPriceFromCollection(collection),
+      productInfoFromHTML.item_id
+    )
+  };
+};
