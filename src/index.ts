@@ -16,15 +16,15 @@ import {
 import { collections } from '@data';
 import { ExpectedCollections } from '@types';
 
-const COLLECTION: ExpectedCollections = 'polos';
-
-const createProducts = async (): Promise<void> => {
+export const createProducts = async (
+  collection: ExpectedCollections
+): Promise<void> => {
   const shopifyProducts = await getShopifyProductsByCollection(
-    collections[COLLECTION].id
+    collections[collection].id
   );
 
   const { browser, productsLinks } = await getProductsInformationBasedOnUrl({
-    url: formatPageUrlWithCollection(collections[COLLECTION].urlHandle)
+    url: formatPageUrlWithCollection(collections[collection].urlHandle)
   });
 
   let index = 0;
@@ -37,7 +37,7 @@ const createProducts = async (): Promise<void> => {
 
     const sortedSizes = orderByProductSize(
       productSizes,
-      collections[COLLECTION].sizeType
+      collections[collection].sizeType
     );
 
     console.log(`Product ${productInfo.item_name} was got from page: ${link}`);
@@ -72,7 +72,7 @@ const createProducts = async (): Promise<void> => {
         productInfo,
         productImages,
         sortedSizes,
-        COLLECTION
+        collection
       );
 
       const createdProductId = await createShopifyProduct(
@@ -80,7 +80,7 @@ const createProducts = async (): Promise<void> => {
       );
       await putProductIntoCollection(
         createdProductId,
-        collections[COLLECTION].id,
+        collections[collection].id,
         index
       );
     }
@@ -94,5 +94,3 @@ const createProducts = async (): Promise<void> => {
 
   await browser.close();
 };
-
-createProducts();
