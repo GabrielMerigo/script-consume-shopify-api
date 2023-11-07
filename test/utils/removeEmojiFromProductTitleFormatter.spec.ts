@@ -16,4 +16,22 @@ describe('removeEmojiFromText', () => {
 
     expect(result).toStrictEqual(expectedResult);
   });
+
+  it('should NOT remove "Ç" from title', () => {
+    const textWithSpecialC = 'Calça Jeans Hugo Boss ⭐😃🥰';
+    const result = removeEmojiFromText(textWithSpecialC);
+    const expectedResult = 'Calça Jeans Hugo Boss';
+
+    expect(result).toStrictEqual(expectedResult);
+  });
+
+  it('should NOT remove letters with accent', () => {
+    const specialLetter = 'áéíóúãõâêôç';
+    const specialLetterUpperCase = specialLetter.toUpperCase();
+    const result = removeEmojiFromText(specialLetter);
+    const resultUpperCase = removeEmojiFromText(specialLetterUpperCase);
+
+    expect(result).toStrictEqual(specialLetter);
+    expect(resultUpperCase).toStrictEqual(specialLetterUpperCase);
+  });
 });
