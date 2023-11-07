@@ -7,14 +7,14 @@ jest.mock('../../src/index', () => ({
 }));
 
 describe('addProductsByAllCollections', () => {
-  it(`should call createProducts ${COLLECTIONS.length} times`, () => {
-    addProductsByAllCollections();
+  it(`should call createProducts ${COLLECTIONS.length} times`, async () => {
+    await addProductsByAllCollections();
     expect(createProducts).toHaveBeenCalledTimes(COLLECTIONS.length);
   });
 
   COLLECTIONS.forEach((collection) => {
-    it(`should call the createProducts function with ${collection} as a param`, () => {
-      addProductsByAllCollections();
+    it(`should call the createProducts function with ${collection} as a param`, async () => {
+      await addProductsByAllCollections();
       expect(createProducts).toHaveBeenCalledWith(collection);
     });
   });
