@@ -5,7 +5,7 @@ const compareVendorNameAndCode = (
   name: string,
   code: string,
   stringToCompare: string
-) => {
+): boolean => {
   return stringToCompare.includes(name) || stringToCompare.includes(code)
     ? true
     : false;
