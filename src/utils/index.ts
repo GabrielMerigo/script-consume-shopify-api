@@ -17,6 +17,5 @@ export * from './getFormattedProductInformationFromPage';
 export * from './formatPageUrlWithCollection';
 export * from './getProductPriceFromCollection';
 export * from './getProductDescriptionByCollection';
-export * from './isExpectedVendorCode';
 export * from './formatProductTitleVendor';
-export * from './getVendorByCode';
+export * from './getVendorByProductInfo';

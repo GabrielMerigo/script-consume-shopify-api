@@ -12,7 +12,21 @@ const PRODUCT_SHIRT_SIZE_LETTERS = [
 const PRODUCT_PANTS_SIZE_NUMBERS = ['38', '40', '42', '44', '46', '48'];
 const SHOPIFY_INVENTORY_MANAGEMENT = 'shopify';
 const PRODUCT_TITLE_SELECTOR = '{{PRODUCT_TITLE}}';
-const VENDOR_CODES = ['LCT', 'PRL', 'CK', 'HB', 'TH'] as const;
+
+const VENDOR_CODES = [
+  'LCT',
+  'PRL',
+  'CK',
+  'HB',
+  'TH',
+  'ACT',
+  'DG',
+  'DIOR',
+  'ABERCROMBIE',
+  'DIESEL',
+  'GUCCI'
+] as const;
+
 const COLLECTIONS = [
   'blusoes',
   'calcas-jeans',

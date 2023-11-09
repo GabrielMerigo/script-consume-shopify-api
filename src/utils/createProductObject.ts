@@ -8,7 +8,7 @@ import {
   getProductPriceFromCollection,
   createVariantsSize,
   getProductDescriptionByCollection,
-  getVendorByCode,
+  getVendorByProductInfo,
   removeEmojiFromText,
   formatProductTitleVendor
 } from '@utils';
@@ -24,7 +24,7 @@ export const createProductObject = (
 
   return {
     title: titleFormatted,
-    vendor: getVendorByCode(productInfoFromHTML.item_category),
+    vendor: getVendorByProductInfo(productInfoFromHTML),
     images: productImages,
     body_html: getProductDescriptionByCollection(collection, titleFormatted),
     inventory_quantity: 1,

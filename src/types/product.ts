@@ -5,6 +5,8 @@ interface ProductInfoFromHTML {
   item_category: string;
   item_category2: string;
   item_category3: string;
+  item_category4: string;
+  item_category5: string;
 }
 
 interface ProductCreationResponse {
