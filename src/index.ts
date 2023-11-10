@@ -78,7 +78,6 @@ export const createProducts = async (
 
       await page.close();
       index++;
-      break;
     } catch (e) {
       console.log(`Error no link: ${link}`, e);
       continue;

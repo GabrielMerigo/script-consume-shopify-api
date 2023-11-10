@@ -1,3 +1,4 @@
+import { VENDOR_CODES } from '@constants';
 import { vendors } from '@data';
 import { ProductInfoFromHTML } from '@types';
 
@@ -25,38 +26,21 @@ export const getVendorByProductInfo = (
     .join()
     .toLowerCase();
 
-  if (compareVendorNameAndCode('hugo boss', 'hb', contentToCheck))
-    return vendors.HB.name;
+  let vendorCode;
 
-  if (compareVendorNameAndCode('lacoste', 'lct', contentToCheck))
-    return vendors.LCT.name;
+  for (let i = 0; i < VENDOR_CODES.length; i++) {
+    const currentVendorCode = VENDOR_CODES[i];
 
-  if (compareVendorNameAndCode('rauph lauren', 'prl', contentToCheck))
-    return vendors.PRL.name;
+    if (
+      compareVendorNameAndCode(
+        vendors[currentVendorCode].name.toLowerCase(),
+        vendors[currentVendorCode].code.toLowerCase(),
+        contentToCheck
+      )
+    ) {
+      vendorCode = vendors[currentVendorCode].name;
+    }
+  }
 
-  if (compareVendorNameAndCode('tommy hilfiger', 'th', contentToCheck))
-    return vendors.TH.name;
-
-  if (compareVendorNameAndCode('calvin klein', 'ck', contentToCheck))
-    return vendors.CK.name;
-
-  if (compareVendorNameAndCode('acostamento', 'act', contentToCheck))
-    return vendors.ACT.name;
-
-  if (compareVendorNameAndCode('dolce &amp; gabbana', 'dg', contentToCheck))
-    return vendors.DG.name;
-
-  if (compareVendorNameAndCode('dior', 'dior', contentToCheck))
-    return vendors.DIOR.name;
-
-  if (compareVendorNameAndCode('abercrombie', 'abercrombie', contentToCheck))
-    return vendors.ABERCROMBIE.name;
-
-  if (compareVendorNameAndCode('diesel', 'diesel', contentToCheck))
-    return vendors.DIESEL.name;
-
-  if (compareVendorNameAndCode('gucci', 'gucci', contentToCheck))
-    return vendors.GUCCI.name;
-
-  return productInfoFromHTML.item_category;
+  return vendorCode ? vendorCode : productInfoFromHTML.item_category;
 };
