@@ -6,6 +6,7 @@
   "license": "ISC",
   "scripts": {
     "start": "tsx src/scripts/createProductsByAllCollections.ts",
+    "start:collection": "tsx src/scripts/createProductsByCollection.ts",
     "dev": "tsx watch src/index.ts",
     "lint:check": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
