@@ -1,4 +1,4 @@
-import { MockMetafield } from '@mocks/classes/metafield';
+import { MockMetafield } from '@mocks/classes';
 import { ShopifyMetafield } from '@types';
 import { createShopifyMetafield } from '@utils';
 

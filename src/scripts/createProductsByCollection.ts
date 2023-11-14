@@ -1,3 +1,3 @@
 import { createProducts } from 'index';
 
-createProducts('camisetas');
+createProducts('calcas-jeans');
