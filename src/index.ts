@@ -63,7 +63,7 @@ export const createProducts = async (
             `Product ${product.title} wasn't created because is SOLD_OUT`
           );
 
-          return;
+          continue;
         }
 
         const createdProductId = await createShopifyProduct(product);
