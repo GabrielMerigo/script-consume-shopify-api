@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { z } from 'zod';
+import logger from '../../logger';
 
 const envSchema = z.object({
   SHOPIFY_ACCESS_TOKEN: z.string(),
@@ -9,7 +10,7 @@ const envSchema = z.object({
 const _env = envSchema.safeParse(process.env);
 
 if (_env.success === false) {
-  console.error('⚠️ Invalid environment variables', _env.error.format());
+  logger.error('⚠️ Invalid environment variables', _env.error.format());
   throw new Error('Invalid environment variables.');
 }
 
