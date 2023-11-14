@@ -1,7 +1,11 @@
 {
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.organizeImports": false
   },
+  "cSpell.words": [
+    "METAFIELD",
+    "metafields"
+  ]
 }

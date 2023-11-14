@@ -8,9 +8,10 @@ import {
   getProductPriceFromCollection,
   createVariantsSize,
   getProductDescriptionByCollection,
-  getVendorByCode,
+  getVendorByProductInfo,
   removeEmojiFromText,
-  formatProductTitleVendor
+  formatProductTitleVendor,
+  createShopifyMetafield
 } from '@utils';
 
 export const createProductObject = (
@@ -24,7 +25,7 @@ export const createProductObject = (
 
   return {
     title: titleFormatted,
-    vendor: getVendorByCode(productInfoFromHTML.item_category),
+    vendor: getVendorByProductInfo(productInfoFromHTML),
     images: productImages,
     body_html: getProductDescriptionByCollection(collection, titleFormatted),
     inventory_quantity: 1,
@@ -32,6 +33,7 @@ export const createProductObject = (
       productSizes,
       getProductPriceFromCollection(collection),
       productInfoFromHTML.item_id
-    )
+    ),
+    metafields: [createShopifyMetafield(productSizes)]
   };
 };

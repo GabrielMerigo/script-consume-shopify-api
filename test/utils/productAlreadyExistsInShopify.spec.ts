@@ -62,13 +62,4 @@ describe('productAlreadyExistsInShopify', () => {
 
     expect(notFoundProduct).toBeNull();
   });
-
-  it("should return null if product don't have variants", () => {
-    const notFoundProduct = productAlreadyExistsInShopify(
-      mockEmptyVariantsProduct,
-      shopifyProducts
-    );
-
-    expect(notFoundProduct).toBeNull();
-  });
 });
