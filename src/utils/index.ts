@@ -20,3 +20,4 @@ export * from './getProductDescriptionByCollection';
 export * from './formatProductTitleVendor';
 export * from './getVendorByProductInfo';
 export * from './verifyVendorCode';
+export * from './createShopifyMetafield';
