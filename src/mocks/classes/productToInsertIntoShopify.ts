@@ -1,6 +1,7 @@
 import {
   ProductImage,
   ProductToInsertIntoShopify,
+  ShopifyMetafield,
   ShopifyVariant
 } from '@types';
 
@@ -14,6 +15,7 @@ export class MockProductToInsertIntoShopify
   inventory_quantity: number = 1;
   images: ProductImage[] = [];
   variants: ShopifyVariant[] = [];
+  metafields: ShopifyMetafield[] = [];
 
   constructor(
     title?: string,
@@ -22,7 +24,8 @@ export class MockProductToInsertIntoShopify
     inventory_quantity?: number,
     images?: ProductImage[],
     variants?: ShopifyVariant[],
-    body_html?: string
+    body_html?: string,
+    metafields?: ShopifyMetafield[]
   ) {
     this.title = title || this.title;
     this.price = price || this.price;
@@ -31,5 +34,6 @@ export class MockProductToInsertIntoShopify
     this.images = images || this.images;
     this.variants = variants || this.variants;
     this.body_html = body_html || this.body_html;
+    this.metafields = metafields || this.metafields;
   }
 }
