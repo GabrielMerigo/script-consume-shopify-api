@@ -1,4 +1,5 @@
 import { instance } from '@services/axios';
+import logger from '../../../logger';
 
 export const putProductIntoCollection = async (
   productId: number,
@@ -20,5 +21,5 @@ export const putProductIntoCollection = async (
     }
   );
 
-  console.log(`Product ID ${productId} added to collection ID ${collectionId}`);
+  logger.info(`Product ID ${productId} added to collection ID ${collectionId}`);
 };

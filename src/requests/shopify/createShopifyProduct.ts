@@ -1,5 +1,6 @@
 import { instance } from '@services/axios';
 import { ProductCreationResponse, ProductToInsertIntoShopify } from '@types';
+import logger from '../../../logger';
 
 export const createShopifyProduct = async (
   product: ProductToInsertIntoShopify
@@ -11,7 +12,7 @@ export const createShopifyProduct = async (
     { product }
   );
 
-  console.log(
+  logger.info(
     `Product ID ${productCreated.id} title ${product.title} created inside the shopify`
   );
 

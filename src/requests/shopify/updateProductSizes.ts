@@ -5,6 +5,7 @@ import {
   UpdateProductStatus
 } from '@types';
 import { createSoldOutVariant, createVariantsSize } from '@utils';
+import logger from '../../../logger';
 
 export const updateProductSizes = async (
   product: ShopifyProduct,
@@ -39,5 +40,5 @@ export const updateProductSizes = async (
     }
   );
 
-  console.log(`Product ${productUpdated.id} updated with success!`);
+  logger.info(`Product ${productUpdated.id} updated with success!`);
 };

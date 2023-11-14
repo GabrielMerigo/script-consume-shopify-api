@@ -13,6 +13,7 @@ import {
 } from '@requests/shopify';
 import { collections } from '@data';
 import { ExpectedCollections } from '@types';
+import logger from '../logger';
 
 export const createProducts = async (
   collection: ExpectedCollections
@@ -34,8 +35,8 @@ export const createProducts = async (
       const [product, sortedSizes] =
         await getFormattedProductInformationFromPage(page, collection);
 
-      console.log(`Product ${product.title} was got from page: ${link}`);
-      console.log(`Starting Shopify process`);
+      logger.info(`Product ${product.title} was got from page: ${link}`);
+      logger.info(`Starting Shopify process`);
 
       const productExists = productAlreadyExistsInShopify(
         product,
@@ -48,7 +49,7 @@ export const createProducts = async (
           sortedSizes
         );
 
-        console.log(
+        logger.info(
           `Product ${productExists.title} (${productExists.id}) updateProductStatus is equal to ${updateProductStatus}`
         );
 
@@ -59,7 +60,7 @@ export const createProducts = async (
         );
       } else {
         if (!sortedSizes.length) {
-          console.log(
+          logger.warn(
             `Product ${product.title} wasn't created because is SOLD_OUT`
           );
 
@@ -74,12 +75,12 @@ export const createProducts = async (
         );
       }
 
-      console.log(`Ending Shopify process`);
+      logger.info(`Ending Shopify process`);
 
       await page.close();
       index++;
     } catch (e) {
-      console.log(`Error no link: ${link}`, e);
+      logger.error(`Error no link: ${link}`, e);
       continue;
     }
   }
