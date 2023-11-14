@@ -80,7 +80,8 @@ export const createProducts = async (
       await page.close();
       index++;
     } catch (e) {
-      logger.error(`Error no link: ${link}`, JSON.stringify(e));
+      logger.error(`Error no link: ${link}`);
+      console.log(e);
       continue;
     }
   }
