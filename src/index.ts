@@ -12,8 +12,8 @@ import {
   updateProductSizes
 } from '@requests/shopify';
 import { collections } from '@data';
-import { ExpectedCollections } from '@types';
 import logger from '../logger';
+import { ExpectedCollections } from '@types';
 
 export const createProducts = async (
   collection: ExpectedCollections
@@ -80,7 +80,7 @@ export const createProducts = async (
       await page.close();
       index++;
     } catch (e) {
-      logger.error(`Error no link: ${link}`, e);
+      logger.error(`Error no link: ${link}`, JSON.stringify(e));
       continue;
     }
   }
