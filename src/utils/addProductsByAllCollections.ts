@@ -1,5 +1,5 @@
 import { COLLECTIONS } from '@constants';
-import { createProducts } from '../index';
+import { createProducts } from 'scripts/createProducts'
 
 export const addProductsByAllCollections = (): void => {
   COLLECTIONS.forEach((collection) => {
