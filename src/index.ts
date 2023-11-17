@@ -1,8 +1,8 @@
 import cron from 'node-cron';
-// import { createProductsByAllCollections } from 'processes/createProductsByAllCollections'
+import { createProductsByAllCollections } from 'processes/createProductsByAllCollections'
 
-// createProductsByAllCollections();
+const everyDayAt8amAnd8pm = '0 8,20 * * *';
 
-cron.schedule('* * * * *', () => {
-  console.log('running a task every minute');
+cron.schedule(everyDayAt8amAnd8pm, () => {
+  createProductsByAllCollections();
 });
