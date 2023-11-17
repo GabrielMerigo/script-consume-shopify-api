@@ -5,9 +5,11 @@
   "main": "index.js",
   "license": "ISC",
   "scripts": {
-    "start": "tsx src/scripts/createProductsByAllCollections.ts",
-    "start:collection": "tsx src/scripts/createProductsByCollection.ts",
+    "dev:collections": "tsx src/processes/createProductsByAllCollections.ts",
+    "dev:collection": "tsx src/processes/createProductsByCollection.ts",
     "dev": "tsx watch src/index.ts",
+    "build": "tsup src --out-dir build",
+    "start": "node build/index.js",
     "lint:check": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
     "prettier:fix": "prettier --config .prettierrc 'src/**/*.ts' --write",
@@ -42,6 +44,7 @@
     "module-alias": "^2.2.3",
     "pino-prettier": "^1.0.1",
     "prettier": "^3.0.3",
+    "tsup": "^7.3.0",
     "tsx": "^3.12.10",
     "typescript": "^5.2.2"
   }
