@@ -1,8 +1,8 @@
 import { addProductsByAllCollections } from '@utils';
-import { createProducts } from '../../src/index';
 import { COLLECTIONS } from '@constants';
+import { createProducts } from '../../src/scripts/createProducts';
 
-jest.mock('../../src/index', () => ({
+jest.mock('../../src/scripts/createProducts', () => ({
   createProducts: jest.fn()
 }));
 
