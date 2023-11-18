@@ -36,7 +36,7 @@ export const collections: Collections = {
     productBodyHtml: `<meta charset=\"utf-8\">\n<div data-mce-fragment=\"1\">\n<div data-mce-fragment=\"1\">\n<meta charset=\"utf-8\">\n<div>\n<div>\n<meta charset=\"utf-8\">\n<div>\n<div><span>Apresentamos ${PRODUCT_TITLE_SELECTOR} uma peça de moda importada que combina estilo e qualidade. Com estampa no busto, gola redonda, manga longa e barra reta, essa camiseta é a escolha perfeita para qualquer ocasião.<\/span><\/div>\n<div>\n<ul>\n<li><span>Camiseta Manga Longa Importada: Importada para garantir qualidade internacional.<\/span><\/li>\n<li><span>Estampa no Busto: Detalhe elegante que acrescenta sofisticação ao seu look.<\/span><\/li>\n<li><span>Gola Redonda: Clássica e versátil, perfeita para combinar com diferentes peças.<\/span><\/li>\n<li><span>Manga Longa e Barra Reta: Adequada para todas as estações e situações.<\/span><\/li>\n<li><span>Modelagem Custom Slim Fit: Ajuste perfeito ao corpo para um visual elegante.<\/span><\/li>\n<li><span>Tecido Sofisticado: Feita de algodão com elastano para conforto e durabilidade.<\/span><\/li>\n<\/ul>\n<\/div>\n<div><span>Vista-se com elegância e qualidade. Adquira ${PRODUCT_TITLE_SELECTOR} agora e eleve o seu estilo a outro nível!<\/span><\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<div id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>\n<div class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>`
   },
   'camisas-manga-curta': {
-    id: 457100296496,
+    id: 466346344752,
     urlHandle: '/camisas/camisa-manga-curta',
     title: 'Camisas Manga Curta',
     sizeType: SizeTypes.SHIRT_LETTER,
