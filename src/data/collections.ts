@@ -11,6 +11,14 @@ export const collections: Collections = {
     productPrice: '159.90',
     productBodyHtml: `<meta charset=\"utf-8\">\n<div data-mce-fragment=\"1\">\n<div style=\"text-align: left;\" data-mce-fragment=\"1\"><span data-mce-fragment=\"1\">Apresentamos o nosso blusão de inverno  ${PRODUCT_TITLE_SELECTOR}, uma peça essencial para o seu guarda-roupa.<\/span><\/div>\n<div style=\"text-align: left;\" data-mce-fragment=\"1\"><span data-mce-fragment=\"1\"><\/span><\/div>\n<div style=\"text-align: left;\" data-mce-fragment=\"1\">\n<ul>\n<li><span data-mce-fragment=\"1\"><strong>Design Elegante<\/strong>: Com um design moderno e elegante, este blusão é perfeito para mantê-lo aquecido e com estilo.<\/span><\/li>\n<li><span data-mce-fragment=\"1\"><strong>Tecido Quente e Confortável<\/strong>: Fabricado com materiais de alta qualidade, o tecido proporciona calor e conforto em dias frios.<\/span><\/li>\n<li><span data-mce-fragment=\"1\"><strong>Versatilidade de Uso<\/strong>: Adequado para diversas ocasiões, desde passeios casuais até aventuras ao ar livre.<\/span><\/li>\n<\/ul>\n<\/div>\n<div style=\"text-align: left;\" data-mce-fragment=\"1\"><span data-mce-fragment=\"1\"><\/span><\/div>\n<div style=\"text-align: left;\" data-mce-fragment=\"1\"><span data-mce-fragment=\"1\">Adquira o seu blusão agora e esteja preparado para enfrentar o inverno com estilo e conforto.<\/span><\/div>\n<div data-mce-fragment=\"1\"><\/div>\n<\/div>\n<div id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>`
   },
+  sueteres: {
+    id: 466347688240,
+    urlHandle: '/inverno/sueter',
+    title: 'Suéteres',
+    sizeType: SizeTypes.SHIRT_LETTER,
+    productPrice: '199.90',
+    productBodyHtml: ``
+  },
   'calcas-jeans': {
     id: 457581003056,
     urlHandle: '/calcas/calca-jeans',
@@ -43,13 +51,37 @@ export const collections: Collections = {
     productPrice: '229.90',
     productBodyHtml: `<meta charset=\"utf-8\">\n<div data-mce-fragment=\"1\">\n<div data-mce-fragment=\"1\">\n<meta charset=\"utf-8\">\n<div>\n<div>\n<meta charset=\"utf-8\">\n<div>\n<div><span>Apresentamos ${PRODUCT_TITLE_SELECTOR} uma peça de moda importada que combina estilo e qualidade. Com estampa no busto, gola redonda, manga curta e barra reta, essa camiseta é a escolha perfeita para qualquer ocasião.<\/span><\/div>\n<div>\n<ul>\n<li><span>Camiseta Manga Curta Importada: Importada para garantir qualidade internacional.<\/span><\/li>\n<li><span>Estampa no Busto: Detalhe elegante que acrescenta sofisticação ao seu look.<\/span><\/li>\n<li><span>Gola Redonda: Clássica e versátil, perfeita para combinar com diferentes peças.<\/span><\/li>\n<li><span>Manga Curta e Barra Reta: Adequada para todas as estações e situações.<\/span><\/li>\n<li><span>Modelagem Custom Slim Fit: Ajuste perfeito ao corpo para um visual elegante.<\/span><\/li>\n<li><span>Tecido Sofisticado: Feita de algodão com elastano para conforto e durabilidade.<\/span><\/li>\n<\/ul>\n<\/div>\n<div><span>Vista-se com elegância e qualidade. Adquira ${PRODUCT_TITLE_SELECTOR} agora e eleve o seu estilo a outro nível!<\/span><\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<div id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>\n<div class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>`
   },
-  camisetas: {
-    id: 457099477296,
+  'camisetas-importadas': {
+    id: 466346541360,
     urlHandle: '/camisetas/camisetas-importadas',
-    title: 'Camisetas',
+    title: 'Camisetas Importadas',
     sizeType: SizeTypes.SHIRT_LETTER,
     productPrice: '89.90',
     productBodyHtml: `<meta charset=\"utf-8\">\n<div data-mce-fragment=\"1\">\n<div data-mce-fragment=\"1\">\n<span data-mce-fragment=\"1\">Experiencie o luxo discreto com ${PRODUCT_TITLE_SELECTOR}. <\/span><span data-mce-fragment=\"1\">Cada costura é um testemunho da qualidade impecável e atenção aos detalhes que a marca representa. Seja para um evento especial ou uma ocasião formal, esta camisa é um símbolo de sofisticação minimalista. Vista a excelência.<\/span>\n<\/div>\n<\/div>\n<div id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>`
+  },
+  'camisetas-nacionais': {
+    id: 466346639664,
+    urlHandle: '/camisetas/camisetas-nacionais',
+    title: 'Camisetas Nacionais',
+    sizeType: SizeTypes.SHIRT_LETTER,
+    productPrice: '69.90',
+    productBodyHtml: ``
+  },
+  'camisetas-plus-size': {
+    id: 466346803504,
+    urlHandle: '/camisetas/plus-size-c',
+    title: 'Camisetas Plus Size',
+    sizeType: SizeTypes.SHIRT_LETTER,
+    productPrice: '69.90',
+    productBodyHtml: ``
+  },
+  'camisetas-regatas': {
+    id: 466346836272,
+    urlHandle: '/camisetas/regata',
+    title: 'Camisetas Regatas',
+    sizeType: SizeTypes.SHIRT_LETTER,
+    productPrice: '59.90',
+    productBodyHtml: ``
   },
   polos: {
     id: 457095774512,

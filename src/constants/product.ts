@@ -30,11 +30,11 @@ const VENDOR_CODES = [
 
 const COLLECTIONS = [
   'blusoes',
+  'sueteres',
   'calcas-jeans',
   'calcas-sarja',
   'camisas-manga-longa',
   'camisas-manga-curta',
-  'camisetas',
   'polos',
   'cuecas',
   'kit-cuecas',
@@ -42,7 +42,11 @@ const COLLECTIONS = [
   'bermuda-sarja',
   'bermuda-short-sarja',
   // 'bermuda-linho', I didnt add because we dont have a good quantity of products in DROPAQUI
-  'bermuda-tactel'
+  'bermuda-tactel',
+  'camisetas-importadas',
+  'camisetas-nacionais',
+  'camisetas-plus-size',
+  'camisetas-regatas'
 ] as const;
 
 const METAFIELD_TYPE = 'list.single_line_text_field';
