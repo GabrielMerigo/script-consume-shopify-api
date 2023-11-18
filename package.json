@@ -4,6 +4,16 @@
   "description": "",
   "main": "index.js",
   "license": "ISC",
+  "husk": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "yarn lint --fix"
+    ]
+  },
   "scripts": {
     "dev:collections": "tsx src/processes/createProductsByAllCollections.ts",
     "dev:collection": "tsx src/processes/createProductsByCollection.ts",
@@ -32,6 +42,7 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
+    "lint-staged": "^15.1.0",
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
     "@types/jest": "^29.5.6",

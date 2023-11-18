@@ -15,6 +15,8 @@ export const getProductsInformationBasedOnUrl = async ({
     executablePath: '/usr/bin/chromium-browser'
   });
 
+  const data = '';
+
   const page = await browser.newPage();
   await page.goto(url);
   await page.waitForSelector(PRODUCT_COLLECTION_SELECTOR_ID);
