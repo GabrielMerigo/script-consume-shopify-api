@@ -41,7 +41,6 @@ const COLLECTIONS = [
   'bermuda-jeans',
   'bermuda-sarja',
   'bermuda-short-sarja',
-  // 'bermuda-linho', I didnt add because we dont have a good quantity of products in DROPAQUI
   'bermuda-tactel',
   'camisetas-importadas',
   'camisetas-nacionais',
