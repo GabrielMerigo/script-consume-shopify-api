@@ -1,6 +1,5 @@
 import { addProductsByAllCollections } from '@utils';
 
-
-export const createProductsByAllCollections = () => {
+export const createProductsByAllCollections = (): void => {
   addProductsByAllCollections();
-}
+};
