@@ -1,4 +1,4 @@
-import { removeEmojiFromText } from '../../src/utils/removeEmojiFromText';
+import { removeEmojiFromText } from '@utils';
 
 describe('removeEmojiFromText', () => {
   it('should remove all emojis from the text', () => {

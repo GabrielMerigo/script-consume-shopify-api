@@ -44,5 +44,9 @@ export const vendors: Vendors = {
   GUCCI: {
     code: 'GUCCI',
     name: 'Gucci'
+  },
+  JJ: {
+    code: 'JJ',
+    name: 'John John'
   }
 };

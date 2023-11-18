@@ -19,6 +19,7 @@ const VENDOR_CODES = [
   'CK',
   'HB',
   'TH',
+  'JJ',
   'ACT',
   'DG',
   'DIOR',
@@ -29,11 +30,22 @@ const VENDOR_CODES = [
 
 const COLLECTIONS = [
   'blusoes',
+  'sueteres',
   'calcas-jeans',
   'calcas-sarja',
-  'camisas-sociais',
-  'camisetas',
-  'polos'
+  'camisas-manga-longa',
+  'camisas-manga-curta',
+  'polos',
+  'cuecas',
+  'kit-cuecas',
+  'bermuda-jeans',
+  'bermuda-sarja',
+  'bermuda-short-sarja',
+  'bermuda-tactel',
+  'camisetas-importadas',
+  'camisetas-nacionais',
+  'camisetas-plus-size',
+  'camisetas-regatas'
 ] as const;
 
 const METAFIELD_TYPE = 'list.single_line_text_field';
