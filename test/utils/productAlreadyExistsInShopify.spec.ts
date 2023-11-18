@@ -27,9 +27,6 @@ const mockNotFoundProduct: ProductToInsertIntoShopify =
     [new MockVariant('M', '12.00', 'NOT_FOUND')]
   );
 
-const mockEmptyVariantsProduct: ProductToInsertIntoShopify =
-  new MockProductToInsertIntoShopify();
-
 const mockFoundShopifyProduct = new MockShopifyProduct(
   undefined,
   undefined,
