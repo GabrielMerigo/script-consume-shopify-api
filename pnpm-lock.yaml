@@ -44,7 +44,7 @@ devDependencies:
     specifier: ^17.7.0
     version: 17.8.0
   '@types/jest':
-    specifier: ^29.5.5
+    specifier: ^29.5.6
     version: 29.5.6
   '@types/node':
     specifier: ^20.6.0
@@ -1301,11 +1301,6 @@ packages:
       - supports-color
     dev: false
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> 0ee09ad705559e8b60f9814818fd50b476d8c459
   /@puppeteer/browsers@1.8.0:
     resolution: {integrity: sha512-TkRHIV6k2D8OlUe8RtG+5jgOF/H98Myx0M6AOafC8DdNVOFiBSFa5cpRDtpm8LXOa9sVwe0+e6Q3FC56X/DZfg==}
     engines: {node: '>=16.3.0'}
@@ -1322,7 +1317,6 @@ packages:
       - supports-color
     dev: false
 
-<<<<<<< HEAD
   /@rollup/rollup-android-arm-eabi@4.4.1:
     resolution: {integrity: sha512-Ss4suS/sd+6xLRu+MLCkED2mUrAyqHmmvZB+zpzZ9Znn9S8wCkTQCJaQ8P8aHofnvG5L16u9MVnJjCqioPErwQ==}
     cpu: [arm]
@@ -1419,9 +1413,6 @@ packages:
     dev: true
     optional: true
 
->>>>>>> Stashed changes
-=======
->>>>>>> 0ee09ad705559e8b60f9814818fd50b476d8c459
   /@sinclair/typebox@0.27.8:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
 
