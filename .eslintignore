@@ -1,5 +1,5 @@
-.eslintrc.js
-.prettierrc.js
+.eslintrc
+.prettierrc
 .env
 node_modules
 dist
