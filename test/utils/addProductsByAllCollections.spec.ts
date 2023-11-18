@@ -5,6 +5,11 @@ import { createProducts } from '../../src/scripts/createProducts';
 jest.mock('../../src/scripts/createProducts', () => ({
   createProducts: jest.fn()
 }));
+jest.mock('../../src/services/pino', () => ({
+  logger: {
+    info: jest.fn()
+  }
+}));
 
 describe('addProductsByAllCollections', () => {
   it(`should call createProducts ${COLLECTIONS.length} times`, async () => {
