@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+chmod ug+x .husky/*
+chmod ug+x .git/hooks/*
 pnpm run lint:check && pnpm run test

@@ -21,6 +21,8 @@ export const getProductsInformationBasedOnUrl = async ({
 
   const productsLinks = await getProductsLink(page);
 
+  console.log('test');
+
   return {
     productsLinks,
     browser
