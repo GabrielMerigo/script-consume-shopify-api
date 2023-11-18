@@ -4,16 +4,6 @@
   "description": "",
   "main": "index.js",
   "license": "ISC",
-  "husk": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.ts": [
-      "yarn lint --fix"
-    ]
-  },
   "scripts": {
     "dev:collections": "tsx src/processes/createProductsByAllCollections.ts",
     "dev:collection": "tsx src/processes/createProductsByCollection.ts",
@@ -24,10 +14,10 @@
     "lint:fix": "eslint src --ext .ts --fix",
     "prettier:fix": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "prettier:check": "npx prettier --check .",
-    "husky:prepare": "husky install",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage"
+    "test:cov": "jest --coverage",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@jest/types": "^29.6.3",
@@ -53,7 +43,7 @@
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "jest": "^29.7.0",
     "module-alias": "^2.2.3",
     "pino-prettier": "^1.0.1",

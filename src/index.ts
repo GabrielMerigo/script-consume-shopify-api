@@ -1,5 +1,5 @@
 import cron from 'node-cron';
-import { addProductsByAllCollections } from '@utils'
+import { addProductsByAllCollections } from '@utils';
 
 const everyDayAt8amAnd12am = '0 8,00 * * *';
 
