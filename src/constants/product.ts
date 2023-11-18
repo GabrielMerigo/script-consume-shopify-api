@@ -19,6 +19,7 @@ const VENDOR_CODES = [
   'CK',
   'HB',
   'TH',
+  'JJ',
   'ACT',
   'DG',
   'DIOR',
