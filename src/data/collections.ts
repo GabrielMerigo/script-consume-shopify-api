@@ -105,7 +105,7 @@ export const collections: Collections = {
     sizeType: SizeTypes.SHIRT_LETTER,
     title: 'Kit Cuecas',
     productPrice: '90.00',
-    productBodyHtml: `<p>Apresentamos o nosso Kit de Cuecas ${PRODUCT_TITLE_SELECTOR}, uma coleção essencial para o seu guarda-roupa.</p><ul><li>Design Variado e Confortável: Com designs modernos e confortáveis, este kit de cuecas oferece opções para todos os estilos e mantém você confortável em todas as ocasiões.</li><li>Tecidos Respiráveis e Macios: Fabricado com materiais de alta qualidade, os tecidos proporcionam respirabilidade e maciez, garantindo conforto ao longo do dia.</li><li>Versatilidade de Uso: Adequado para diversas situações, desde o dia a dia até momentos especiais, este kit é versátil e prático.</li></ul><p>Adquira o seu Kit de Cuecas agora e esteja preparado para enfrentar qualquer ocasião com conforto e estilo.</p>`,
+    productBodyHtml: `<p>Apresentamos o nosso Kit de Cuecas ${PRODUCT_TITLE_SELECTOR}, uma coleção essencial para o seu guarda-roupa.</p><ul><li>Design Variado e Confortável: Com designs modernos e confortáveis, este kit de cuecas oferece opções para todos os estilos e mantém você confortável em todas as ocasiões.</li><li>Tecidos Respiráveis e Macios: Fabricado com materiais de alta qualidade, os tecidos proporcionam respirabilidade e maciez, garantindo conforto ao longo do dia.</li><li>Versatilidade de Uso: Adequado para diversas situações, desde o dia a dia até momentos especiais, este kit é versátil e prático.</li></ul><p>Adquira o seu Kit de Cuecas agora e esteja preparado para enfrentar qualquer ocasião com conforto e estilo.</p>`
   },
   'bermuda-sarja': {
     id: 466313969968,
@@ -113,7 +113,7 @@ export const collections: Collections = {
     sizeType: SizeTypes.PANTS_NUMBER,
     title: 'Bermuda Sarja',
     productPrice: '109.00',
-    productBodyHtml: `<p>Apresentamos a nossa Bermuda de Sarja ${PRODUCT_TITLE_SELECTOR}, uma peça versátil para compor o seu guarda-roupa.</p><ul><li>Estilo Elegante: Com um design moderno e elegante, esta bermuda de sarja é perfeita para criar looks sofisticados e casuais.</li><li>Tecido Durável e Confortável: Fabricada com materiais de alta qualidade, a sarja proporciona durabilidade e conforto, tornando-a ideal para diversas atividades.</li><li>Versatilidade de Uso: Adequada para diferentes ocasiões, desde eventos casuais até momentos descontraídos, esta bermuda é uma escolha versátil.</li></ul><p>Adquira a sua Bermuda de Sarja agora e adicione um toque de estilo duradouro ao seu guarda-roupa.</p>`,
+    productBodyHtml: `<p>Apresentamos a nossa Bermuda de Sarja ${PRODUCT_TITLE_SELECTOR}, uma peça versátil para compor o seu guarda-roupa.</p><ul><li>Estilo Elegante: Com um design moderno e elegante, esta bermuda de sarja é perfeita para criar looks sofisticados e casuais.</li><li>Tecido Durável e Confortável: Fabricada com materiais de alta qualidade, a sarja proporciona durabilidade e conforto, tornando-a ideal para diversas atividades.</li><li>Versatilidade de Uso: Adequada para diferentes ocasiões, desde eventos casuais até momentos descontraídos, esta bermuda é uma escolha versátil.</li></ul><p>Adquira a sua Bermuda de Sarja agora e adicione um toque de estilo duradouro ao seu guarda-roupa.</p>`
   },
   'bermuda-short-sarja': {
     id: 466314297648,
