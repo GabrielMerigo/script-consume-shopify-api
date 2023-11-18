@@ -4,7 +4,8 @@ import logger from '../../logger';
 
 const envSchema = z.object({
   SHOPIFY_ACCESS_TOKEN: z.string(),
-  STORE_ID: z.string()
+  STORE_ID: z.string(),
+  ENV: z.string()
 });
 
 const _env = envSchema.safeParse(process.env);

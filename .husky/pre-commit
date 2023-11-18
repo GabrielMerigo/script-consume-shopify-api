@@ -1,4 +1,9 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-pnpm run lint:check && pnpm run test
+chmod +x .husky/commit-msg
+npm test
+npm run lint:fix
+npm run lint:check
+npm run prettier:fix
+npm run prettier:check
