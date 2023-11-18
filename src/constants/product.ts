@@ -31,9 +31,17 @@ const COLLECTIONS = [
   'blusoes',
   'calcas-jeans',
   'calcas-sarja',
-  'camisas-sociais',
+  'camisas-manga-longa',
+  'camisas-manga-curta',
   'camisetas',
-  'polos'
+  'polos',
+  'cuecas',
+  'kit-cuecas',
+  'bermuda-jeans',
+  'bermuda-sarja',
+  'bermuda-short-sarja',
+  // 'bermuda-linho', I didnt add because we dont have a good quantity of products in DROPAQUI
+  'bermuda-tactel'
 ] as const;
 
 const METAFIELD_TYPE = 'list.single_line_text_field';

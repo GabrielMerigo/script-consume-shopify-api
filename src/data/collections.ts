@@ -27,13 +27,21 @@ export const collections: Collections = {
     productPrice: '199.90',
     productBodyHtml: `<meta charset=\"utf-8\">\n<div data-mce-fragment=\"1\">\n<div data-mce-fragment=\"1\">\n<meta charset=\"utf-8\">\n<div>\n<div><span>Apresentamos a icônica ${PRODUCT_TITLE_SELECTOR}:<\/span><\/div>\n<div>\n<ul>\n<li><span>Tecido Durável: Fabricada com sarja de alta qualidade, garantindo resistência e longevidade.<\/span><\/li>\n<\/ul>\n<\/div>\n<div><span>Esta calça é a fusão perfeita entre moda, conforto e consciência ambiental. Seja para ocasiões casuais ou encontros, a ${PRODUCT_TITLE_SELECTOR} oferece estilo e qualidade excepcionais. Com sua sarja de alta durabilidade, você estará pronto para enfrentar qualquer desafio com um toque de elegância.<\/span><\/div>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>\n<div id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>`
   },
-  'camisas-sociais': {
-    id: 457100296496,
+  'camisas-manga-longa': {
+    id: 466313543984,
     urlHandle: '/camisas/camisa-manga-longa',
-    title: 'Camisas Sociais',
+    title: 'Camisas Manga Longa',
     sizeType: SizeTypes.SHIRT_LETTER,
     productPrice: '229.90',
     productBodyHtml: `<meta charset=\"utf-8\">\n<div data-mce-fragment=\"1\">\n<div data-mce-fragment=\"1\">\n<meta charset=\"utf-8\">\n<div>\n<div>\n<meta charset=\"utf-8\">\n<div>\n<div><span>Apresentamos ${PRODUCT_TITLE_SELECTOR} uma peça de moda importada que combina estilo e qualidade. Com estampa no busto, gola redonda, manga longa e barra reta, essa camiseta é a escolha perfeita para qualquer ocasião.<\/span><\/div>\n<div>\n<ul>\n<li><span>Camiseta Manga Longa Importada: Importada para garantir qualidade internacional.<\/span><\/li>\n<li><span>Estampa no Busto: Detalhe elegante que acrescenta sofisticação ao seu look.<\/span><\/li>\n<li><span>Gola Redonda: Clássica e versátil, perfeita para combinar com diferentes peças.<\/span><\/li>\n<li><span>Manga Longa e Barra Reta: Adequada para todas as estações e situações.<\/span><\/li>\n<li><span>Modelagem Custom Slim Fit: Ajuste perfeito ao corpo para um visual elegante.<\/span><\/li>\n<li><span>Tecido Sofisticado: Feita de algodão com elastano para conforto e durabilidade.<\/span><\/li>\n<\/ul>\n<\/div>\n<div><span>Vista-se com elegância e qualidade. Adquira ${PRODUCT_TITLE_SELECTOR} agora e eleve o seu estilo a outro nível!<\/span><\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<div id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>\n<div class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>`
+  },
+  'camisas-manga-curta': {
+    id: 457100296496,
+    urlHandle: '/camisas/camisa-manga-curta',
+    title: 'Camisas Manga Curta',
+    sizeType: SizeTypes.SHIRT_LETTER,
+    productPrice: '229.90',
+    productBodyHtml: `<meta charset=\"utf-8\">\n<div data-mce-fragment=\"1\">\n<div data-mce-fragment=\"1\">\n<meta charset=\"utf-8\">\n<div>\n<div>\n<meta charset=\"utf-8\">\n<div>\n<div><span>Apresentamos ${PRODUCT_TITLE_SELECTOR} uma peça de moda importada que combina estilo e qualidade. Com estampa no busto, gola redonda, manga curta e barra reta, essa camiseta é a escolha perfeita para qualquer ocasião.<\/span><\/div>\n<div>\n<ul>\n<li><span>Camiseta Manga Curta Importada: Importada para garantir qualidade internacional.<\/span><\/li>\n<li><span>Estampa no Busto: Detalhe elegante que acrescenta sofisticação ao seu look.<\/span><\/li>\n<li><span>Gola Redonda: Clássica e versátil, perfeita para combinar com diferentes peças.<\/span><\/li>\n<li><span>Manga Curta e Barra Reta: Adequada para todas as estações e situações.<\/span><\/li>\n<li><span>Modelagem Custom Slim Fit: Ajuste perfeito ao corpo para um visual elegante.<\/span><\/li>\n<li><span>Tecido Sofisticado: Feita de algodão com elastano para conforto e durabilidade.<\/span><\/li>\n<\/ul>\n<\/div>\n<div><span>Vista-se com elegância e qualidade. Adquira ${PRODUCT_TITLE_SELECTOR} agora e eleve o seu estilo a outro nível!<\/span><\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/div>\n<div id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>\n<div class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>`
   },
   camisetas: {
     id: 457099477296,
@@ -50,5 +58,53 @@ export const collections: Collections = {
     sizeType: SizeTypes.SHIRT_LETTER,
     productPrice: '139.90',
     productBodyHtml: `<meta charset=\"utf-8\">\n<div data-mce-fragment=\"1\">\n<div data-mce-fragment=\"1\">\n<meta charset=\"utf-8\">\n<div>\n<div><span>Apresentamos a ${PRODUCT_TITLE_SELECTOR}, uma combinação impecável de estilo e qualidade.<\/span><\/div>\n<div>\n<ul>\n<li><span>Modelagem: Custom Fit, proporcionando um caimento sob medida que se adapta confortavelmente ao corpo.<\/span><\/li>\n<li><span>Tecido: Confeccionada em piquet 100% algodão, oferecendo um toque suave e agradável à pele.<\/span><\/li>\n<li><span>Fio 30: A utilização do fio 30 confere durabilidade e resistência à peça, garantindo que ela mantenha sua elegância ao longo do tempo.<\/span><\/li>\n<li><span>Detalhes de Qualidade: Os acabamentos refinados e a atenção aos detalhes tornam esta camisa polo uma escolha que exala classe.<\/span><\/li>\n<\/ul>\n<\/div>\n<div><span><\/span><\/div>\n<div><span>A ${PRODUCT_TITLE_SELECTOR} é uma fusão perfeita entre conforto e estilo, tornando-a uma peça versátil que se encaixa tanto em ocasiões casuais quanto em momentos mais formais. Adicione um toque de elegância atemporal ao seu guarda-roupa com esta peça única.<\/span><\/div>\n<\/div>\n<\/div>\n<\/div>\n<div class=\"acfifjfajpekbmhmjppnmmjgmhjkildl\" id=\"acfifjfajpekbmhmjppnmmjgmhjkildl\"><\/div>`
+  },
+  cuecas: {
+    id: 466312986928,
+    urlHandle: '/kits/mcuecas',
+    productBodyHtml: '',
+    sizeType: SizeTypes.SHIRT_LETTER,
+    title: 'Cuecas',
+    productPrice: '35.00'
+  },
+  'kit-cuecas': {
+    id: 466313380144,
+    urlHandle: '/kits/conjuntos',
+    productBodyHtml: '',
+    sizeType: SizeTypes.SHIRT_LETTER,
+    title: 'Kit Cuecas',
+    productPrice: '90.00'
+  },
+  'bermuda-sarja': {
+    id: 466313969968,
+    urlHandle: '/kits/bermuda-gt-gt-sarja',
+    productBodyHtml: '',
+    sizeType: SizeTypes.PANTS_NUMBER,
+    title: 'Bermuda Sarja',
+    productPrice: '109.00'
+  },
+  'bermuda-short-sarja': {
+    id: 466314297648,
+    urlHandle: '/kits/bermudas-gt-short',
+    productBodyHtml: '',
+    sizeType: SizeTypes.PANTS_NUMBER,
+    title: 'Bermuda Short Sarja',
+    productPrice: '109.00'
+  },
+  'bermuda-jeans': {
+    id: 466314035504,
+    urlHandle: '/kits/bermuda-gt-jeans',
+    productBodyHtml: '',
+    sizeType: SizeTypes.PANTS_NUMBER,
+    title: 'Bermuda Jeans',
+    productPrice: '119.00'
+  },
+  'bermuda-tactel': {
+    id: 466314527024,
+    urlHandle: '/kits/bermuda-gt-gt-tactel',
+    productBodyHtml: '',
+    sizeType: SizeTypes.PANTS_NUMBER,
+    title: 'Bermuda Tactel',
+    productPrice: '79.00'
   }
 };
