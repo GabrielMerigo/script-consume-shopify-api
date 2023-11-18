@@ -5,7 +5,7 @@ import {
   UpdateProductStatus
 } from '@types';
 import { createSoldOutVariant, createVariantsSize } from '@utils';
-import logger from '../../../logger';
+import { logger } from '@services/pino';
 
 export const updateProductSizes = async (
   product: ShopifyProduct,

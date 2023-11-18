@@ -7,8 +7,8 @@ jest.mock('../../src/scripts/createProducts', () => ({
 }));
 
 describe('addProductsByAllCollections', () => {
-  it(`should call createProducts ${COLLECTIONS.length} times`, () => {
-    addProductsByAllCollections();
+  it(`should call createProducts ${COLLECTIONS.length} times`, async () => {
+    await addProductsByAllCollections();
     expect(createProducts).toHaveBeenCalledTimes(COLLECTIONS.length);
   });
 

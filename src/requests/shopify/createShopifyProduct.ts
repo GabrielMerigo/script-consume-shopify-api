@@ -1,6 +1,6 @@
 import { instance } from '@services/axios';
 import { ProductCreationResponse, ProductToInsertIntoShopify } from '@types';
-import logger from '../../../logger';
+import { logger } from '@services/pino';
 
 export const createShopifyProduct = async (
   product: ProductToInsertIntoShopify

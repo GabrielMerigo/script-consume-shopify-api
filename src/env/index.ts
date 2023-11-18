@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { z } from 'zod';
-import logger from '../../logger';
+import { logger } from '@services/pino';
 
 const envSchema = z.object({
   SHOPIFY_ACCESS_TOKEN: z.string(),

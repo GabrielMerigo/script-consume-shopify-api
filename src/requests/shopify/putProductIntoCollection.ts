@@ -1,5 +1,5 @@
 import { instance } from '@services/axios';
-import logger from '../../../logger';
+import { logger } from '@services/pino';
 
 export const putProductIntoCollection = async (
   productId: number,

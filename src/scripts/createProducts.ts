@@ -14,7 +14,7 @@ import {
 import { collections } from '@data';
 
 import { ExpectedCollections } from '@types';
-import logger from '../../logger';
+import { logger } from '@services/pino';
 
 export const createProducts = async (
   collection: ExpectedCollections

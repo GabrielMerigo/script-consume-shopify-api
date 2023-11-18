@@ -1,6 +1,11 @@
 import pino from 'pino';
 
 export const logger = pino({
-  level: 'debug',
-  timestamp: pino.stdTimeFunctions.isoTime
+  transport: {
+    target: 'pino-pretty',
+    options: {
+      translateTime: 'SYS:dd-mm-yyyy HH:mm:ss',
+      ignore: 'pid,hostname'
+    }
+  }
 });
