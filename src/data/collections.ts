@@ -105,19 +105,19 @@ export const collections: Collections = {
     sizeType: SizeTypes.SHIRT_LETTER,
     title: 'Kit Cuecas',
     productPrice: '90.00',
-    productBodyHtml: `<p>Apresentamos o nosso Kit de Cuecas ${PRODUCT_TITLE_SELECTOR}, uma coleção essencial para o seu guarda-roupa.</p><ul><li>Design Variado e Confortável: Com designs modernos e confortáveis, este kit de cuecas oferece opções para todos os estilos e mantém você confortável em todas as ocasiões.</li><li>Tecidos Respiráveis e Macios: Fabricado com materiais de alta qualidade, os tecidos proporcionam respirabilidade e maciez, garantindo conforto ao longo do dia.</li><li>Versatilidade de Uso: Adequado para diversas situações, desde o dia a dia até momentos especiais, este kit é versátil e prático.</li></ul><p>Adquira o seu Kit de Cuecas agora e esteja preparado para enfrentar qualquer ocasião com conforto e estilo.</p>`,
+    productBodyHtml: `<p>Apresentamos o nosso Kit de Cuecas ${PRODUCT_TITLE_SELECTOR}, uma coleção essencial para o seu guarda-roupa.</p><ul><li>Design Variado e Confortável: Com designs modernos e confortáveis, este kit de cuecas oferece opções para todos os estilos e mantém você confortável em todas as ocasiões.</li><li>Tecidos Respiráveis e Macios: Fabricado com materiais de alta qualidade, os tecidos proporcionam respirabilidade e maciez, garantindo conforto ao longo do dia.</li><li>Versatilidade de Uso: Adequado para diversas situações, desde o dia a dia até momentos especiais, este kit é versátil e prático.</li></ul><p>Adquira o seu Kit de Cuecas agora e esteja preparado para enfrentar qualquer ocasião com conforto e estilo.</p>`
   },
   'bermuda-sarja': {
     id: 466313969968,
-    urlHandle: '/kits/bermuda-gt-gt-sarja',
+    urlHandle: '/bermudas/bermuda-gt-gt-sarja',
     sizeType: SizeTypes.PANTS_NUMBER,
     title: 'Bermuda Sarja',
     productPrice: '109.00',
-    productBodyHtml: `<p>Apresentamos a nossa Bermuda de Sarja ${PRODUCT_TITLE_SELECTOR}, uma peça versátil para compor o seu guarda-roupa.</p><ul><li>Estilo Elegante: Com um design moderno e elegante, esta bermuda de sarja é perfeita para criar looks sofisticados e casuais.</li><li>Tecido Durável e Confortável: Fabricada com materiais de alta qualidade, a sarja proporciona durabilidade e conforto, tornando-a ideal para diversas atividades.</li><li>Versatilidade de Uso: Adequada para diferentes ocasiões, desde eventos casuais até momentos descontraídos, esta bermuda é uma escolha versátil.</li></ul><p>Adquira a sua Bermuda de Sarja agora e adicione um toque de estilo duradouro ao seu guarda-roupa.</p>`,
+    productBodyHtml: `<p>Apresentamos a nossa Bermuda de Sarja ${PRODUCT_TITLE_SELECTOR}, uma peça versátil para compor o seu guarda-roupa.</p><ul><li>Estilo Elegante: Com um design moderno e elegante, esta bermuda de sarja é perfeita para criar looks sofisticados e casuais.</li><li>Tecido Durável e Confortável: Fabricada com materiais de alta qualidade, a sarja proporciona durabilidade e conforto, tornando-a ideal para diversas atividades.</li><li>Versatilidade de Uso: Adequada para diferentes ocasiões, desde eventos casuais até momentos descontraídos, esta bermuda é uma escolha versátil.</li></ul><p>Adquira a sua Bermuda de Sarja agora e adicione um toque de estilo duradouro ao seu guarda-roupa.</p>`
   },
   'bermuda-short-sarja': {
     id: 466314297648,
-    urlHandle: '/kits/bermudas-gt-short',
+    urlHandle: '/bermudas/bermudas-gt-short',
     productBodyHtml: `<p data-mce-fragment="1">Apresentamos o nosso Bermuda Short de Sarja ${PRODUCT_TITLE_SELECTOR}, uma escolha versátil para complementar o seu estilo.</p><ul data-mce-fragment="1"><li data-mce-fragment="1">Estilo Casual e Despojado: Com um design descontraído, este Bermuda Short de Sarja é perfeito para criar looks casuais e confortáveis.</li><li data-mce-fragment="1">Tecido Leve e Confortável: Fabricado com materiais de alta qualidade, o tecido leve oferece conforto durante todo o dia, ideal para os dias mais quentes.</li><li data-mce-fragment="1">Versatilidade de Uso: Adequado para diversas ocasiões, desde passeios descontraídos até eventos informais, este Bermuda Short é uma peça versátil.</li></ul><p data-mce-fragment="1">Adquira o seu Bermuda Short de Sarja agora e adicione um toque de descontração e estilo ao seu guarda-roupa.</p>`,
     sizeType: SizeTypes.PANTS_NUMBER,
     title: 'Bermuda Short Sarja',
@@ -125,7 +125,7 @@ export const collections: Collections = {
   },
   'bermuda-jeans': {
     id: 466314035504,
-    urlHandle: '/kits/bermuda-gt-jeans',
+    urlHandle: '/bermudas/bermuda-gt-gt-sarja',
     productBodyHtml: `<p data-mce-fragment="1">Apresentamos a nossa Bermuda Jeans ${PRODUCT_TITLE_SELECTOR}, uma peça clássica e versátil para integrar o seu guarda-roupa.</p><ul data-mce-fragment="1"><li data-mce-fragment="1">Estilo Atemporal: Com um design clássico de jeans, esta bermuda proporciona um visual atemporal, adequado para diversas ocasiões.</li><li data-mce-fragment="1">Tecido Resistente e Durável: Fabricada com denim de alta qualidade, a bermuda jeans oferece resistência e durabilidade, tornando-a uma escolha robusta.</li><li data-mce-fragment="1">Versatilidade de Uso: Ideal para eventos casuais e atividades do dia a dia, esta bermuda jeans é versátil e fácil de combinar.</li></ul><p data-mce-fragment="1">Adquira a sua Bermuda Jeans agora e adicione um toque de estilo clássico ao seu guarda-roupa.</p>`,
     sizeType: SizeTypes.PANTS_NUMBER,
     title: 'Bermuda Jeans',
@@ -133,7 +133,7 @@ export const collections: Collections = {
   },
   'bermuda-tactel': {
     id: 466314527024,
-    urlHandle: '/kits/bermuda-gt-gt-tactel',
+    urlHandle: '/bermudas/bermuda-gt-gt-tactel',
     sizeType: SizeTypes.PANTS_NUMBER,
     title: 'Bermuda Tactel',
     productPrice: '79.00',
