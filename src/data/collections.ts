@@ -125,7 +125,7 @@ export const collections: Collections = {
   },
   'bermuda-jeans': {
     id: 466314035504,
-    urlHandle: '/bermudas/bermuda-gt-gt-sarja',
+    urlHandle: '/bermudas/bermuda-gt-jeans',
     productBodyHtml: `<p data-mce-fragment="1">Apresentamos a nossa Bermuda Jeans ${PRODUCT_TITLE_SELECTOR}, uma peça clássica e versátil para integrar o seu guarda-roupa.</p><ul data-mce-fragment="1"><li data-mce-fragment="1">Estilo Atemporal: Com um design clássico de jeans, esta bermuda proporciona um visual atemporal, adequado para diversas ocasiões.</li><li data-mce-fragment="1">Tecido Resistente e Durável: Fabricada com denim de alta qualidade, a bermuda jeans oferece resistência e durabilidade, tornando-a uma escolha robusta.</li><li data-mce-fragment="1">Versatilidade de Uso: Ideal para eventos casuais e atividades do dia a dia, esta bermuda jeans é versátil e fácil de combinar.</li></ul><p data-mce-fragment="1">Adquira a sua Bermuda Jeans agora e adicione um toque de estilo clássico ao seu guarda-roupa.</p>`,
     sizeType: SizeTypes.PANTS_NUMBER,
     title: 'Bermuda Jeans',
