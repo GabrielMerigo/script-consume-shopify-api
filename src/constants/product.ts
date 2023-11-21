@@ -35,7 +35,9 @@ const VENDOR_CODES = [
   'NIKE',
   'RV',
   'PHILIPP PLEIN',
-  'DSQUARED'
+  'DSQUARED',
+  'ARMANI',
+  'BURBERRY'
 ] as const;
 
 const COLLECTIONS = [

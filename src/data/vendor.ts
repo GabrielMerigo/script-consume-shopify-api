@@ -84,5 +84,13 @@ export const vendors: Vendors = {
   DSQUARED: {
     code: 'DSQUARED',
     name: 'Dsquared'
+  },
+  ARMANI: {
+    code: 'ARMANI',
+    name: 'Armani'
+  },
+  BURBERRY: {
+    code: 'BURBERRY',
+    name: 'Burberry'
   }
 };
