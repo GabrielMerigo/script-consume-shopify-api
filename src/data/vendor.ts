@@ -57,6 +57,10 @@ export const vendors: Vendors = {
     code: 'RSV',
     name: 'Reserva'
   },
+  RV: {
+    code: 'RV',
+    name: 'Reserva'
+  },
   ELLUS: {
     code: 'ELLUS',
     name: 'Ellus'
@@ -72,5 +76,13 @@ export const vendors: Vendors = {
   NIKE: {
     code: 'NIKE',
     name: 'Nike'
+  },
+  'PHILIPP PLEIN': {
+    code: 'PHILIPP PLEIN',
+    name: 'Philipp Plein'
+  },
+  DSQUARED: {
+    code: 'DSQUARED',
+    name: 'Dsquared'
   }
 };

@@ -28,10 +28,14 @@ const VENDOR_CODES = [
   'GUCCI',
   'OSK',
   'RSV',
+  'RV',
   'ELLUS',
   'COLCCI',
   'COCA COLA',
-  'NIKE'
+  'NIKE',
+  'RV',
+  'PHILIPP PLEIN',
+  'DSQUARED'
 ] as const;
 
 const COLLECTIONS = [
