@@ -25,7 +25,19 @@ const VENDOR_CODES = [
   'DIOR',
   'ABERCROMBIE',
   'DIESEL',
-  'GUCCI'
+  'GUCCI',
+  'OSK',
+  'RSV',
+  'RV',
+  'ELLUS',
+  'COLCCI',
+  'COCA COLA',
+  'NIKE',
+  'RV',
+  'PHILIPP PLEIN',
+  'DSQUARED',
+  'ARMANI',
+  'BURBERRY'
 ] as const;
 
 const COLLECTIONS = [
