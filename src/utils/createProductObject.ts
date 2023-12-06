@@ -9,9 +9,10 @@ import {
   createVariantsSize,
   getProductDescriptionByCollection,
   getVendorByProductInfo,
-  removeEmojiFromText,
+  removeEmojiAndSymbolsFromText,
   formatProductTitleVendor,
-  createShopifyMetafield
+  createShopifyMetafield,
+  capitalizeFirstLetterOfEachWord
 } from '@utils';
 
 export const createProductObject = (
@@ -20,11 +21,13 @@ export const createProductObject = (
   productSizes: string[],
   collection: ExpectedCollections
 ): ProductToInsertIntoShopify => {
-  const titleWithoutEmoji = removeEmojiFromText(productInfoFromHTML.item_name);
+  const titleWithoutEmoji = removeEmojiAndSymbolsFromText(
+    productInfoFromHTML.item_name
+  );
   const titleFormatted = formatProductTitleVendor(titleWithoutEmoji);
 
   return {
-    title: titleFormatted,
+    title: capitalizeFirstLetterOfEachWord(titleFormatted),
     vendor: getVendorByProductInfo(productInfoFromHTML),
     images: productImages,
     body_html: getProductDescriptionByCollection(collection, titleFormatted),

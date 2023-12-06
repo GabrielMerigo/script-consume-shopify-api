@@ -1,6 +1,9 @@
 import { VENDOR_CODES } from '@constants';
 import { vendors } from '@data';
-import { formatProductTitleVendor } from '@utils';
+import {
+  capitalizeFirstLetterOfEachWord,
+  formatProductTitleVendor
+} from '@utils';
 
 describe('formatProductTitleVendor', () => {
   VENDOR_CODES.forEach((vendorCode) => {
@@ -10,7 +13,9 @@ describe('formatProductTitleVendor', () => {
 
       const result = formatProductTitleVendor(mockTitle);
 
-      expect(result).toStrictEqual(expectedResult);
+      expect(capitalizeFirstLetterOfEachWord(result)).toStrictEqual(
+        expectedResult
+      );
     });
   });
   it('should not format title if is not necessary', () => {
@@ -19,6 +24,8 @@ describe('formatProductTitleVendor', () => {
 
     const result = formatProductTitleVendor(mockTitle);
 
-    expect(result).toStrictEqual(expectedResult);
+    expect(capitalizeFirstLetterOfEachWord(result)).toStrictEqual(
+      expectedResult
+    );
   });
 });

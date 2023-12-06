@@ -7,7 +7,7 @@ import {
 } from '@utils';
 import {
   createShopifyProduct,
-  getShopifyProductsByCollection,
+  getShopifyProductsByCollectionId,
   putProductIntoCollection,
   updateProductSizes
 } from '@requests/shopify';
@@ -19,7 +19,7 @@ import { logger } from '@services/pino';
 export const createProducts = async (
   collection: ExpectedCollections
 ): Promise<void> => {
-  const shopifyProducts = await getShopifyProductsByCollection(
+  const shopifyProducts = await getShopifyProductsByCollectionId(
     collections[collection].id
   );
 
