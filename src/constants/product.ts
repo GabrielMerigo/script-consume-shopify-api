@@ -38,7 +38,9 @@ const VENDOR_CODES = [
   'DSQUARED',
   'ARMANI',
   'BURBERRY',
-  'PRADA'
+  'PRADA',
+  'LEVIS',
+  'CAVALERA'
 ] as const;
 
 const COLLECTIONS = [

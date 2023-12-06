@@ -96,5 +96,13 @@ export const vendors: Vendors = {
   PRADA: {
     code: 'PRADA',
     name: 'Prada'
+  },
+  LEVIS: {
+    code: 'LEVIS',
+    name: 'Levis'
+  },
+  CAVALERA: {
+    code: 'CAVALERA',
+    name: 'Cavalera'
   }
 };
