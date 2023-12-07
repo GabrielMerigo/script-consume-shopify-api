@@ -5,8 +5,9 @@
   "main": "index.js",
   "license": "ISC",
   "scripts": {
-    "dev:collections": "tsx src/processes/createProductsByAllCollections.ts",
-    "dev:collection": "tsx src/processes/createProductsByCollection.ts",
+    "script:collections": "tsx src/processes/createProductsByAllCollections.ts",
+    "script:collection": "tsx src/processes/createProductsByCollection.ts",
+    "script:product": "tsx src/processes/createOnlyOneProduct.ts",
     "dev": "tsx watch src/index.ts",
     "build": "tsup src --out-dir build",
     "start": "node build/index.js",

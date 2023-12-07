@@ -92,5 +92,17 @@ export const vendors: Vendors = {
   BURBERRY: {
     code: 'BURBERRY',
     name: 'Burberry'
+  },
+  PRADA: {
+    code: 'PRADA',
+    name: 'Prada'
+  },
+  LEVIS: {
+    code: 'LEVIS',
+    name: 'Levis'
+  },
+  CAVALERA: {
+    code: 'CAVALERA',
+    name: 'Cavalera'
   }
 };

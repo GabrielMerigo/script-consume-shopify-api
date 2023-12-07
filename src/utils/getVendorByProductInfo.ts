@@ -12,6 +12,10 @@ const compareVendorNameAndCode = (
     : false;
 };
 
+const removeAllKeyWordsFromString = (contentToCheck: string): string => {
+  return contentToCheck.replace(/tactel|black friday|DFC|dfc/gi, '');
+};
+
 export const getVendorByProductInfo = (
   productInfoFromHTML: ProductInfoFromHTML
 ): string => {
@@ -26,6 +30,8 @@ export const getVendorByProductInfo = (
     .join()
     .toLowerCase();
 
+  const contentToCheckFiltered = removeAllKeyWordsFromString(contentToCheck);
+
   let vendorCode;
 
   for (let i = 0; i < VENDOR_CODES.length; i++) {
@@ -35,7 +41,7 @@ export const getVendorByProductInfo = (
       compareVendorNameAndCode(
         vendors[currentVendorCode].name.toLowerCase(),
         vendors[currentVendorCode].code.toLowerCase(),
-        contentToCheck
+        contentToCheckFiltered
       )
     ) {
       vendorCode = vendors[currentVendorCode].name;

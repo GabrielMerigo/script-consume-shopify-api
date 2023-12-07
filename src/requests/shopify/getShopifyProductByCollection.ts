@@ -2,7 +2,7 @@ import { GET_PRODUCTS_LIMIT } from '@constants';
 import { instance } from '@services/axios';
 import { ShopifyProduct } from '@types';
 
-export const getShopifyProductsByCollection = async (
+export const getShopifyProductsByCollectionId = async (
   collectionId: number
 ): Promise<ShopifyProduct[]> => {
   const response = await instance.get(

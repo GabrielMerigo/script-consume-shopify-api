@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 
-import { getShopifyProductsByCollection } from '@requests/shopify';
+import { getShopifyProductsByCollectionId } from '@requests/shopify';
 import { instance } from '@services/axios';
 import { ProductImage, ShopifyProduct, ShopifyVariant } from '@types';
 import {
@@ -40,7 +40,7 @@ describe('getShopifyProductsByCollection', () => {
   });
 
   it('should return shopify products based in the collection ID', async () => {
-    const result = await getShopifyProductsByCollection(123);
+    const result = await getShopifyProductsByCollectionId(123);
 
     expect(result).toStrictEqual(mockData);
   });

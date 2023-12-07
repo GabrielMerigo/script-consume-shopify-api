@@ -163,4 +163,38 @@ describe('getVendorByProductInfo', () => {
 
     expect(vendor).toStrictEqual('Lacoste');
   });
+
+  it('should not return ACOSTAMENTO when there is tACTel in the name', () => {
+    const productInfoGotFromHTML = new MockProductInfoFromHTML(
+      'ITEM_ID',
+      'ITEM_NAME',
+      'PRICE',
+      'tactel',
+      'ITEM_CATEGORY2',
+      'lct',
+      'ITEM_CATEGORY4',
+      'ITEM_CATEGORY5'
+    );
+
+    const vendor = getVendorByProductInfo(productInfoGotFromHTML);
+
+    expect(vendor).toStrictEqual('Lacoste');
+  });
+
+  it('should not return Calvin Klein when there is BlaCK Friday in the name', () => {
+    const productInfoGotFromHTML = new MockProductInfoFromHTML(
+      'ITEM_ID',
+      'ITEM_NAME',
+      'PRICE',
+      'Black Friday',
+      'ITEM_CATEGORY2',
+      'lct',
+      'ITEM_CATEGORY4',
+      'ITEM_CATEGORY5'
+    );
+
+    const vendor = getVendorByProductInfo(productInfoGotFromHTML);
+
+    expect(vendor).toStrictEqual('Lacoste');
+  });
 });
