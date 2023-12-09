@@ -10,7 +10,7 @@ export const getProductsInformationBasedOnUrl = async ({
   browser: Browser;
 }> => {
   const puppeteerLaunchOptions: PuppeteerLaunchOptions = {
-    headless: true,
+    headless: 'new',
     args: ['--no-sandbox']
   };
 
