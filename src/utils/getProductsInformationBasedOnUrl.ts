@@ -11,7 +11,7 @@ export const getProductsInformationBasedOnUrl = async ({
 }> => {
   const puppeteerLaunchOptions: PuppeteerLaunchOptions = {
     headless: 'new',
-    args: ['--no-sandbox']
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
   };
 
   const browser = await puppeteer.launch(puppeteerLaunchOptions);
