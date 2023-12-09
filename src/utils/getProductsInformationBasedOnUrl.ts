@@ -11,8 +11,7 @@ export const getProductsInformationBasedOnUrl = async ({
 }> => {
   const puppeteerLaunchOptions: PuppeteerLaunchOptions = {
     headless: 'new',
-    args: ['--no-sandbox'],
-    executablePath: '/usr/bin/chromium-browser'
+    args: ['--no-sandbox']
   };
 
   const browser = await puppeteer.launch(puppeteerLaunchOptions);
