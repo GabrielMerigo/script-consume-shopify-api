@@ -1,1 +1,1 @@
-worker: npm run start
+worker: npx puppeteer browsers install chrome && npm run start
