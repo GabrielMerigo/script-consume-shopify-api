@@ -11,7 +11,7 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsup src --out-dir build",
     "start": "node build/index.js",
-    "start:cron": "node build/cron-index.js",
+    "start:cron": "node build/index-cron.js",
     "lint:check": "eslint '{src,test}/**/*.{ts,spec.ts}'",
     "lint:fix": "eslint '{src,test}/**/*.{ts,spec.ts}' --fix",
     "prettier:fix": "prettier --config .prettierrc '{src,test}/**/*.{ts,spec.ts}' --write",
