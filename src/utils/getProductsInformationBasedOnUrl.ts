@@ -2,7 +2,6 @@ import puppeteer, { Browser, PuppeteerLaunchOptions } from 'puppeteer';
 import { PRODUCT_COLLECTION_SELECTOR_ID } from '@constants';
 import { GetProductsInformationBasedOnUrlType } from '@types';
 import { getProductsLink } from '@utils';
-import { env } from '@env';
 
 export const getProductsInformationBasedOnUrl = async ({
   url
@@ -10,16 +9,11 @@ export const getProductsInformationBasedOnUrl = async ({
   productsLinks: string[];
   browser: Browser;
 }> => {
-  const puppeteerLaunchOptions: PuppeteerLaunchOptions =
-    env.ENV != 'macos_development'
-      ? {
-          headless: 'new'
-          // args: ['--no-sandbox'],
-          // executablePath: '/usr/bin/chromium-browser'
-        }
-      : {
-          headless: 'new'
-        };
+  const puppeteerLaunchOptions: PuppeteerLaunchOptions = {
+    headless: 'new',
+    args: ['--no-sandbox'],
+    executablePath: '/usr/bin/chromium-browser'
+  };
 
   const browser = await puppeteer.launch(puppeteerLaunchOptions);
 
