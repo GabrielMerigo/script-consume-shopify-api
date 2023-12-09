@@ -13,9 +13,9 @@ export const getProductsInformationBasedOnUrl = async ({
   const puppeteerLaunchOptions: PuppeteerLaunchOptions =
     env.ENV != 'macos_development'
       ? {
-          headless: 'new',
-          args: ['--no-sandbox'],
-          executablePath: '/usr/bin/chromium-browser'
+          headless: 'new'
+          // args: ['--no-sandbox'],
+          // executablePath: '/usr/bin/chromium-browser'
         }
       : {
           headless: 'new'
