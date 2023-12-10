@@ -13,6 +13,7 @@ const config: Config.InitialOptions = {
     '@mocks/(.*)$': ['<rootDir>/src/mocks/$1'],
     '@requests/(.*)$': ['<rootDir>/src/requests/$1'],
     '@services/(.*)$': ['<rootDir>/src/services/$1'],
+    '@scripts/(.*)$': ['<rootDir>/src/scripts/$1'],
     '@types': ['<rootDir>/src/types'],
     '@utils': ['<rootDir>/src/utils']
   }
