@@ -22,3 +22,5 @@ export * from './getVendorByProductInfo';
 export * from './verifyVendorCode';
 export * from './createShopifyMetafield';
 export * from './capitalizeFirstLetterOfEachWord';
+export * from './addProductsBySelectedCollecitons';
+export * from './verifyExpectedCollection';
