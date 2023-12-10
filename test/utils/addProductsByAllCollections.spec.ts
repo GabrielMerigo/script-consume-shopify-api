@@ -1,14 +1,9 @@
 import { addProductsByAllCollections } from '@utils';
 import { COLLECTIONS } from '@constants';
-import { createProducts } from '../../src/scripts/createProducts';
+import { createProducts } from '@scripts/createProducts';
 
-jest.mock('../../src/scripts/createProducts', () => ({
+jest.mock('@scripts/createProducts', () => ({
   createProducts: jest.fn()
-}));
-jest.mock('../../src/services/pino', () => ({
-  logger: {
-    info: jest.fn()
-  }
 }));
 
 describe('addProductsByAllCollections', () => {
