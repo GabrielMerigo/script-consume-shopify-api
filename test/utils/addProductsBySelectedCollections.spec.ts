@@ -11,12 +11,6 @@ const wrongCollection = 'wrong-options';
 jest.mock('@scripts/createProducts', () => ({
   createProducts: jest.fn()
 }));
-jest.mock('@services/pino', () => ({
-  logger: {
-    error: jest.fn(),
-    info: jest.fn()
-  }
-}));
 
 describe('addProductsBySelectedCollections', () => {
   beforeEach(() => {

@@ -6,6 +6,7 @@ const config: Config.InitialOptions = {
   testEnvironment: 'node',
   transformIgnorePatterns: ['/node_modules/'],
   testMatch: ['<rootDir>/test/**/*.spec.ts'],
+  setupFiles: ['<rootDir>/src/mocks/__test__/pino.ts'],
   moduleNameMapper: {
     '@constants': ['<rootDir>/src/constants'],
     '@data': ['<rootDir>/src/data'],
