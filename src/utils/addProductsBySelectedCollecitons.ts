@@ -9,7 +9,7 @@ export const addProductsBySelectedCollections = async (
     if (verifyExpectedCollection(collection)) {
       logger.info(`Starting ${collection.toLocaleUpperCase()}`);
       await createProducts(collection);
-      logger.info(`Starting ${collection.toLocaleUpperCase()}`);
+      logger.info(`Finishing ${collection.toLocaleUpperCase()}`);
     } else {
       logger.error(
         `Don't running ${collection.toLocaleUpperCase()} because is not a expected collection`

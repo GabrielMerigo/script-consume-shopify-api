@@ -6,6 +6,6 @@ export const addProductsByAllCollections = async (): Promise<void> => {
   for await (const collection of COLLECTIONS) {
     logger.info(`Starting ${collection.toLocaleUpperCase()}`);
     await createProducts(collection);
-    logger.info(`Starting ${collection.toLocaleUpperCase()}`);
+    logger.info(`Finishing ${collection.toLocaleUpperCase()}`);
   }
 };
