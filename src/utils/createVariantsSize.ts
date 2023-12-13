@@ -10,7 +10,7 @@ export const createVariantsSize = (
   const variants: ShopifyVariant[] = sizes.map((size: string) => ({
     option1: size,
     price: price,
-    sku: sku,
+    sku: sku.trim(),
     inventory_management: null,
     inventory_quantity: null
   }));
