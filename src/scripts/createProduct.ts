@@ -11,7 +11,7 @@ import {
   createShopifyProduct,
   getShopifyProductsByCollectionId,
   putProductIntoCollection,
-  updateProductSizes
+  updateProductBasedOnProductStatus
 } from '@requests/shopify';
 
 type CreateOnlyOneProductProps = {
@@ -52,7 +52,11 @@ export const createProduct = async ({
       `Product ${productExists.title} (${productExists.id}) updateProductStatus is equal to ${updateProductStatus}`
     );
 
-    await updateProductSizes(productExists, sortedSizes, updateProductStatus);
+    await updateProductBasedOnProductStatus(
+      productExists,
+      sortedSizes,
+      updateProductStatus
+    );
   } else {
     if (!sortedSizes.length) {
       logger.warn(
