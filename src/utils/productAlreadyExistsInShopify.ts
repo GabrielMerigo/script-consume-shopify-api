@@ -5,7 +5,7 @@ export const productAlreadyExistsInShopify = (
   shopifyProducts: ShopifyProduct[]
 ): ShopifyProduct | null => {
   const foundProduct = shopifyProducts.find(
-    (i) => i?.variants[0]?.sku == product?.variants[0]?.sku
+    (i) => i?.variants[0]?.sku.trim() == product?.variants[0]?.sku.trim()
   );
 
   return foundProduct || null;
