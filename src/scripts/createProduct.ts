@@ -2,7 +2,8 @@ import puppeteer from 'puppeteer';
 import {
   compareShopifyProductAndSizesFromPage,
   getFormattedProductInformationFromPage,
-  productAlreadyExistsInShopify
+  productAlreadyExistsInShopify,
+  updateProductBasedOnProductStatus
 } from '@utils';
 import { ExpectedCollections } from '@types';
 import { logger } from '@services/pino';
@@ -10,8 +11,7 @@ import { collections } from '@data';
 import {
   createShopifyProduct,
   getShopifyProductsByCollectionId,
-  putProductIntoCollection,
-  updateProductSizes
+  putProductIntoCollection
 } from '@requests/shopify';
 
 type CreateOnlyOneProductProps = {
@@ -52,7 +52,11 @@ export const createProduct = async ({
       `Product ${productExists.title} (${productExists.id}) updateProductStatus is equal to ${updateProductStatus}`
     );
 
-    await updateProductSizes(productExists, sortedSizes, updateProductStatus);
+    await updateProductBasedOnProductStatus(
+      productExists,
+      sortedSizes,
+      updateProductStatus
+    );
   } else {
     if (!sortedSizes.length) {
       logger.warn(

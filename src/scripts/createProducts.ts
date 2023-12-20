@@ -3,13 +3,13 @@ import {
   productAlreadyExistsInShopify,
   compareShopifyProductAndSizesFromPage,
   getFormattedProductInformationFromPage,
-  formatPageUrlWithCollection
+  formatPageUrlWithCollection,
+  updateProductBasedOnProductStatus
 } from '@utils';
 import {
   createShopifyProduct,
   getShopifyProductsByCollectionId,
-  putProductIntoCollection,
-  updateProductSizes
+  putProductIntoCollection
 } from '@requests/shopify';
 import { collections } from '@data';
 
@@ -54,7 +54,7 @@ export const createProducts = async (
           `Product ${productExists.title} (${productExists.id}) updateProductStatus is equal to ${updateProductStatus}`
         );
 
-        await updateProductSizes(
+        await updateProductBasedOnProductStatus(
           productExists,
           sortedSizes,
           updateProductStatus

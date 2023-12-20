@@ -1,5 +1,6 @@
 export * from './createShopifyProduct';
 export * from './putProductIntoCollection';
 export * from './getShopifyProducts';
-export * from './updateProductSizes';
 export * from './getShopifyProductByCollection';
+export * from './deleteShopifyProduct';
+export * from './updateShopifyProduct';
