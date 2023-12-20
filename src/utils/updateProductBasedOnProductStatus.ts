@@ -2,11 +2,14 @@ import { ShopifyProduct, UpdateProductStatus } from '@types';
 import { createVariantsSize } from '@utils';
 import { logger } from '@services/pino';
 import { deleteShopifyProduct, updateShopifyProduct } from '@requests/shopify';
+import { SummaryProps } from '@scripts/createProducts';
 
 export const updateProductBasedOnProductStatus = async (
   product: ShopifyProduct,
   sizes: string[],
-  updateProductStatus: UpdateProductStatus
+  updateProductStatus: UpdateProductStatus,
+  summary?: SummaryProps,
+  currentProductLink?: string
 ): Promise<void> => {
   switch (updateProductStatus) {
     case UpdateProductStatus.DO_NOT_UPDATE:
@@ -18,6 +21,15 @@ export const updateProductBasedOnProductStatus = async (
       logger.info(
         `Sold out product ${product.title} was deleted with success!`
       );
+
+      if (summary) {
+        summary.deleted.amount++;
+        summary.deleted.products = [
+          ...summary!.deleted.products,
+          currentProductLink
+        ];
+      }
+
       break;
     }
 

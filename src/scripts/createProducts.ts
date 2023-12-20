@@ -16,9 +16,47 @@ import { collections } from '@data';
 import { ExpectedCollections } from '@types';
 import { logger } from '@services/pino';
 
+type ProductStatus = {
+  amount: number;
+  products: Array<string | undefined>;
+};
+
+export type SummaryProps = {
+  updated: {
+    amount: number;
+  };
+  created: {
+    amount: number;
+  };
+  failed: ProductStatus;
+  soldOut: ProductStatus;
+  deleted: ProductStatus;
+};
+
 export const createProducts = async (
   collection: ExpectedCollections
 ): Promise<void> => {
+  const summary: SummaryProps = {
+    updated: {
+      amount: 0
+    },
+    created: {
+      amount: 0
+    },
+    failed: {
+      amount: 0,
+      products: []
+    },
+    soldOut: {
+      amount: 0,
+      products: []
+    },
+    deleted: {
+      amount: 0,
+      products: []
+    }
+  };
+
   const shopifyProducts = await getShopifyProductsByCollectionId(
     collections[collection].id
   );
@@ -57,13 +95,18 @@ export const createProducts = async (
         await updateProductBasedOnProductStatus(
           productExists,
           sortedSizes,
-          updateProductStatus
+          updateProductStatus,
+          summary,
+          link
         );
       } else {
         if (!sortedSizes.length) {
           logger.warn(
             `Product ${product.title} wasn't created because is SOLD_OUT`
           );
+
+          summary.soldOut.amount++;
+          summary.soldOut.products = [...summary.soldOut.products, link];
 
           continue;
         }
@@ -74,6 +117,8 @@ export const createProducts = async (
           collections[collection].id,
           index
         );
+
+        summary.created.amount++;
       }
 
       logger.info(`Ending Shopify process`);
@@ -81,11 +126,31 @@ export const createProducts = async (
       await page.close();
       index++;
     } catch (e) {
-      logger.error(`Error no link: ${link}`);
+      summary.failed.amount++;
+      summary.failed.products = [...summary.failed.products, link];
+
+      logger.error(`Error link: ${link}`);
       console.log(e);
       continue;
     }
   }
+
+  logger.info(`
+    ------------------- SUMMARY OF THE SCRIPT -------------------------
+    FAILED PRODUCTS AMOUNT: ${summary.failed.amount}
+    LINK OF THE PRODUCTS FAILED: ${summary.failed.products.join(', ')}
+    -------------------------------------------------------------------
+    DELETED PRODUCTS AMOUNT: ${summary.deleted.amount}
+    LINK OF THE PRODUCTS DELETED: ${summary.deleted.products.join(', ')}
+    -------------------------------------------------------------------
+    SOLD OUT PRODUCTS AMOUNT: ${summary.soldOut.amount}
+    LINK OF THE PRODUCTS SOLD OUT: ${summary.soldOut.products.join(', ')}
+    -------------------------------------------------------------------
+    UPDATED PRODUCTS AMOUNT: ${summary.updated.amount}
+    -------------------------------------------------------------------
+    CREATED PRODUCTS AMOUNT: ${summary.created.amount}
+    -------------------------------------------------------------------
+  `);
 
   await browser.close();
 };
