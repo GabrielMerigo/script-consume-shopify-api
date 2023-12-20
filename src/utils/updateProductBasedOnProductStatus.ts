@@ -15,7 +15,9 @@ export const updateProductBasedOnProductStatus = async (
     case UpdateProductStatus.SOLD_OUT: {
       await deleteShopifyProduct(product.id);
 
-      logger.info(`Sold out product ${product.id} was deleted with success!`);
+      logger.info(
+        `Sold out product ${product.title} was deleted with success!`
+      );
       break;
     }
 
