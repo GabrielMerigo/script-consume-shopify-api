@@ -2,7 +2,8 @@ import puppeteer from 'puppeteer';
 import {
   compareShopifyProductAndSizesFromPage,
   getFormattedProductInformationFromPage,
-  productAlreadyExistsInShopify
+  productAlreadyExistsInShopify,
+  updateProductBasedOnProductStatus
 } from '@utils';
 import { ExpectedCollections } from '@types';
 import { logger } from '@services/pino';
@@ -10,8 +11,7 @@ import { collections } from '@data';
 import {
   createShopifyProduct,
   getShopifyProductsByCollectionId,
-  putProductIntoCollection,
-  updateProductBasedOnProductStatus
+  putProductIntoCollection
 } from '@requests/shopify';
 
 type CreateOnlyOneProductProps = {
